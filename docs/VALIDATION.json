@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-07",
+  "rust_lifecycle_tests": {
+    "passed": 14
+  },
+  "dao_adapter_tests": {
+    "passed": 3
+  },
+  "http_integration": {
+    "passed": true,
+    "coverage": [
+      "reservation",
+      "overlap rejection",
+      "pickup",
+      "return authorization",
+      "settlement",
+      "failed withdrawal restoration",
+      "retry",
+      "origin rejection",
+      "HTML response"
+    ]
+  },
+  "wasm": {
+    "compiled": true,
+    "sha256": "8e3bc3999eac68fc87f8ae96c42206b4127098edcd45668e57fb9c7c01a7f8ca",
+    "bytes": 306448,
+    "near_host_imports_present": true,
+    "sandbox_execution": false,
+    "deployed": false
+  },
+  "browser": {
+    "passed": false,
+    "reason": "Local Chromium process socket prohibited; separate cloud browser could not reach local server. Browser test script provided but not validated."
+  },
+  "nft_implemented": false
+}

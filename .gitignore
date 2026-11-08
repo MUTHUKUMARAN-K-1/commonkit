@@ -1,0 +1,6 @@
+/target/
+/artifacts/
+/node_modules/
+.env
+*.key
+

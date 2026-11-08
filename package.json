@@ -1,0 +1,18 @@
+{
+  "name": "commonkit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test scripts/dao.test.mjs",
+    "test:browser": "node scripts/browser-test.mjs",
+    "test:api": "node scripts/api-test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

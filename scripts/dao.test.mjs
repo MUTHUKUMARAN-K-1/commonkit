@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {daoProposal} from './dao.mjs';
+test('DAO function call binds the receiver, arguments and zero deposit',()=>{const p=daoProposal({contract:'commonkit.testnet',method:'resolve',args:{id:7,damage_micro_near:1000,evidence_hash:'a'.repeat(64)},description:'Resolve camera return #7'});const c=p.proposal.kind.FunctionCall;assert.equal(c.receiver_id,'commonkit.testnet');assert.equal(c.actions[0].deposit,'0');assert.deepEqual(JSON.parse(Buffer.from(c.actions[0].args,'base64').toString()),{id:7,damage_micro_near:1000,evidence_hash:'a'.repeat(64)});});
+test('unsafe governance method is rejected',()=>{assert.throws(()=>daoProposal({contract:'commonkit.testnet',method:'add_full_access_key',args:{},description:'No'}),/Unsupported/);});
+test('invalid receiver is rejected',()=>{assert.throws(()=>daoProposal({contract:'https://evil.test',method:'withdraw',args:{},description:'No'}),/Invalid/);});
