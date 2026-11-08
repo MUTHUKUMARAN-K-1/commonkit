@@ -1,0 +1,27 @@
+{
+  "verifiedAt": "2026-11-08T08:04:20.889Z",
+  "source": "public NEAR testnet RPC, read-only",
+  "liveChecks": {
+    "pass": 27,
+    "fail": 0,
+    "unverified": 0
+  },
+  "block": {
+    "hash": "BEjZkbFNhBed79eFecNJyHobS44cMPRCp8bt3YBqdy4D",
+    "height": 276748867,
+    "time": "2026-11-08T08:04:11.744Z"
+  },
+  "javascriptTests": 52,
+  "verificationTests": 37,
+  "productionArtifact": "18 files passed; dev signer and private keys excluded",
+  "browser": {
+    "desktop": "1440px passed",
+    "mobile": "375px, no horizontal overflow",
+    "download": "JSON report passed with 27 checks",
+    "outageAfterSuccess": "passed; previous results and ledger cleared",
+    "pageErrors": 0
+  },
+  "report": "public-verification-report.json",
+  "walletUsed": false,
+  "transactionsSubmitted": 0
+}

@@ -5,12 +5,13 @@ This is a preparation checklist, not an application submission. No X post or app
 ## Prepared project facts
 
 - Project: **CommonKit**.
-- Suggested track: **Social Money** (final team selection still required).
+- Selected track: **Social Money**, confirmed by the owner.
 - Repository: https://github.com/MUTHUKUMARAN-K-1/commonkit — **private at the owner's request**.
 - Live product: https://commonkit-testnet.muthukumarank.chatgpt.site.
 - Demo: [three-minute script](DEMO-SCRIPT.md); recording and public post remain to be made.
 - License: [MIT](../LICENSE), chosen by the owner.
 - Baseline: imported `baseline-v0.1` snapshot; prepared development changes identified by `submission-ready` and the README compare link. Commits are dated when created, not backdated.
+- Public verification: [27 live checks without a wallet](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html), also `npm run verify:testnet`; [scope and limitations](VERIFICATION.md).
 - Proof: [Meteor rehearsal](testnet/METEOR-POLISHED-REHEARSAL.md), eleven final receipts and one-vote/two-vote snapshots.
 - Vercel: configuration prepared; not deployed there.
 
@@ -21,7 +22,7 @@ CommonKit is a community equipment library on NEAR testnet. Members reserve shar
 ## Remaining before submission
 
 - [ ] Owner authorizes changing the repository from private to public. Do not change visibility automatically. The rules require public access by **14 November 2026, 23:59 UTC / 15 November, 05:29 IST**, and through judging.
-- [ ] Confirm team lead name, contact email, team size, final track selection and the team's **mainnet** payout account. Do not substitute any testnet demo account.
+- [ ] Confirm team lead name, contact email, team size and the team's **mainnet** payout account. Do not substitute any testnet demo account.
 - [ ] Human records/reviews the demo and publishes a public X post mentioning NEAR HACKATHON, `@NEARProtocol` and `#NEARHackathon`, with the video or screenshots attached. Save that public post URL; the API's `demoUrl` means the social post, not the hosted app.
 - [ ] Recheck the live rules and verify this repository has not already been submitted.
 - [ ] Obtain the human's explicit contact-notice consent and approval of the complete, final application payload. Only then submit once. No placeholder application JSON is prepared here.

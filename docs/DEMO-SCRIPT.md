@@ -31,6 +31,10 @@ For a normal return, the custodian selects **Accept return** instead of reportin
 
 Click once, allow the popup, and inspect the existing Meteor window. Wait for the site to confirm final execution. If cancelling, cancel the unsigned request in Meteor; do not approve a leftover duplicate popup. If a hash exists, inspect its receipt and contract state before retrying. Account changes use Disconnect → Connect Meteor → Meteor Web → choose the other account.
 
+## Judge verification without the operator wallets
+
+Open [Verify the flow](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html). Show the 27 fresh checks, expand the actual borrower/DAO transfers, and download the report. This rechecks the recorded booking #4 rehearsal; it does not create a new booking or verify a newly recorded cycle automatically. The first-vote balance snapshots remain explicitly historical. The same checks run with `npm run verify:testnet`.
+
 ## Short fallback when live signing is unavailable
 
 Use a **recorded-state walkthrough**, explicitly labeled as such: booking #4 → proposal #6 with two approvals → [the saved one-vote snapshot](testnet/meteor-polished-single-vote.json) → final allocation and [eleven verified receipts](testnet/meteor-polished-receipts.txt). Show the [rehearsal report](testnet/METEOR-POLISHED-REHEARSAL.md). Do not describe this fallback as a new live run.

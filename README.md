@@ -6,11 +6,11 @@ Campus clubs share cameras and projectors, but handovers and deposit disputes of
 
 **Status:** working NEAR testnet prototype. The polished frontend completed an eleven-transaction Meteor Web rehearsal on 8 November 2026. Repository visibility is private during preparation; it must become public before hackathon submission. MIT licensed.
 
-[Live demo](https://commonkit-testnet.muthukumarank.chatgpt.site) · [Wallet guide](https://commonkit-testnet.muthukumarank.chatgpt.site/demo-guide.html) · [Three-minute demo script](docs/DEMO-SCRIPT.md) · [Vercel setup](docs/VERCEL.md) · [Submission checklist](docs/SUBMISSION.md)
+[Live demo](https://commonkit-testnet.muthukumarank.chatgpt.site) · [Verify without a wallet](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html) · [Wallet guide](https://commonkit-testnet.muthukumarank.chatgpt.site/demo-guide.html) · [Three-minute demo script](docs/DEMO-SCRIPT.md) · [Vercel setup](docs/VERCEL.md) · [Submission checklist](docs/SUBMISSION.md)
 
 ## Try it: do this, see this
 
-No wallet is needed to inspect recorded testnet state.
+No wallet is needed to inspect recorded testnet state. Open **Verify the flow** for 27 fresh read-only checks, receipt links and a downloadable report. From a clone with Node 24, run `npm run verify:testnet` (no dependency installation needed), or `npm run --silent verify:testnet -- --json`. [What the checks prove and their limits](docs/VERIFICATION.md).
 
 | Do this | See this |
 | --- | --- |
@@ -107,7 +107,7 @@ Output: `target/wasm32-unknown-unknown/release/commonkit_contract.wasm`. Deploym
 ## Validation and accounting
 
 - 14 Rust lifecycle tests: authorization, overlap, settlement, callback restoration and replay behavior.
-- 15 JavaScript tests: DAO binding, receipt finality/failures and presentation state.
+- 52 JavaScript tests: DAO binding, receipt finality/failures, presentation state and 37 public-verifier tests, including altered-data cases.
 - Local API integration: normal return, failed-withdrawal recovery and origin rejection.
 - [Meteor rehearsal](docs/testnet/METEOR-POLISHED-REHEARSAL.md): booking #4, settlement #6, treasury #7, eleven final receipts independently verified by RPC.
 - [GitHub Actions](.github/workflows/ci.yml): JS tests, static build checks, Rust tests, API integration and Wasm compilation without wallet credentials.
@@ -120,7 +120,7 @@ Evidence files stay local; only SHA-256 hashes go on-chain. The rehearsal fixtur
 
 ## Hackathon development and reuse disclosure
 
-Proposed track: **Social Money** for community-controlled equipment access and disputes. NEAR and Sputnik provide actual escrow and collective authorization. No NFTs, mainnet deployment or independent human council governance are claimed.
+Selected track: **Social Money** for community-controlled equipment access and disputes. NEAR and Sputnik provide actual escrow and collective authorization. No NFTs, mainnet deployment or independent human council governance are claimed.
 
 The archived v0.1 README is dated 7 November 2026 and already contained the Rust state machine, local simulator, draft contract and unsigned DAO adapter. [baseline-v0.1](https://github.com/MUTHUKUMARAN-K-1/commonkit/tree/baseline-v0.1) preserves that source. It is an import snapshot committed during repository preparation, not original commit history or a claim that it predates the hackathon.
 

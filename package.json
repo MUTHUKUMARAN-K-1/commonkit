@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "test": "node --test scripts/dao.test.mjs scripts/wallet-result.test.mjs scripts/presentation.test.mjs",
+    "test": "node --test scripts/dao.test.mjs scripts/wallet-result.test.mjs scripts/presentation.test.mjs scripts/verification.test.mjs",
     "test:browser": "node scripts/browser-test.mjs",
     "test:api": "node scripts/api-test.mjs",
     "dev": "vite app --host 127.0.0.1 --port 4318",
@@ -18,7 +18,8 @@
     "build:contract": "powershell -NoProfile -File scripts/build-contract.ps1",
     "dev:wallet": "powershell -NoProfile -Command \"$env:VITE_DEV_WALLET='1'; npx vite --host 127.0.0.1 --port 4320 --strictPort\"",
     "deploy:dao": "node scripts/deploy-dao.mjs",
-    "setup:dao": "node scripts/bootstrap-dao.mjs"
+    "setup:dao": "node scripts/bootstrap-dao.mjs",
+    "verify:testnet": "node scripts/verify-testnet.mjs"
   },
   "engines": {
     "node": "24.x"

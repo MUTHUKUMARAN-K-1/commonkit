@@ -29,14 +29,14 @@ npm run build:vercel
 npm run preview
 ```
 
-Open http://127.0.0.1:4318, `/demo-guide.html`, `/deployment.json` and `/evidence/pickup.txt`. The build check requires all demo assets, a testnet configuration and absence of private-key values/development-wallet code in the static output. Production writes still require the user's browser wallet.
+Open http://127.0.0.1:4318, `/verify.html`, `/demo-guide.html`, `/deployment.json` and `/evidence/pickup.txt`. The build check requires all demo assets, a testnet configuration and absence of private-key values/development-wallet code in the static output. Production writes still require the user's browser wallet.
 
 `.vercelignore` allows only frontend build inputs for CLI uploads, excluding `.testnet`, local artifacts, research, screenshots, contract sources and the separate Sites checkout. The GitHub repository still contains contract sources and public validation evidence for review. No secret is required on Vercel.
 
 ## After an authorized future deployment
 
 - Confirm the resulting URL loads live library and DAO state.
-- Open the guide and fixture links, including direct URL loads.
+- Open the guide, verification page and fixture links, including direct URL loads. Run all verification checks from the new origin to confirm RPC/CORS availability.
 - Connect Meteor on the **new Vercel origin**; a connection to the existing Sites origin does not automatically authorize the new origin. Verify account and contract IDs in every wallet prompt.
 - Test cancellation and one complete authorized testnet transaction before using the new URL in the recorded demo.
 - Check Vercel's deployment access controls: judges must be able to open the selected demo URL without a team login. Keep source/log exposure private; website access and repository visibility are different settings.
