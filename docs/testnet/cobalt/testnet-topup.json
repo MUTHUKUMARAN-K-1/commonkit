@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "hash": "HJa5Uw3HoHMEkWXhVvHvDTJmDHcf8gLiUKpoWrn1ZCig",
+  "signer": "commonkit-mw7dph80.testnet",
+  "receiver": "borrower.commonkit-mw7dph80.testnet",
+  "amountNEAR": "1",
+  "status": "FINAL",
+  "purpose": "Fund four CommonKit Meteor rehearsals",
+  "capturedAt": "2026-11-08T11:04:58.217Z"
+}

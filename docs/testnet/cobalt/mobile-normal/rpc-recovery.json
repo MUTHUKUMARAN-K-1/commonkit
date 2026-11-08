@@ -1,0 +1,15 @@
+{
+  "observedAt": "2026-11-08T14:46:08.427Z",
+  "step": "treasury-vote-1",
+  "proposalId": 12,
+  "walletError": "near_rpc_error",
+  "hashReturned": false,
+  "chainBeforeRetry": {
+    "status": "InProgress",
+    "votes": {}
+  },
+  "walletLatestActivityBeforeRetry": "add_proposal EXeaReUXeR1tA6BC6E3ad2cVpoByt2M2N2DSFbmHt9w2",
+  "recovery": "Closed failed wallet window; refreshed live DAO state before retry",
+  "successfulRetryHash": "CTQFFhG4deYZDaxnu9jH1g7VGXxFdD4fQcyHC4mN6dWe",
+  "finalVerification": { "pass": 21, "fail": 0, "unverified": 0 }
+}

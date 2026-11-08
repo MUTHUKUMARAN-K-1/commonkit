@@ -4,6 +4,8 @@ Record one fresh cycle through the public demo in Chrome and Meteor Web. Allow 1
 
 ## Before recording
 
+For the new cobalt/apricot integration, run `npm run build:vercel` and `npm run preview`, then use the local URL printed by Vite. The public demo still serves the earlier release until the new build is deployed. The new UI uses **Library** for equipment and booking review, **Bookings** for handover/return evidence and withdrawals, and **Council** for proposals and votes. Open the wallet button to connect, inspect roles or disconnect.
+
 - Open https://commonkit-testnet.muthukumarank.chatgpt.site and unlock Meteor privately. Never record the unlock password, seed phrase, key import screen or developer credentials.
 - Use the operator's three imported **testnet** wallets: borrower, custodian/council 2, and council 1. Both council accounts are controlled by the demo operator; say so.
 - Use the labeled [pickup](../app/public/evidence/pickup.txt), [return](../app/public/evidence/return.txt), [damage](../app/public/evidence/damage.txt) and [decision](../app/public/evidence/decision.txt) fixtures. These simulate evidence, not physical events.
@@ -19,7 +21,7 @@ Record one fresh cycle through the public demo in Chrome and Meteor Web. Allow 1
 | 0:35–0:55 | Custodian account; pickup evidence; Confirm pickup and final receipt | “The custodian confirms handover. The account's permissions come from the contract. Evidence stays on the device; its fingerprint goes on-chain.” |
 | 0:55–1:10 | Borrower account; return evidence; Request return | “The borrower requests a return. They cannot approve their own inspection.” |
 | 1:10–1:30 | Custodian: damage evidence and Report damage; Council review; escrow 0.011 | “We simulate a damage dispute. The custodian can flag damage but cannot take the bond. The principal remains in escrow.” |
-| 1:30–1:50 | Decision evidence; Propose a library change → 0.003 damage; new settlement proposal | “A council member proposes retaining 0.003 NEAR for damage. The proposal shows the exact booking, target and amount.” |
+| 1:30–1:50 | Council → Propose a library change → Resolve selected dispute; decision evidence and 0.003 damage; new settlement proposal | “A council member proposes retaining 0.003 NEAR for damage. The proposal shows the exact booking, target and amount.” |
 | 1:50–2:10 | First council wallet approves; 1/2; booking disputed; escrow unchanged | “One vote records support. It does not settle the booking or release funds.” |
 | 2:10–2:30 | Other council wallet approves same proposal; 2/2; Closed; 0.007 / 0.004 | “The second account approves the same decision. Sputnik calls the library, which creates 0.007 borrower credit and 0.004 DAO credit. The UI verifies actual settlement.” |
 | 2:30–2:50 | Treasury proposal and two votes, then borrower Withdraw available credit | “Credits are not transfers. The treasury needs its own two-vote withdrawal; the borrower signs their own withdrawal.” |

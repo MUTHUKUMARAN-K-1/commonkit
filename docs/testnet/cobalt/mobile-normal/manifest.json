@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "flow": "normal",
+  "network": "testnet",
+  "recordedAt": "2026-11-08T14:48:24.000Z",
+  "contractId": "library.ckdao-mw7e25at.testnet",
+  "daoId": "ckdao-mw7e25at.sputnikv2.testnet",
+  "council": [
+    "commonkit-mw7dph80.testnet",
+    "custodian.commonkit-mw7dph80.testnet"
+  ],
+  "codeHash": "82tc6wcj4LUyrNPmTtQMcrBwqqc99nHYY8hX4bJrDPeb",
+  "wasmSha256": "687dbd4f95d90c346eeabf738a1e270c2db9cc74a2d1bd5803ccb6c75761192c",
+  "booking": {
+    "id": 8,
+    "asset_id": "campus-camera",
+    "borrower": "borrower.commonkit-mw7dph80.testnet",
+    "start": 1794148440,
+    "end": 1794152040,
+    "fee": 1000,
+    "bond": 10000,
+    "status": "Closed",
+    "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+    "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+    "dispute_hash": null,
+    "damage": 0
+  },
+  "treasury": {
+    "id": 12,
+    "proposer": "custodian.commonkit-mw7dph80.testnet",
+    "description": "CommonKit withdraw: {}",
+    "kind": {
+      "FunctionCall": {
+        "receiver_id": "library.ckdao-mw7e25at.testnet",
+        "actions": [
+          {
+            "method_name": "withdraw",
+            "args": "e30=",
+            "deposit": "0",
+            "gas": "100000000000000"
+          }
+        ]
+      }
+    },
+    "status": "Approved",
+    "vote_counts": {
+      "council": [
+        2,
+        0,
+        0
+      ]
+    },
+    "votes": {
+      "commonkit-mw7dph80.testnet": "Approve",
+      "custodian.commonkit-mw7dph80.testnet": "Approve"
+    },
+    "submission_time": "1794149016679769911"
+  },
+  "withdrawals": {
+    "borrowerNonce": 14,
+    "daoNonce": 15
+  },
+  "steps": [
+    {
+      "id": "reserve",
+      "label": "Borrower reserved equipment and attached 0.111 NEAR",
+      "hash": "9rASDDXPEr3ruGr36oMQD7YA9xBwoLhmu7neJoxeN1f2",
+      "signerId": "borrower.commonkit-mw7dph80.testnet",
+      "receiverId": "library.ckdao-mw7e25at.testnet",
+      "method": "reserve",
+      "args": {
+        "asset_id": "campus-camera",
+        "start": 1794148440,
+        "end": 1794152040
+      },
+      "deposit": "111000000000000000000000",
+      "returnValue": "OA=="
+    },
+    {
+      "id": "pickup",
+      "label": "Custodian acknowledged pickup and evidence",
+      "hash": "EWuQqYSmmh6vSLKNAUzn5WPcM8g32D656BEmeNmD7dy8",
+      "signerId": "custodian.commonkit-mw7dph80.testnet",
+      "receiverId": "library.ckdao-mw7e25at.testnet",
+      "method": "pickup",
+      "args": {
+        "id": 8,
+        "evidence_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f"
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "return",
+      "label": "Borrower requested return with evidence",
+      "hash": "CF1iMHbaLmsHANsQEwHcyn64NyUyrKPe2aHYwEGvidKj",
+      "signerId": "borrower.commonkit-mw7dph80.testnet",
+      "receiverId": "library.ckdao-mw7e25at.testnet",
+      "method": "request_return",
+      "args": {
+        "id": 8,
+        "evidence_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230"
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "accept-return",
+      "label": "Custodian accepted the matching return evidence",
+      "hash": "HFfdmLXqSg8cWRHPptJUDooR6xy3MBg3qSbFgqqiKU8Q",
+      "signerId": "custodian.commonkit-mw7dph80.testnet",
+      "receiverId": "library.ckdao-mw7e25at.testnet",
+      "method": "accept_return",
+      "args": {
+        "id": 8,
+        "expected_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230"
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "borrower-withdraw",
+      "label": "Borrower withdrew the full bond",
+      "hash": "wBjf5JDje4uQB947HEp59Mi8AwoJEdNmb7ZtWfg8KMv",
+      "signerId": "borrower.commonkit-mw7dph80.testnet",
+      "receiverId": "library.ckdao-mw7e25at.testnet",
+      "method": "withdraw",
+      "args": {},
+      "deposit": "0",
+      "returnValue": "dHJ1ZQ=="
+    },
+    {
+      "id": "treasury-proposal",
+      "label": "Council proposed withdrawing the DAO fee credit",
+      "hash": "EXeaReUXeR1tA6BC6E3ad2cVpoByt2M2N2DSFbmHt9w2",
+      "signerId": "custodian.commonkit-mw7dph80.testnet",
+      "receiverId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "method": "add_proposal",
+      "args": {
+        "proposal": {
+          "description": "CommonKit withdraw: {}",
+          "kind": {
+            "FunctionCall": {
+              "receiver_id": "library.ckdao-mw7e25at.testnet",
+              "actions": [
+                {
+                  "method_name": "withdraw",
+                  "args": "e30=",
+                  "deposit": "0",
+                  "gas": "100000000000000"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "deposit": "10000000000000000000000",
+      "returnValue": "MTI="
+    },
+    {
+      "id": "treasury-vote-1",
+      "label": "Custodian council account cast the first treasury vote",
+      "hash": "CTQFFhG4deYZDaxnu9jH1g7VGXxFdD4fQcyHC4mN6dWe",
+      "signerId": "custodian.commonkit-mw7dph80.testnet",
+      "receiverId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "method": "act_proposal",
+      "args": {
+        "id": 12,
+        "action": "VoteApprove",
+        "proposal": {
+          "FunctionCall": {
+            "receiver_id": "library.ckdao-mw7e25at.testnet",
+            "actions": [
+              {
+                "method_name": "withdraw",
+                "args": "e30=",
+                "deposit": "0",
+                "gas": "100000000000000"
+              }
+            ]
+          }
+        },
+        "memo": null
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "treasury-vote-2",
+      "label": "Second council account cast the final treasury vote",
+      "hash": "DEC319Km7fchqTv6ECw75VBprTTri7JNFWXRTmCfoPrN",
+      "signerId": "commonkit-mw7dph80.testnet",
+      "receiverId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "method": "act_proposal",
+      "args": {
+        "id": 12,
+        "action": "VoteApprove",
+        "proposal": {
+          "FunctionCall": {
+            "receiver_id": "library.ckdao-mw7e25at.testnet",
+            "actions": [
+              {
+                "method_name": "withdraw",
+                "args": "e30=",
+                "deposit": "0",
+                "gas": "100000000000000"
+              }
+            ]
+          }
+        },
+        "memo": null
+      },
+      "deposit": "0",
+      "returnValue": ""
+    }
+  ]
+}

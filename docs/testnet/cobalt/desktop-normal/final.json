@@ -1,0 +1,390 @@
+{
+  "capturedAt": "2026-11-08T14:16:49.791Z",
+  "run": "desktop-normal",
+  "stage": "final",
+  "flow": "normal",
+  "network": "testnet",
+  "wallet": "Meteor Web / Chrome",
+  "viewport": "desktop",
+  "physicalMobile": false,
+  "block": {
+    "hash": "De46sN7eEjRCAoHJLLd7ewLqJyDW1e17RrUJsqNBexw",
+    "height": 276786806
+  },
+  "deployment": {
+    "network": "testnet",
+    "contractId": "library.ckdao-mw7e25at.testnet",
+    "daoId": "ckdao-mw7e25at.sputnikv2.testnet",
+    "council": [
+      "commonkit-mw7dph80.testnet",
+      "custodian.commonkit-mw7dph80.testnet"
+    ],
+    "governanceMode": "dao",
+    "accounts": {
+      "governance": "commonkit-mw7dph80.testnet",
+      "contract": "library.ckdao-mw7e25at.testnet",
+      "borrower": "borrower.commonkit-mw7dph80.testnet",
+      "custodian": "custodian.commonkit-mw7dph80.testnet"
+    }
+  },
+  "state": {
+    "dao": "ckdao-mw7e25at.sputnikv2.testnet",
+    "members": [
+      "borrower.commonkit-mw7dph80.testnet"
+    ],
+    "assets": {
+      "campus-camera": {
+        "id": "campus-camera",
+        "name": "Campus camera kit",
+        "custodian": "custodian.commonkit-mw7dph80.testnet",
+        "fee": 1000,
+        "bond": 10000,
+        "enabled": true
+      }
+    },
+    "bookings": {
+      "1": {
+        "id": 1,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794115800,
+        "end": 1794119400,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": "7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55",
+        "damage": 3000
+      },
+      "2": {
+        "id": 2,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794116220,
+        "end": 1794119820,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": null,
+        "damage": 0
+      },
+      "3": {
+        "id": 3,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794117780,
+        "end": 1794121380,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": "7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55",
+        "damage": 3000
+      },
+      "4": {
+        "id": 4,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794120480,
+        "end": 1794124080,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": "7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55",
+        "damage": 3000
+      },
+      "5": {
+        "id": 5,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794129360,
+        "end": 1794132960,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "ce2539727df7a98d2aea90e3db16f37cea8a7c99063e8c078789b1f4bbfe482c",
+        "return_hash": "2eeb866777e7b0349f2af6d8f1f7780aad0a7186a3d5dd468600ec6761ea5ebb",
+        "dispute_hash": null,
+        "damage": 0
+      },
+      "6": {
+        "id": 6,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794146700,
+        "end": 1794150300,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": null,
+        "damage": 0
+      }
+    },
+    "credits": {
+      "borrower.commonkit-mw7dph80.testnet": 0,
+      "ckdao-mw7e25at.sputnikv2.testnet": 0
+    },
+    "reputation": {
+      "borrower.commonkit-mw7dph80.testnet": 3
+    },
+    "pending": {},
+    "total_deposited": 66000,
+    "total_withdrawn": 66000,
+    "next_booking": 7,
+    "next_nonce": 12
+  },
+  "ledger": {
+    "deposited": 66000,
+    "escrow": 0,
+    "credits": 0,
+    "pending": 0,
+    "withdrawn": 66000,
+    "balanced": true
+  },
+  "nextProposal": 10,
+  "booking": {
+    "id": 6,
+    "asset_id": "campus-camera",
+    "borrower": "borrower.commonkit-mw7dph80.testnet",
+    "start": 1794146700,
+    "end": 1794150300,
+    "fee": 1000,
+    "bond": 10000,
+    "status": "Closed",
+    "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+    "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+    "dispute_hash": null,
+    "damage": 0
+  },
+  "treasury": {
+    "id": 9,
+    "proposer": "custodian.commonkit-mw7dph80.testnet",
+    "description": "CommonKit withdraw: {}",
+    "kind": {
+      "FunctionCall": {
+        "receiver_id": "library.ckdao-mw7e25at.testnet",
+        "actions": [
+          {
+            "method_name": "withdraw",
+            "args": "e30=",
+            "deposit": "0",
+            "gas": "100000000000000"
+          }
+        ]
+      }
+    },
+    "status": "Approved",
+    "vote_counts": {
+      "council": [
+        2,
+        0,
+        0
+      ]
+    },
+    "votes": {
+      "commonkit-mw7dph80.testnet": "Approve",
+      "custodian.commonkit-mw7dph80.testnet": "Approve"
+    },
+    "submission_time": "1794147205791654543"
+  },
+  "verification": {
+    "schemaVersion": 1,
+    "flow": "normal",
+    "startedAt": "2026-11-08T14:16:51.627Z",
+    "network": "testnet",
+    "bookingId": 6,
+    "contractId": "library.ckdao-mw7e25at.testnet",
+    "daoId": "ckdao-mw7e25at.sputnikv2.testnet",
+    "block": {
+      "hash": "CbjJ9PjGXca4Hni3qj9t2iW6xqD6ztdsg1xPXFQtihwC",
+      "height": 276786810,
+      "time": "2026-11-08T14:16:46.180Z"
+    },
+    "checks": [
+      {
+        "id": "manifest",
+        "label": "Recorded deployment and eight-step normal-return claim",
+        "category": "Deployment",
+        "status": "PASS",
+        "detail": "Booking #6; normal return; treasury #9. Expected values are published claims, not cached passes."
+      },
+      {
+        "id": "network",
+        "label": "RPC identifies NEAR testnet",
+        "category": "Deployment",
+        "status": "PASS",
+        "detail": "Verified against public testnet RPC."
+      },
+      {
+        "id": "block",
+        "label": "Current reads share one finalized block",
+        "category": "Deployment",
+        "status": "PASS",
+        "detail": "Final block 276786810 · 2026-11-08T14:16:46.180Z"
+      },
+      {
+        "id": "code",
+        "label": "Library code matches the recorded deployment",
+        "category": "Deployment & governance",
+        "status": "PASS",
+        "detail": "Code hash 82tc6wcj4LUyrNPmTtQMcrBwqqc99nHYY8hX4bJrDPeb. This pins the recorded build; it is not a reproducible-build attestation."
+      },
+      {
+        "id": "keys",
+        "label": "Library has no access keys",
+        "category": "Deployment & governance",
+        "status": "PASS",
+        "detail": "Verified against public testnet RPC."
+      },
+      {
+        "id": "authority",
+        "label": "Library delegates governance to the expected DAO",
+        "category": "Deployment & governance",
+        "status": "PASS",
+        "detail": "Verified against public testnet RPC."
+      },
+      {
+        "id": "policy",
+        "label": "Current council requires two distinct approvals",
+        "category": "Deployment & governance",
+        "status": "PASS",
+        "detail": "Verified against public testnet RPC."
+      },
+      {
+        "id": "booking",
+        "label": "Normal return closed with zero damage and no dispute",
+        "category": "Deployment & governance",
+        "status": "PASS",
+        "detail": "Booking #6 closed: 10000 microNEAR borrower allocation; 1000 microNEAR DAO allocation. Historical allocations, not current available credits."
+      },
+      {
+        "id": "treasury",
+        "label": "Treasury proposal has both approvals and the exact withdrawal action",
+        "category": "Deployment & governance",
+        "status": "PASS",
+        "detail": "Verified against public testnet RPC."
+      },
+      {
+        "id": "ledger",
+        "label": "Current whole-library accounting is independently recomputed",
+        "category": "Current accounting",
+        "status": "PASS",
+        "detail": "All amounts in microNEAR: 66000 deposited = 0 escrow + 0 credit + 0 pending + 66000 withdrawn. Storage and gas excluded."
+      },
+      {
+        "id": "reserve",
+        "label": "Borrower reserved equipment and attached 0.111 NEAR",
+        "category": "Recorded transaction flow",
+        "status": "PASS",
+        "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+        "transactionHash": "88KEJyZrBgMVNvUA3Cun74cTxvLsUZemApSPe8yJhMcy"
+      },
+      {
+        "id": "pickup",
+        "label": "Custodian acknowledged pickup and evidence",
+        "category": "Recorded transaction flow",
+        "status": "PASS",
+        "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+        "transactionHash": "FiRD4Sq2wsGKU6UFrFFjaX1RP17KUd7pLgdNtVPnkLUL"
+      },
+      {
+        "id": "return",
+        "label": "Borrower requested return with evidence",
+        "category": "Recorded transaction flow",
+        "status": "PASS",
+        "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+        "transactionHash": "GELXN8AubfSa1yQpnTw7CgRAVhit9waNciCSb8aEj1gf"
+      },
+      {
+        "id": "accept-return",
+        "label": "Custodian accepted the matching return evidence",
+        "category": "Recorded transaction flow",
+        "status": "PASS",
+        "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+        "transactionHash": "6B6PQMGRRpyEX1hnWgRn2yCHrFR26tPANbmCcuFDJZRj"
+      },
+      {
+        "id": "borrower-withdraw",
+        "label": "Borrower withdrew the full bond",
+        "category": "Recorded transaction flow",
+        "status": "PASS",
+        "detail": "6 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+        "transactionHash": "D8dkunS7PHy7sm6H8DS52f3g71eEC1qDUwFVHfCNJUX3"
+      },
+      {
+        "id": "treasury-proposal",
+        "label": "Council proposed withdrawing the DAO fee credit",
+        "category": "Recorded transaction flow",
+        "status": "PASS",
+        "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+        "transactionHash": "FByuj3NB95RQ973jK7LCKvcARVk6iEGGURtJUq1ANiJs"
+      },
+      {
+        "id": "treasury-vote-1",
+        "label": "Custodian council account cast the first treasury vote",
+        "category": "Recorded transaction flow",
+        "status": "PASS",
+        "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+        "transactionHash": "DkpvotjHLuLoMrrFVAMsPoEF6H1zfEV1u6pBMh2V7nUy"
+      },
+      {
+        "id": "treasury-vote-2",
+        "label": "Second council account cast the final treasury vote",
+        "category": "Recorded transaction flow",
+        "status": "PASS",
+        "detail": "12 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+        "transactionHash": "5xtT19P1xc239PY2onhUqfQ6vXqmwrfDeYfE6oTGf6vD"
+      },
+      {
+        "id": "treasury-boundary",
+        "label": "First treasury vote did not withdraw library credit",
+        "category": "Execution & funds",
+        "status": "PASS",
+        "detail": "Verified against public testnet RPC."
+      },
+      {
+        "id": "dao-paid",
+        "label": "DAO received 0.001 NEAR and its callback confirmed payment",
+        "category": "Execution & funds",
+        "status": "PASS",
+        "detail": "Verified against public testnet RPC."
+      },
+      {
+        "id": "borrower-paid",
+        "label": "Borrower received 0.01 NEAR and its callback confirmed payment",
+        "category": "Execution & funds",
+        "status": "PASS",
+        "detail": "Verified against public testnet RPC."
+      }
+    ],
+    "ledger": {
+      "deposited": 66000,
+      "escrow": 0,
+      "credits": 0,
+      "pending": 0,
+      "withdrawn": 66000,
+      "balanced": true
+    },
+    "limits": [
+      "Read-only RPC evidence, not a light-client proof or security audit.",
+      "Evidence files are synthetic; hashes do not prove physical custody.",
+      "Both demo council accounts are controlled by one operator.",
+      "The one-vote balance snapshot is historical documentation, not a fresh historical-state query."
+    ],
+    "finishedAt": "2026-11-08T14:16:53.401Z",
+    "summary": {
+      "pass": 21,
+      "fail": 0,
+      "unverified": 0
+    },
+    "passed": true
+  }
+}

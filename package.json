@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "test": "node --test scripts/dao.test.mjs scripts/wallet-result.test.mjs scripts/presentation.test.mjs scripts/verification.test.mjs",
+    "test": "node --test scripts/dao.test.mjs scripts/wallet-result.test.mjs scripts/presentation.test.mjs scripts/verification.test.mjs scripts/live-ui.test.mjs",
     "test:browser": "node scripts/browser-test.mjs",
     "test:api": "node scripts/api-test.mjs",
     "test:contract": "node --test --test-concurrency=1 scripts/contract-failures.test.mjs",
@@ -30,8 +30,12 @@
     "playwright": "1.62.1"
   },
   "dependencies": {
+    "@fontsource/dm-sans": "5.3.0",
+    "@fontsource/instrument-serif": "5.3.0",
     "@hot-labs/near-connect": "0.12.0",
+    "motion": "14.10.1",
     "near-kit": "0.20.2",
+    "number-flow": "0.6.2",
     "vite": "8.3.6"
   }
 }
