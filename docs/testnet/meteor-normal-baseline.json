@@ -1,0 +1,118 @@
+{
+  "at": "2026-11-08T09:07:20.709Z",
+  "block": {
+    "hash": "8vuev64wyNRwR5h99vhn7Gn9p4v5bbGKQcP1kxqMb2ao",
+    "height": 276755258
+  },
+  "deployment": {
+    "network": "testnet",
+    "contractId": "library.ckdao-mw7e25at.testnet",
+    "daoId": "ckdao-mw7e25at.sputnikv2.testnet",
+    "council": [
+      "commonkit-mw7dph80.testnet",
+      "custodian.commonkit-mw7dph80.testnet"
+    ],
+    "governanceMode": "dao",
+    "accounts": {
+      "governance": "commonkit-mw7dph80.testnet",
+      "contract": "library.ckdao-mw7e25at.testnet",
+      "borrower": "borrower.commonkit-mw7dph80.testnet",
+      "custodian": "custodian.commonkit-mw7dph80.testnet"
+    }
+  },
+  "state": {
+    "dao": "ckdao-mw7e25at.sputnikv2.testnet",
+    "members": [
+      "borrower.commonkit-mw7dph80.testnet"
+    ],
+    "assets": {
+      "campus-camera": {
+        "id": "campus-camera",
+        "name": "Campus camera kit",
+        "custodian": "custodian.commonkit-mw7dph80.testnet",
+        "fee": 1000,
+        "bond": 10000,
+        "enabled": true
+      }
+    },
+    "bookings": {
+      "1": {
+        "id": 1,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794115800,
+        "end": 1794119400,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": "7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55",
+        "damage": 3000
+      },
+      "2": {
+        "id": 2,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794116220,
+        "end": 1794119820,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": null,
+        "damage": 0
+      },
+      "3": {
+        "id": 3,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794117780,
+        "end": 1794121380,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": "7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55",
+        "damage": 3000
+      },
+      "4": {
+        "id": 4,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794120480,
+        "end": 1794124080,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": "7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55",
+        "damage": 3000
+      }
+    },
+    "credits": {
+      "borrower.commonkit-mw7dph80.testnet": 0,
+      "ckdao-mw7e25at.sputnikv2.testnet": 0
+    },
+    "reputation": {
+      "borrower.commonkit-mw7dph80.testnet": 1
+    },
+    "pending": {},
+    "total_deposited": 44000,
+    "total_withdrawn": 44000,
+    "next_booking": 5,
+    "next_nonce": 8
+  },
+  "ledger": {
+    "deposited": 44000,
+    "escrow": 0,
+    "credits": 0,
+    "pending": 0,
+    "withdrawn": 44000,
+    "balanced": true
+  },
+  "nextProposalId": 8
+}

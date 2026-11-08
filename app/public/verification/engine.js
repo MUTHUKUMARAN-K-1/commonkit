@@ -4,6 +4,9 @@ export const CHECK_IDS = ['manifest', 'network', 'block', 'code', 'keys', 'autho
   'reserve', 'pickup', 'return', 'dispute', 'settlement-proposal', 'settlement-vote-1', 'settlement-vote-2', 'treasury-proposal', 'treasury-vote-1', 'treasury-vote-2', 'borrower-withdraw',
   'vote-boundary', 'resolve-executed', 'treasury-boundary', 'dao-paid', 'borrower-paid'];
 
+export const NORMAL_CHECK_IDS = ['manifest', 'network', 'block', 'code', 'keys', 'authority', 'policy', 'booking', 'treasury', 'ledger',
+  'reserve', 'pickup', 'return', 'accept-return', 'borrower-withdraw', 'treasury-proposal', 'treasury-vote-1', 'treasury-vote-2', 'treasury-boundary', 'dao-paid', 'borrower-paid'];
+export const getCheckIds = manifest => manifest.flow === 'normal' ? NORMAL_CHECK_IDS : CHECK_IDS;
 class Mismatch extends Error {}
 const requireThat = (ok, message) => { if (!ok) throw new Mismatch(message); };
 const available = (ok, message) => { if (!ok) throw new Unavailable(message); };
@@ -120,7 +123,8 @@ function checkWithdrawal(result, manifest, recipient, amount, nonce) {
 }
 
 export async function runVerification(manifest, {rpc, onCheck = () => {}}) {
-  const report = {schemaVersion: 1, startedAt: new Date().toISOString(), network: 'testnet', bookingId: manifest.booking.id,
+  const normal = manifest.flow === 'normal';
+  const report = {schemaVersion: 1, flow: normal ? 'normal' : 'dispute', startedAt: new Date().toISOString(), network: 'testnet', bookingId: manifest.booking.id,
     contractId: manifest.contractId, daoId: manifest.daoId, block: null, checks: [], ledger: null,
     limits: ['Read-only RPC evidence, not a light-client proof or security audit.', 'Evidence files are synthetic; hashes do not prove physical custody.', 'Both demo council accounts are controlled by one operator.', 'The one-vote balance snapshot is historical documentation, not a fresh historical-state query.']};
   async function check(id, label, category, fn, hash) {
@@ -131,11 +135,20 @@ export async function runVerification(manifest, {rpc, onCheck = () => {}}) {
     report.checks.push(item); onCheck(item);
     return status;
   }
-  const config = await check('manifest', 'Recorded deployment and eleven-step claim', 'Deployment', () => {
+  const config = await check('manifest', normal ? 'Recorded deployment and eight-step normal-return claim' : 'Recorded deployment and eleven-step dispute claim', 'Deployment', () => {
     requireThat(manifest.network === 'testnet' && manifest.version === 1 && manifest.contractId.endsWith('.testnet') && manifest.daoId.endsWith('.testnet'), 'Unexpected evidence manifest');
-    requireThat(manifest.steps.length === 11 && new Set(manifest.steps.map(s => s.hash)).size === 11, 'Expected eleven distinct transactions');
-    equal(manifest.steps.map(s => s.id), ['reserve', 'pickup', 'return', 'dispute', 'settlement-proposal', 'settlement-vote-1', 'settlement-vote-2', 'treasury-proposal', 'treasury-vote-1', 'treasury-vote-2', 'borrower-withdraw'], 'Incomplete rehearsal manifest');
-    return `Booking #${manifest.booking.id}; settlement #${manifest.settlement.id}; treasury #${manifest.treasury.id}. Expected values are published claims, not cached passes.`;
+    requireThat(['normal','dispute'].includes(manifest.flow), 'Unknown rehearsal flow');
+    const expectedSteps = normal ? ['reserve', 'pickup', 'return', 'accept-return', 'borrower-withdraw', 'treasury-proposal', 'treasury-vote-1', 'treasury-vote-2'] : ['reserve', 'pickup', 'return', 'dispute', 'settlement-proposal', 'settlement-vote-1', 'settlement-vote-2', 'treasury-proposal', 'treasury-vote-1', 'treasury-vote-2', 'borrower-withdraw'];
+    requireThat(new Set(manifest.steps.map(s => s.hash)).size === expectedSteps.length, 'Expected distinct transaction hashes');
+    equal(manifest.steps.map(s => s.id), expectedSteps, 'Incomplete rehearsal manifest');
+    requireThat(manifest.withdrawals && Number.isSafeInteger(manifest.withdrawals.borrowerNonce) && Number.isSafeInteger(manifest.withdrawals.daoNonce), 'Withdrawal nonces missing');
+    requireThat(integer(manifest.booking.damage) <= integer(manifest.booking.bond), 'Damage exceeds bond');
+    if (normal) {
+      equal([manifest.booking.status,manifest.booking.damage,manifest.booking.dispute_hash], ['Closed',0,null], 'Normal return must close with zero damage and no dispute');
+      const acceptance=manifest.steps.find(s=>s.id==='accept-return'), pickup=manifest.steps.find(s=>s.id==='pickup');
+      equal([acceptance.signerId,acceptance.receiverId,acceptance.method,acceptance.args,acceptance.deposit], [pickup.signerId,manifest.contractId,'accept_return',{id:manifest.booking.id,expected_hash:manifest.booking.return_hash},'0'], 'Acceptance must bind custodian and recorded return evidence');
+    }
+    return 'Booking #' + manifest.booking.id + (normal ? '; normal return' : '; settlement #' + manifest.settlement.id) + '; treasury #' + manifest.treasury.id + '. Expected values are published claims, not cached passes.';
   });
   const network = await check('network', 'RPC identifies NEAR testnet', 'Deployment', async () => {
     const status = await rpc('status', []); requireThat(status.chain_id === 'testnet', 'RPC is not NEAR testnet');
@@ -174,13 +187,13 @@ export async function runVerification(manifest, {rpc, onCheck = () => {}}) {
     ['keys', 'Library has no access keys', async () => { const a = await query(manifest.contractId, 'view_access_key_list'); equal(a.keys, [], 'Library has access keys'); }],
     ['authority', 'Library delegates governance to the expected DAO', async () => { const s = await view(manifest.contractId, 'get_state'); equal(s.dao, manifest.daoId, 'Library DAO differs'); }],
     ['policy', 'Current council requires two distinct approvals', async () => { checkPolicy(await view(manifest.daoId, 'get_policy'), manifest); }],
-    ['booking', 'Recorded borrowing ended closed with the agreed damage', async () => {
+    ['booking', normal ? 'Normal return closed with zero damage and no dispute' : 'Recorded borrowing ended closed with the agreed damage', async () => {
       const s = await view(manifest.contractId, 'get_state'), b = s.bookings?.[manifest.booking.id];
       available(b, 'Recorded booking not available');
       for (const [key, value] of Object.entries(manifest.booking)) equal(b[key], value, `Booking ${key} mismatch`);
-      return 'Booking #4 closed: 0.007 NEAR borrower allocation; 0.004 NEAR DAO allocation. These are historical allocations, not current available credits.';
+      return `Booking #${manifest.booking.id} closed: ${manifest.booking.bond - manifest.booking.damage} microNEAR borrower allocation; ${manifest.booking.fee + manifest.booking.damage} microNEAR DAO allocation. Historical allocations, not current available credits.`;
     }],
-    ['settlement', 'Settlement proposal binds the booking, amount and decision', async () => { checkProposal(await view(manifest.daoId, 'get_proposal', {id: manifest.settlement.id}), manifest.settlement, manifest); }],
+    ...(normal ? [] : [['settlement', 'Settlement proposal binds the booking, amount and decision', async () => { checkProposal(await view(manifest.daoId, 'get_proposal', {id: manifest.settlement.id}), manifest.settlement, manifest); }]]),
     ['treasury', 'Treasury proposal has both approvals and the exact withdrawal action', async () => { checkProposal(await view(manifest.daoId, 'get_proposal', {id: manifest.treasury.id}), manifest.treasury, manifest); }],
     ['ledger', 'Current whole-library accounting is independently recomputed', async () => {
       const s = await view(manifest.contractId, 'get_state'), l = await view(manifest.contractId, 'get_ledger');
@@ -194,22 +207,24 @@ export async function runVerification(manifest, {rpc, onCheck = () => {}}) {
     const detail = checkTransaction(result, step); results.set(step.id, result); return detail;
   }, step.hash)));
   const result = id => { available(results.has(id), `Required transaction ${id} is not verified`); return results.get(id); };
-  await check('vote-boundary', 'First settlement vote did not execute the library action', 'Execution & funds', () => {
-    const r = result('settlement-vote-1'); requireThat(calls(r, manifest.daoId, manifest.contractId, 'resolve').length === 0, 'First vote unexpectedly executed resolve');
-    return 'First vote finalized without a resolve receipt. The separately linked one-vote balance snapshot is historical evidence.';
-  });
-  await check('resolve-executed', 'Second settlement vote executed the exact DAO-authorized decision', 'Execution & funds', () => {
-    checkCall(result('settlement-vote-2'), manifest.daoId, manifest.contractId, 'resolve', manifest.resolution);
-  });
+  if (!normal) {
+    await check('vote-boundary', 'First settlement vote did not execute the library action', 'Execution & funds', () => {
+      const r = result('settlement-vote-1'); requireThat(calls(r, manifest.daoId, manifest.contractId, 'resolve').length === 0, 'First vote unexpectedly executed resolve');
+      return 'First vote finalized without a resolve receipt. The separately linked one-vote balance snapshot is historical evidence.';
+    });
+    await check('resolve-executed', 'Second settlement vote executed the exact DAO-authorized decision', 'Execution & funds', () => {
+      checkCall(result('settlement-vote-2'), manifest.daoId, manifest.contractId, 'resolve', manifest.resolution);
+    });
+  }
   await check('treasury-boundary', 'First treasury vote did not withdraw library credit', 'Execution & funds', () => {
     requireThat(calls(result('treasury-vote-1'), manifest.daoId, manifest.contractId, 'withdraw').length === 0, 'First treasury vote unexpectedly withdrew');
   });
-  await check('dao-paid', 'DAO received 0.004 NEAR and its callback confirmed payment', 'Execution & funds', () => {
+  await check('dao-paid', `DAO received ${(manifest.booking.fee + manifest.booking.damage) / 1e6} NEAR and its callback confirmed payment`, 'Execution & funds', () => {
     const r = result('treasury-vote-2'); checkCall(r, manifest.daoId, manifest.contractId, 'withdraw', {});
-    checkWithdrawal(r, manifest, manifest.daoId, '4000000000000000000000', 6);
+    checkWithdrawal(r, manifest, manifest.daoId, String((integer(manifest.booking.fee) + integer(manifest.booking.damage)) * 10n**18n), manifest.withdrawals.daoNonce);
   });
-  await check('borrower-paid', 'Borrower received 0.007 NEAR and its callback confirmed payment', 'Execution & funds', () => {
-    checkWithdrawal(result('borrower-withdraw'), manifest, manifest.booking.borrower, '7000000000000000000000', 7);
+  await check('borrower-paid', `Borrower received ${(manifest.booking.bond - manifest.booking.damage) / 1e6} NEAR and its callback confirmed payment`, 'Execution & funds', () => {
+    checkWithdrawal(result('borrower-withdraw'), manifest, manifest.booking.borrower, String((integer(manifest.booking.bond) - integer(manifest.booking.damage)) * 10n**18n), manifest.withdrawals.borrowerNonce);
   });
   return finish(report);
 }
@@ -218,7 +233,8 @@ function finish(report) {
   report.finishedAt = new Date().toISOString();
   report.summary = Object.fromEntries(['PASS', 'FAIL', 'UNVERIFIED'].map(s => [s.toLowerCase(), report.checks.filter(c => c.status === s).length]));
   // An early exit must never accidentally be green.
-  report.checks.sort((a, b) => CHECK_IDS.indexOf(a.id) - CHECK_IDS.indexOf(b.id));
-  report.passed = report.checks.length === CHECK_IDS.length && report.checks.every((c, i) => c.status === 'PASS' && c.id === CHECK_IDS[i]);
+  const ids = getCheckIds(report);
+  report.checks.sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id));
+  report.passed = report.checks.length === ids.length && report.checks.every((c, i) => c.status === 'PASS' && c.id === ids[i]);
   return report;
 }

@@ -8,3 +8,4 @@
 *.yml text eol=lf
 *.jpg binary
 *.png binary
+docs/testnet/normal-*.txt text eol=lf

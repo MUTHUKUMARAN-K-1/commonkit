@@ -24,4 +24,6 @@ This first slice implements custodian authority, not an NEP-171 NFT. The NFT mil
 
 ## Before live funds
 
-Real DAO proposals, wallet signing, testnet settlement and withdrawals have been demonstrated. The deployed Wasm hash and public evidence are recorded in `VALIDATION.json`. Before real-value use, still run sandbox receipt/callback failure tests, profile storage bounds and gas, establish independently controlled council accounts and a conflict-of-interest process, and review upgrade/recovery strategy. Core/local tests exercise failed-transfer credit restoration, but this is not a claim that every asynchronous failure was reproduced on public testnet.
+Real DAO proposals, wallet signing, testnet settlement and withdrawals have been demonstrated. The deployed Wasm hash and public evidence are recorded in `VALIDATION.json`. The [compiled-contract failure suite](CONTRACT-FAILURE-TESTS.md) adds isolated runtime checks for authorization, rollback, actual failed-transfer credit restoration/retry, callback replay, and failed Sputnik execution. These are sandbox tests, not failures deliberately induced on the public deployment.
+
+Before real-value use, still profile storage bounds and gas at capacity, test further asynchronous failures (including a callback that never executes), establish independently controlled council accounts and a conflict-of-interest process, and review upgrade/recovery strategy. Neither these targeted cases nor the browser rehearsal constitute a complete audit.

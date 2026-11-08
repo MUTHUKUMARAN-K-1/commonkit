@@ -4,17 +4,18 @@
 
 Campus clubs share cameras and projectors, but handovers and deposit disputes often depend on one organizer's spreadsheet. CommonKit records reservations and evidence hashes, separates borrower and custodian permissions, and makes the community's DAO authorize contested damage allocations. Settlement creates credits; separate withdrawals transfer funds.
 
-**Status:** working NEAR testnet prototype. The polished frontend completed an eleven-transaction Meteor Web rehearsal on 8 November 2026. Repository visibility is private during preparation; it must become public before hackathon submission. MIT licensed.
+**Status:** working NEAR testnet prototype. The polished frontend completed both an eleven-transaction dispute rehearsal and an eight-transaction normal-return rehearsal through Meteor Web on 8 November 2026. Repository visibility is private during preparation; it must become public before hackathon submission. MIT licensed.
 
 [Live demo](https://commonkit-testnet.muthukumarank.chatgpt.site) · [Verify without a wallet](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html) · [Wallet guide](https://commonkit-testnet.muthukumarank.chatgpt.site/demo-guide.html) · [Three-minute demo script](docs/DEMO-SCRIPT.md) · [Vercel setup](docs/VERCEL.md) · [Submission checklist](docs/SUBMISSION.md)
 
 ## Try it: do this, see this
 
-No wallet is needed to inspect recorded testnet state. Open **Verify the flow** for 27 fresh read-only checks, receipt links and a downloadable report. From a clone with Node 24, run `npm run verify:testnet` (no dependency installation needed), or `npm run --silent verify:testnet -- --json`. [What the checks prove and their limits](docs/VERIFICATION.md).
+No wallet is needed to inspect recorded testnet state. Open **Verify the flow**, then select **Normal return** (21 checks) or **DAO dispute** (27 checks) for fresh read-only checks, receipt links and a downloadable report. From a clone with Node 24, run `npm run verify:testnet` (no dependency installation needed), or `npm run --silent verify:testnet -- --json`. [What the checks prove and their limits](docs/VERIFICATION.md).
 
 | Do this | See this |
 | --- | --- |
 | Open the demo in Chrome | The live camera kit and borrower / custodian / council account roles. |
+| Select **Normal return** on the verifier | Booking **#5**, zero damage, full **0.01 NEAR** bond returned, **0.001 NEAR** DAO fee paid after two votes. |
 | Select booking **#4** | Pickup, return request, council review and settlement in its timeline. |
 | Inspect settlement proposal **#6** | Two named approvals, 0.003 NEAR damage, and matching closed library state. |
 | Inspect treasury proposal **#7** and accounting | The recorded run ended with 0.044 NEAR deposited and withdrawn; zero escrow, credits or pending transfers. |
@@ -104,13 +105,25 @@ RUSTFLAGS='--cfg near' cargo +1.95.0 build -p commonkit-contract --target wasm32
 
 Output: `target/wasm32-unknown-unknown/release/commonkit_contract.wasm`. Deployment is separate. `deploy:dao` and `setup:dao` are operator scripts requiring the private local account configuration, not fresh-clone commands. They send transactions and are excluded from CI. For your own instance, create your own funded testnet identities and Sputnik DAO, deploy and initialize the library with that DAO, then update the public deployment configuration.
 
+For compiled-contract failure tests, use Linux/macOS (or Linux Node in WSL):
+
+```sh
+RUSTFLAGS='--cfg near' cargo +1.95.0 build -p commonkit-contract --lib --examples --target wasm32-unknown-unknown --release --locked
+npm run test:contract
+```
+
+These tests sign only inside an ephemeral local NEAR Sandbox. They exercise real failed transfers, credit recovery/retry, callback replay, authorization, receipt rollback and failed Sputnik execution. Windows can build the artifacts with `npm run build:contract:tests`. See [test setup and evidence boundaries](docs/CONTRACT-FAILURE-TESTS.md).
+
 ## Validation and accounting
 
 - 14 Rust lifecycle tests: authorization, overlap, settlement, callback restoration and replay behavior.
+- [Compiled Wasm sandbox failure suite](docs/CONTRACT-FAILURE-TESTS.md): 19 targeted cases passed, including actual failed-transfer recovery and real two-of-two Sputnik execution failure; [receipt report](docs/testnet/contract-failures-sandbox.json).
 - 52 JavaScript tests: DAO binding, receipt finality/failures, presentation state and 37 public-verifier tests, including altered-data cases.
 - Local API integration: normal return, failed-withdrawal recovery and origin rejection.
 - [Meteor rehearsal](docs/testnet/METEOR-POLISHED-REHEARSAL.md): booking #4, settlement #6, treasury #7, eleven final receipts independently verified by RPC.
-- [GitHub Actions](.github/workflows/ci.yml): JS tests, static build checks, Rust tests, API integration and Wasm compilation without wallet credentials.
+- [GitHub Actions](.github/workflows/ci.yml): JS tests, static build checks, Rust tests, API integration, Wasm compilation and isolated sandbox failures without wallet credentials.
+
+The [Meteor normal-return rehearsal](docs/testnet/METEOR-NORMAL-RETURN-REHEARSAL.md) also passed: booking **#5**, zero damage, full **0.01 NEAR** borrower refund and **0.001 NEAR** DAO fee withdrawal through proposal **#8**. Its eight finalized transactions are separate from the eleven-transaction dispute proof. The whole-library ledger ended at **0.055 NEAR deposited and withdrawn**, with zero escrow, credits or pending transfers. Judges can select **Normal return** on the [public verifier](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html?flow=normal), or run `npm run verify:testnet -- --flow normal`. The default `npm run verify:testnet` verifies both flows (48 checks).
 
 Camera deposit: **0.111 testnet NEAR = 0.001 fee + 0.01 refundable bond + 0.1 retained storage**. With 0.003 damage, settlement allocates 0.007 to the borrower and 0.004 to the DAO. A proposal separately attaches a 0.01 NEAR bond. Gas, proposal bonds and retained storage are outside the principal ledger:
 

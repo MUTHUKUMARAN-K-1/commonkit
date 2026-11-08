@@ -1,17 +1,27 @@
 # Verify CommonKit without a wallet
 
-Open [the public verification page](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html). It runs 27 read-only checks from your browser and provides an expandable explanation, receipt links and a downloadable JSON report. No login, wallet connection, private key or signing server is used.
+Open [the public verification page](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html). Select **Normal return** (21 checks, booking #5) or **DAO dispute** (27 checks, booking #4). It runs fresh read-only checks from your browser and provides an expandable explanation, receipt links and a downloadable JSON report. No login, wallet connection, private key or signing server is used.
 
 From a clone, with Node.js 24 (dependency installation is unnecessary for this command):
 
 ```sh
-npm run verify:testnet
+npm run verify:testnet # both flows: 48 checks
+npm run verify:testnet -- --flow normal
+npm run verify:testnet -- --flow dispute
 npm run --silent verify:testnet -- --json > verification-report.json
 ```
 
-Exit codes: **0** means all 27 checks pass; **1** means at least one mismatch; **2** means evidence is unavailable or verification could not complete. An RPC outage, timeout, pruned transaction, malformed response or non-final execution never becomes a pass. The transport uses FastNEAR testnet with NEAR public RPC as a fallback, records endpoint usage in JSON, limits each request to 12 seconds, and only permits read methods. Live RPC verification is not required by CI; CI runs deterministic failure tests instead.
+Exit codes: **0** means all selected checks pass; **1** means at least one mismatch; **2** means evidence is unavailable or verification could not complete. An RPC outage, timeout, pruned transaction, malformed response or non-final execution never becomes a pass. The transport uses FastNEAR testnet with NEAR public RPC as a fallback, records endpoint usage in JSON, limits each request to 12 seconds, and only permits read methods. Live RPC verification is not required by CI; CI runs deterministic failure tests instead.
 
-## What is checked
+## Normal return: booking #5
+
+The [normal-return manifest](../app/public/verification/normal-manifest.json) records eight distinct Meteor transactions and treasury proposal **#8**. Its **21 checks** comprise three manifest/network/block checks, seven deployment/governance/accounting checks, eight exact transaction/receipt checks, and three treasury/payment checks.
+
+The custodian acceptance must match the recorded return hash; booking #5 must be Closed with zero damage and no dispute. The first treasury vote must not withdraw; the second must execute the DAO-to-library withdrawal. Exact transfers are **0.01 NEAR to the borrower** and **0.001 NEAR to the DAO**, with successful transfer-bound callbacks at nonces 8 and 9. Normal return does not need a dispute settlement proposal; only the DAO fee withdrawal needs both council approvals.
+
+[Settled](../app/public/verification/normal-historical-settled.json), [one-vote](../app/public/verification/normal-historical-single-vote.json), and [final](../app/public/verification/normal-historical-final.json) snapshots are labeled historical and never used to manufacture live passes. See the [Meteor rehearsal](testnet/METEOR-NORMAL-RETURN-REHEARSAL.md) for the original capture and receipts.
+
+## DAO dispute: booking #4
 
 The [public manifest](../app/public/verification/manifest.json) records expected claims for booking **#4**, settlement proposal **#6**, treasury proposal **#7**, and the eleven transactions captured in the 8 November Meteor rehearsal. It contains expected IDs, payloads, hashes and amounts, not saved pass results. Changing it changes the claims being checked and must be reviewed as such.
 
@@ -35,14 +45,18 @@ Current views use the **same finalized block hash and height**, including the li
 - Both demo council accounts are controlled by one operator. Two account signatures are not independent human governance.
 - Synthetic evidence hashes cannot prove physical handover, condition or damage. The transaction arguments preserve the original damage report hash; the closed booking's `dispute_hash` stores the final decision hash after resolution.
 - Withdrawals consume an account's available credit rather than a specific booking. These checks establish the exact recorded transfers and their callbacks, with booking allocation separately checked.
-- A later unrelated transaction or every future booking is outside this eleven-transaction rehearsal. Current aggregate state is checked, but the verifier is not an exhaustive replay of all contract history.
+- A later unrelated transaction or every future booking is outside these two recorded rehearsals. Current aggregate state is checked, but the verifier is not an exhaustive replay of all contract history.
 
 ## Source and tests
 
 Browser and Node use the identical [engine](../app/public/verification/engine.js) and [read-only transport](../app/public/verification/rpc.js). The browser contains no wallet imports. The original transaction-signing page remains separate.
 
-`npm test` includes 37 verification tests: the genuine recorded RPC fixture, 32 altered-data cases, later valid borrowing, RPC outage, pruned history and transport restrictions/fallback. Cases include wrong votes/receivers/deposits, unsafe integers, disconnected or missing receipts, hidden child failures, false callbacks and gas refunds substituted for principal. The [fixture](../scripts/fixtures/verification-rpc.json) was read from public testnet on 8 November 2026 at block 276747851. Signatures, public keys, gas profiles and node host metadata were removed. Tests replace only the fixture's block timestamp with the test clock; they do not claim to be fresh network checks.
+`npm test` includes 51 verification tests (66 JavaScript tests overall). The original dispute cases cover the genuine recorded RPC fixture, 32 altered-data cases, later valid borrowing, RPC outage, pruned history and transport restrictions/fallback. Cases include wrong votes/receivers/deposits, unsafe integers, disconnected or missing receipts, hidden child failures, false callbacks and gas refunds substituted for principal. Fourteen additional normal-proof cases cover real captured receipts, altered acceptance evidence, nonzero damage, an unexpected dispute, missing approval, wrong payments/nonces, unbound callback, failed child, pruned acceptance, invalid manifests, later activity and RPC outage. Normal tests combine recorded normal state and receipt bodies with the shared deployment/policy fixture using synthetic query envelopes; they are deterministic tests, not live network evidence.
 
-Validation during implementation: 27/27 live checks passed in both Node and a browser; all 52 JavaScript tests passed; production build checks passed. Browser checks covered desktop, 375px mobile without overflow, report download, and an RPC outage after a successful run: old green results and the old ledger were cleared. See [verification validation](testnet/public-verification-validation.json).
+The [dispute fixture](../scripts/fixtures/verification-rpc.json) was read from public testnet on 8 November 2026 at block 276747851. Signatures, public keys, gas profiles and node host metadata were removed. Tests replace only the fixture's block timestamp with the test clock; they do not claim to be fresh network checks.
+
+Original dispute-page validation: 27/27 live checks passed in both Node and a browser; all 52 then-existing JavaScript tests passed; production build checks passed. Browser checks covered desktop, 375px mobile without overflow, report download, and an RPC outage after a successful run: old green results and the old ledger were cleared. See [verification validation](testnet/public-verification-validation.json).
 
 RPC references: [NEAR transaction status and finality](https://docs.near.org/api/rpc/transactions), [read-only account and contract queries](https://docs.near.org/api/rpc/contracts).
+
+Dual-flow update: all **48 live RPC checks** and **66 JavaScript tests** passed. The default CLI now emits an aggregate report with two flow reports; `--flow normal` or `--flow dispute` emits one report. Browser selection, counts, download filename, command and historical links follow the selected flow. Later legitimate borrowing may change current balances or reputation without invalidating either historical flow.

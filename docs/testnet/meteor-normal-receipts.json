@@ -1,0 +1,34 @@
+[
+  {
+    "id": "reserve",
+    "hash": "7vmbrjMUj2ALpTcPAKATTRPiwS6oexsKWU83Z3HLJFwG"
+  },
+  {
+    "id": "pickup",
+    "hash": "GqJ7Kqh3rfDaoXAgYvwpyAaTrVieLE2Mrh9ctviznRBe"
+  },
+  {
+    "id": "return",
+    "hash": "HZg56gqEYXFfo27UGhDxoDWbj2iQ2vsaqmZyM5jSrG9v"
+  },
+  {
+    "id": "accept-return",
+    "hash": "Fiep9HDKNkua58T4xpfiFVgL51iceBiA9SqdcnWrPvyC"
+  },
+  {
+    "id": "borrower-withdraw",
+    "hash": "9YFmF7Mhwf8LuFXA2e95FWh15txDRFe7mnondpnTcFCs"
+  },
+  {
+    "id": "treasury-proposal",
+    "hash": "6vtHjhBJBgPCnjZfxWoXYcwdtcM9WfQZ7UtNZNfQ6cRP"
+  },
+  {
+    "id": "treasury-vote-1",
+    "hash": "B3bV4FCrMUrNEeSRijM8yntEXw4b6fjWDEiVGzvfMH2g"
+  },
+  {
+    "id": "treasury-vote-2",
+    "hash": "4XC191VBi46anQQNoDyXHQ3PSvcjncoFv9PLNkhGWpj7"
+  }
+]

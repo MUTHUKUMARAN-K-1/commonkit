@@ -1,0 +1,661 @@
+{
+  "schemaVersion": 1,
+  "flow": "all",
+  "passed": true,
+  "summary": {
+    "pass": 48,
+    "fail": 0,
+    "unverified": 0
+  },
+  "reports": [
+    {
+      "schemaVersion": 1,
+      "flow": "normal",
+      "startedAt": "2026-11-08T09:56:45.200Z",
+      "network": "testnet",
+      "bookingId": 5,
+      "contractId": "library.ckdao-mw7e25at.testnet",
+      "daoId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "block": {
+        "hash": "6a2ALUr3puhvNpNYCSu8LgrrLKzCa16sS4J9hJCjMKwU",
+        "height": 276760282,
+        "time": "2026-11-08T09:56:40.648Z"
+      },
+      "checks": [
+        {
+          "id": "manifest",
+          "label": "Recorded deployment and eight-step normal-return claim",
+          "category": "Deployment",
+          "status": "PASS",
+          "detail": "Booking #5; normal return; treasury #8. Expected values are published claims, not cached passes."
+        },
+        {
+          "id": "network",
+          "label": "RPC identifies NEAR testnet",
+          "category": "Deployment",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "block",
+          "label": "Current reads share one finalized block",
+          "category": "Deployment",
+          "status": "PASS",
+          "detail": "Final block 276760282 · 2026-11-08T09:56:40.648Z"
+        },
+        {
+          "id": "code",
+          "label": "Library code matches the recorded deployment",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Code hash 82tc6wcj4LUyrNPmTtQMcrBwqqc99nHYY8hX4bJrDPeb. This pins the recorded build; it is not a reproducible-build attestation."
+        },
+        {
+          "id": "keys",
+          "label": "Library has no access keys",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "authority",
+          "label": "Library delegates governance to the expected DAO",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "policy",
+          "label": "Current council requires two distinct approvals",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "booking",
+          "label": "Normal return closed with zero damage and no dispute",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Booking #5 closed: 10000 microNEAR borrower allocation; 1000 microNEAR DAO allocation. Historical allocations, not current available credits."
+        },
+        {
+          "id": "treasury",
+          "label": "Treasury proposal has both approvals and the exact withdrawal action",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "ledger",
+          "label": "Current whole-library accounting is independently recomputed",
+          "category": "Current accounting",
+          "status": "PASS",
+          "detail": "All amounts in microNEAR: 55000 deposited = 0 escrow + 0 credit + 0 pending + 55000 withdrawn. Storage and gas excluded."
+        },
+        {
+          "id": "reserve",
+          "label": "Borrower reserved equipment and attached 0.111 NEAR",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "7vmbrjMUj2ALpTcPAKATTRPiwS6oexsKWU83Z3HLJFwG"
+        },
+        {
+          "id": "pickup",
+          "label": "Custodian acknowledged pickup and evidence",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "GqJ7Kqh3rfDaoXAgYvwpyAaTrVieLE2Mrh9ctviznRBe"
+        },
+        {
+          "id": "return",
+          "label": "Borrower requested return with evidence",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "HZg56gqEYXFfo27UGhDxoDWbj2iQ2vsaqmZyM5jSrG9v"
+        },
+        {
+          "id": "accept-return",
+          "label": "Custodian accepted the matching return evidence",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "Fiep9HDKNkua58T4xpfiFVgL51iceBiA9SqdcnWrPvyC"
+        },
+        {
+          "id": "borrower-withdraw",
+          "label": "Borrower withdrew the full bond",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "6 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "9YFmF7Mhwf8LuFXA2e95FWh15txDRFe7mnondpnTcFCs"
+        },
+        {
+          "id": "treasury-proposal",
+          "label": "Council proposed withdrawing the DAO fee credit",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "6vtHjhBJBgPCnjZfxWoXYcwdtcM9WfQZ7UtNZNfQ6cRP"
+        },
+        {
+          "id": "treasury-vote-1",
+          "label": "Custodian council account cast the first treasury vote",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "B3bV4FCrMUrNEeSRijM8yntEXw4b6fjWDEiVGzvfMH2g"
+        },
+        {
+          "id": "treasury-vote-2",
+          "label": "Second council account cast the final treasury vote",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "12 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "4XC191VBi46anQQNoDyXHQ3PSvcjncoFv9PLNkhGWpj7"
+        },
+        {
+          "id": "treasury-boundary",
+          "label": "First treasury vote did not withdraw library credit",
+          "category": "Execution & funds",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "dao-paid",
+          "label": "DAO received 0.001 NEAR and its callback confirmed payment",
+          "category": "Execution & funds",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "borrower-paid",
+          "label": "Borrower received 0.01 NEAR and its callback confirmed payment",
+          "category": "Execution & funds",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        }
+      ],
+      "ledger": {
+        "deposited": 55000,
+        "escrow": 0,
+        "credits": 0,
+        "pending": 0,
+        "withdrawn": 55000,
+        "balanced": true
+      },
+      "limits": [
+        "Read-only RPC evidence, not a light-client proof or security audit.",
+        "Evidence files are synthetic; hashes do not prove physical custody.",
+        "Both demo council accounts are controlled by one operator.",
+        "The one-vote balance snapshot is historical documentation, not a fresh historical-state query."
+      ],
+      "finishedAt": "2026-11-08T09:56:48.422Z",
+      "summary": {
+        "pass": 21,
+        "fail": 0,
+        "unverified": 0
+      },
+      "passed": true,
+      "requests": [
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "status",
+          "ok": true,
+          "elapsedMs": 686
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "block",
+          "ok": true,
+          "elapsedMs": 666
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 240
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 483
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 494
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 185
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 191
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 181
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 186
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 194
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 451
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 171
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 180
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 195
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 169
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 347
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "flow": "dispute",
+      "startedAt": "2026-11-08T09:56:48.426Z",
+      "network": "testnet",
+      "bookingId": 4,
+      "contractId": "library.ckdao-mw7e25at.testnet",
+      "daoId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "block": {
+        "hash": "2PV8BEiknUQPeWoEBtjmc1iyxjbt9tUePKxjECXuqSnG",
+        "height": 276760286,
+        "time": "2026-11-08T09:56:43.051Z"
+      },
+      "checks": [
+        {
+          "id": "manifest",
+          "label": "Recorded deployment and eleven-step dispute claim",
+          "category": "Deployment",
+          "status": "PASS",
+          "detail": "Booking #4; settlement #6; treasury #7. Expected values are published claims, not cached passes."
+        },
+        {
+          "id": "network",
+          "label": "RPC identifies NEAR testnet",
+          "category": "Deployment",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "block",
+          "label": "Current reads share one finalized block",
+          "category": "Deployment",
+          "status": "PASS",
+          "detail": "Final block 276760286 · 2026-11-08T09:56:43.051Z"
+        },
+        {
+          "id": "code",
+          "label": "Library code matches the recorded deployment",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Code hash 82tc6wcj4LUyrNPmTtQMcrBwqqc99nHYY8hX4bJrDPeb. This pins the recorded build; it is not a reproducible-build attestation."
+        },
+        {
+          "id": "keys",
+          "label": "Library has no access keys",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "authority",
+          "label": "Library delegates governance to the expected DAO",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "policy",
+          "label": "Current council requires two distinct approvals",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "booking",
+          "label": "Recorded borrowing ended closed with the agreed damage",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Booking #4 closed: 7000 microNEAR borrower allocation; 4000 microNEAR DAO allocation. Historical allocations, not current available credits."
+        },
+        {
+          "id": "settlement",
+          "label": "Settlement proposal binds the booking, amount and decision",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "treasury",
+          "label": "Treasury proposal has both approvals and the exact withdrawal action",
+          "category": "Deployment & governance",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "ledger",
+          "label": "Current whole-library accounting is independently recomputed",
+          "category": "Current accounting",
+          "status": "PASS",
+          "detail": "All amounts in microNEAR: 55000 deposited = 0 escrow + 0 credit + 0 pending + 55000 withdrawn. Storage and gas excluded."
+        },
+        {
+          "id": "reserve",
+          "label": "Borrower reserved equipment and attached 0.111 NEAR",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "BPkfsQiy53DDYXqPogGskpJU6m8pGbKVxgYu114G6ws5"
+        },
+        {
+          "id": "pickup",
+          "label": "Custodian acknowledged pickup and evidence",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "CvvAnWxyrbSFSMV7zFohxWm1CccFN9PL32Dwwp6ZMoQV"
+        },
+        {
+          "id": "return",
+          "label": "Borrower requested return with evidence",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "FW2esUFbhdEXPrDwHmM4wd8RV4mFat95eBJi8yWbf6AC"
+        },
+        {
+          "id": "dispute",
+          "label": "Custodian reported a dispute",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "C2M5twEFq6S8qfEeU4cxhnGrzUUDEVhZshymqQVzreaz"
+        },
+        {
+          "id": "settlement-proposal",
+          "label": "Council proposed the 0.003 NEAR damage decision",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "9iPfvDuG2FRKdKNjWpcKpmy3XbMNvNDyo52Njg6CtyW8"
+        },
+        {
+          "id": "settlement-vote-1",
+          "label": "Council member 2 cast the first settlement vote",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "4tZ6Cbix1gg1CXaMRk7at1T4kEL3ByJ6U6vZKbgXaAaL"
+        },
+        {
+          "id": "settlement-vote-2",
+          "label": "Council member 1 cast the second settlement vote",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "8 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "6G265KwuhgAhp628ijrpock1zBmEHgNkgfYYwfpLA7Y"
+        },
+        {
+          "id": "treasury-proposal",
+          "label": "Council proposed withdrawing the DAO credit",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "3661vLppoVh9yQvNBNcDESqYJCxM3vp7SCY8bZMocs2G"
+        },
+        {
+          "id": "treasury-vote-1",
+          "label": "Council member 1 cast the first treasury vote",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "BnTt6kHSQbf11oHqU9dzoSqBk37qPzwNDPXMv2R5j9nG"
+        },
+        {
+          "id": "treasury-vote-2",
+          "label": "Council member 2 cast the second treasury vote",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "12 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "5FsDa3PoExh3XDPVwJDtnZWRp5tfuHibF2eqrrahghTC"
+        },
+        {
+          "id": "borrower-withdraw",
+          "label": "Borrower withdrew their available credit",
+          "category": "Recorded transaction flow",
+          "status": "PASS",
+          "detail": "6 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
+          "transactionHash": "HDb4S16jDRoyUvw9gYTtrpqcREhYBxU86ow6sLD5Zu7s"
+        },
+        {
+          "id": "vote-boundary",
+          "label": "First settlement vote did not execute the library action",
+          "category": "Execution & funds",
+          "status": "PASS",
+          "detail": "First vote finalized without a resolve receipt. The separately linked one-vote balance snapshot is historical evidence."
+        },
+        {
+          "id": "resolve-executed",
+          "label": "Second settlement vote executed the exact DAO-authorized decision",
+          "category": "Execution & funds",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "treasury-boundary",
+          "label": "First treasury vote did not withdraw library credit",
+          "category": "Execution & funds",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "dao-paid",
+          "label": "DAO received 0.004 NEAR and its callback confirmed payment",
+          "category": "Execution & funds",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        },
+        {
+          "id": "borrower-paid",
+          "label": "Borrower received 0.007 NEAR and its callback confirmed payment",
+          "category": "Execution & funds",
+          "status": "PASS",
+          "detail": "Verified against public testnet RPC."
+        }
+      ],
+      "ledger": {
+        "deposited": 55000,
+        "escrow": 0,
+        "credits": 0,
+        "pending": 0,
+        "withdrawn": 55000,
+        "balanced": true
+      },
+      "limits": [
+        "Read-only RPC evidence, not a light-client proof or security audit.",
+        "Evidence files are synthetic; hashes do not prove physical custody.",
+        "Both demo council accounts are controlled by one operator.",
+        "The one-vote balance snapshot is historical documentation, not a fresh historical-state query."
+      ],
+      "finishedAt": "2026-11-08T09:56:51.009Z",
+      "summary": {
+        "pass": 27,
+        "fail": 0,
+        "unverified": 0
+      },
+      "passed": true,
+      "requests": [
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "status",
+          "ok": true,
+          "elapsedMs": 191
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "block",
+          "ok": true,
+          "elapsedMs": 169
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 173
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 175
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 178
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 165
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 188
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 168
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "query",
+          "ok": true,
+          "elapsedMs": 174
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 188
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 509
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 510
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 165
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 181
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 467
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 172
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 192
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 353
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 192
+        },
+        {
+          "endpoint": "https://test.rpc.fastnear.com",
+          "method": "EXPERIMENTAL_tx_status",
+          "ok": true,
+          "elapsedMs": 348
+        }
+      ]
+    }
+  ]
+}

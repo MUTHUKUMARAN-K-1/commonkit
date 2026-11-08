@@ -328,5 +328,10 @@
       "deposit": "0",
       "returnValue": "dHJ1ZQ=="
     }
-  ]
+  ],
+  "flow": "dispute",
+  "withdrawals": {
+    "borrowerNonce": 7,
+    "daoNonce": 6
+  }
 }

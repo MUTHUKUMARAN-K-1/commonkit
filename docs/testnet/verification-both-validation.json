@@ -1,0 +1,42 @@
+{
+  "verifiedAt": "2026-11-08T10:06:37.166Z",
+  "site": {
+    "version": 4,
+    "url": "https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html",
+    "sourceCommit": "6166ab87bc325329c441f145e07d749a5aa8f574",
+    "deployment": "appgdep_6af0491e77f08191991af291e0008ac3",
+    "status": "succeeded",
+    "audience": "public"
+  },
+  "checks": {
+    "normal": 21,
+    "dispute": 27,
+    "jsTests": 66,
+    "productionBuild": "passed",
+    "sandboxFailureCases": 19
+  },
+  "browser": {
+    "publishedNormal": "21/21 passed",
+    "publishedDispute": "27/27 passed",
+    "rapidFlowSwitch": "passed in local browser review",
+    "widthsWithoutHorizontalOverflow": [
+      1440,
+      768,
+      390,
+      375
+    ],
+    "copyCommand": "UI confirmed",
+    "download": "Button clicked; CUA download event timed out; saved download contents not independently inspected",
+    "designEvaluation": "PASS; independent same-provider evaluator (no other provider available)"
+  },
+  "screenshots": {
+    "desktop": "verification-both-desktop.jpg",
+    "mobile": "verification-both-mobile.jpg"
+  },
+  "liveReport": "verification-both-live.json",
+  "limitations": [
+    "Public RPC verification, not a light-client proof or audit",
+    "Both council accounts controlled by one demo operator",
+    "Synthetic evidence does not establish physical custody"
+  ]
+}

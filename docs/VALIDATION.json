@@ -29,5 +29,92 @@
   "priorValidation": "Core tests, local API lifecycle and dependency audit carried forward from the unchanged prior build; DAO adapter tests and production build rerun for this update.",
   "frontendUrl": "https://commonkit-testnet.muthukumarank.chatgpt.site",
   "walletResultTests": 5,
-  "frontendPolish": "docs/testnet/frontend-polish-validation.json; live signing follow-up: docs/testnet/METEOR-POLISHED-REHEARSAL.md"
+  "frontendPolish": "docs/testnet/frontend-polish-validation.json; live signing follow-up: docs/testnet/METEOR-POLISHED-REHEARSAL.md",
+  "contractFailureValidation": {
+    "verifiedAt": "2026-11-08T08:38:34.496Z",
+    "runtime": "NEAR Sandbox 2.14.0 under WSL Linux / Node 24.14.1",
+    "cases": 19,
+    "passed": true,
+    "report": "docs/testnet/contract-failures-sandbox.json",
+    "productionWasmUnchanged": true,
+    "wasmSha256": "687dbd4f95d90c346eeabf738a1e270c2db9cc74a2d1bd5803ccb6c75761192c",
+    "jsTests": 52,
+    "coreTests": 14,
+    "localApiLifecycle": "passed",
+    "productionBuild": "passed",
+    "publicDisputeReverification": {
+      "verifiedAt": "2026-11-08T08:36:32.630Z",
+      "summary": {
+        "pass": 27,
+        "fail": 0,
+        "unverified": 0
+      },
+      "ledger": {
+        "deposited": 44000,
+        "escrow": 0,
+        "credits": 0,
+        "pending": 0,
+        "withdrawn": 44000,
+        "balanced": true
+      }
+    },
+    "normalReturnMeteor": {
+      "status": "passed",
+      "verifiedAt": "2026-11-08T09:31:39.579Z",
+      "bookingId": 5,
+      "treasuryProposalId": 8,
+      "finalizedTransactions": 8,
+      "report": "docs/testnet/meteor-normal-final.json",
+      "rehearsal": "docs/testnet/METEOR-NORMAL-RETURN-REHEARSAL.md",
+      "ledger": {
+        "deposited": 55000,
+        "escrow": 0,
+        "credits": 0,
+        "pending": 0,
+        "withdrawn": 55000,
+        "balanced": true
+      },
+      "borrowerPaidMicroNear": 10000,
+      "daoPaidMicroNear": 1000,
+      "oneVoteCheckpoint": "docs/testnet/meteor-normal-single-vote.json",
+      "publicDisputeReverification": {
+        "verifiedAt": "2026-11-08T09:32:18.322Z",
+        "summary": {
+          "pass": 27,
+          "fail": 0,
+          "unverified": 0
+        },
+        "blockHeight": 276757770
+      }
+    }
+  },
+  "dualFlowPublicVerification": {
+    "verifiedAt": "2026-11-08T09:56:51.009Z",
+    "jsTests": 66,
+    "liveChecks": {
+      "pass": 48,
+      "fail": 0,
+      "unverified": 0
+    },
+    "normal": {
+      "booking": 5,
+      "checks": 21,
+      "transactions": 8,
+      "treasury": 8
+    },
+    "dispute": {
+      "booking": 4,
+      "checks": 27,
+      "transactions": 11,
+      "settlement": 6,
+      "treasury": 7
+    },
+    "productionBuild": "passed",
+    "vercelConfiguration": "production artifact validated; no Vercel deployment requested",
+    "report": "docs/testnet/verification-both-live.json",
+    "contractFailureCases": 19,
+    "browserReport": "docs/testnet/verification-both-validation.json",
+    "siteVersion": 4,
+    "publication": "succeeded"
+  }
 }

@@ -33,7 +33,7 @@ Click once, allow the popup, and inspect the existing Meteor window. Wait for th
 
 ## Judge verification without the operator wallets
 
-Open [Verify the flow](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html). Show the 27 fresh checks, expand the actual borrower/DAO transfers, and download the report. This rechecks the recorded booking #4 rehearsal; it does not create a new booking or verify a newly recorded cycle automatically. The first-vote balance snapshots remain explicitly historical. The same checks run with `npm run verify:testnet`.
+Open [Verify the flow](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html). Select Normal return for booking #5 (21 fresh checks), then DAO dispute for booking #4 (27 checks). Expand the actual borrower/DAO transfers and download each report. These recheck the two recorded rehearsals; they do not create a new booking or verify a newly recorded cycle automatically. The first-vote balance snapshots remain explicitly historical. The same 48 checks run with `npm run verify:testnet`; select one flow with `-- --flow normal` or `-- --flow dispute`.
 
 ## Short fallback when live signing is unavailable
 

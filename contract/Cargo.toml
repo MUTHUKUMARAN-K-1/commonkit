@@ -12,3 +12,8 @@ commonkit-core = { path = "../core" }
 near-sdk = "=5.30.1"
 borsh = "1"
 
+# Isolated sandbox fault injector. Never deploy this artifact to testnet/mainnet.
+[[example]]
+name = "failure_driver"
+crate-type = ["cdylib"]
+

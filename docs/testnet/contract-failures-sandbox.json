@@ -1,0 +1,981 @@
+{
+  "network": "local sandbox",
+  "sandboxVersion": "2.14.0",
+  "startedAt": "2026-11-08T08:35:44.875Z",
+  "checks": [
+    {
+      "name": "invalid reserve deposit rolls back state",
+      "passed": true,
+      "transactionHash": "Gegfr12tyFpPe7XXr7GBTaMTJrVJQKWErHzSPCbP11nS",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: panicked at contract\\src\\lib.rs:66:9:\nassertion `left == right` failed: Deposit must be whole microNEAR units\n  left: 1\n right: 0"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "4KGG1nkNtnwM5hEgojEtQNi1qnaDK7ndmb1aerLuZVg4",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: panicked at contract\\src\\lib.rs:66:9:\nassertion `left == right` failed: Deposit must be whole microNEAR units\n  left: 1\n right: 0"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "7ozfuYcXP8unxQsQf3aAbs1AUduCLYDMnPSihANFWjQC",
+          "executor": "borrower.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "8RFFNTwzKEXE1exs49xi28SnE9kbFNWok4wq1JityvNe",
+          "executor": "borrower.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "borrower cannot approve their own return",
+      "passed": true,
+      "transactionHash": "7sZc2kutHjc4qUJvQ5MK7XnnKKsotvQSnCELjWfcyQaK",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Current custodian only"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "5TocpoPCdiBo5P9M7JuHXUWgP5cCqdzQHgcukUGaZCcF",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: Current custodian only"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "5npGBkWJRby1odP4ZXMntHncz3z2sEukhRYRDiMWQuyg",
+          "executor": "borrower.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "stale return evidence cannot settle",
+      "passed": true,
+      "transactionHash": "3xXvsTatGM6feBHgt7HjfMRNDu2Jb9dPtsd1FLnPDszG",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Return evidence changed"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "D8RCtdujZvakQdKvURd3mpQQTspqLmkD8rtvBXY6aKbu",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: Return evidence changed"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "EbUm3iutrSWMJbZvAgNRp2y4PsoRQYfbzoZtmi9eaLfY",
+          "executor": "custodian.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "borrower cannot resolve a dispute",
+      "passed": true,
+      "transactionHash": "3DwJ5Gb7S6xTJ22p7ucjfEHuuQG7bcuSeVMDNdMzhvHC",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: DAO authorization required"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "9M9C3aqg2F2JTHicueLREaP4z28vmr2JgyUbw3fPQpNK",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: DAO authorization required"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "FfxDM5dD1hbeJu87eyrGLQYadU1YdxHpnvxQCrtZVtPg",
+          "executor": "borrower.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "council signer cannot bypass the DAO contract",
+      "passed": true,
+      "transactionHash": "2xrrEtSRLKCf1grQMrzxqkWgcu2pwMKAtQSxe43t7pV4",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: DAO authorization required"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "FeSLFgpiudNHuPByR8hbxHJLpa4d1jeptW9T65zJyrXb",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: DAO authorization required"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "2Lf9T3Q9o3ngA8Ps2cZ7kWkDePLpktAtjZYQP7zTrUXv",
+          "executor": "council1.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "one council vote leaves disputed escrow untouched",
+      "passed": true,
+      "transactionHash": "DJY7JUjdH2zSko1tS2dwVMqfMqTMA4266V9QzKZ3muSz",
+      "finalStatus": {
+        "SuccessValue": ""
+      },
+      "receipts": [
+        {
+          "id": "GbUuZXR5kM6YoMsooKHMfiLnLtqZS9vtvJARkn26aiH4",
+          "executor": "dao.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "F7Mckff29XMkx8Sd6VS23UicxCbwfciRxjJn7m4QDJjm",
+          "executor": "council1.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "failed DAO execution is Failed and leaves escrow intact",
+      "passed": true,
+      "transactionHash": "9gm8rU3F1KFENWZtsJpg99dhoMTdpU2AJLePW9mFSbwx",
+      "finalStatus": {
+        "SuccessValue": ""
+      },
+      "receipts": [
+        {
+          "id": "CCDD8khdgncndzQTN3AidM2Ez5V5sM3UPMi2w9mM3xgn",
+          "executor": "dao.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "EfgK7zmZKqy4oSrTKzoED8ebtcWND9nU35yVuRSdnFeu",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: Damages exceed the bond"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "Hd2BsRvXiNqCU5iybWg7y7ZjVz5QVDaJrGbi3iGnc15",
+          "executor": "council2.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "HV7WZV8C1id3scru1fU44FaHceE9ueuJ8AEqPCChwW2d",
+          "executor": "dao.test.near",
+          "status": {
+            "SuccessValue": "bnVsbA=="
+          }
+        },
+        {
+          "id": "7yiv2AUMXPbXEN9mzYQnMn4jw2D1R7zbP49qS4iEevpa",
+          "executor": "council2.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "H3ebNfjjuUbY2eSxAV97trE1H94dCXggdQH1uvC8W3ks",
+          "executor": "council2.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "corrected proposal settles only after both votes",
+      "passed": true,
+      "transactionHash": "4g7ERJ2qU7NWzdLwRpVcJNDqWCZv17f8GSAvmw5cFwHq",
+      "finalStatus": {
+        "SuccessValue": ""
+      },
+      "receipts": [
+        {
+          "id": "HvRc8LecbFf2kpAzvf1uEq7MTs88tqqU8RZfcFRzQS6r",
+          "executor": "dao.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "D3DosvkX5p7FtVLrADFGx8yoAHeLQJnVGXkWbKEhk12X",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "4BAmW15ZWJDMhxbh6EeVXv9H8Q6yxouY9qVNCS9CijcF",
+          "executor": "council2.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "ASrc6ZJb6SYAcNZAG6kpvpZ9Y4K5Jr9fEa91QUxfAWCJ",
+          "executor": "dao.test.near",
+          "status": {
+            "SuccessReceiptId": "B7qjBzEKQkyCWqj4j5RCMdD5aGvidpUHtAH516LL8Cmz"
+          }
+        },
+        {
+          "id": "B7qjBzEKQkyCWqj4j5RCMdD5aGvidpUHtAH516LL8Cmz",
+          "executor": "council1.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "3uDinVgKswv3He8LxMwP6ufJVo1iHthMKsuq84bebavW",
+          "executor": "council2.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "GWihDsJCaiiwYdQD6zNhjMZ8rMXizMGK6srehQYSKvTz",
+          "executor": "council2.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "G5dBUwv7pJzLAeM4rxYDSSqfNZcEzzfcsAjkwL4ePfmj",
+          "executor": "council2.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "replaying settlement cannot allocate credits again",
+      "passed": true,
+      "transactionHash": "6zDt9gV7kTHQ8RUyYtPruWewjPdw8YTCo9TTJrfrVYTj",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Booking is not disputed"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "h4GM11Mnotz1EJvY2N3VmbvQY5B46LJmJGJDz56k6As",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: Booking is not disputed"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "CPodZ9wRXWH6kqCGH7WZ9QoB7nZCNZ3MQaXXaEjnX9GR",
+          "executor": "dao.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "external callers cannot forge a withdrawal callback",
+      "passed": true,
+      "transactionHash": "HfZo9zLCtg1Y19sGzch3FsnbnzpZAkNuTt6nXRtd9Jho",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Method on_withdrawal is private"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "9MQh8uFuMByrvQTfFbZJ9So6Nw1M6yfU4Kx5t1TDe2ks",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: Method on_withdrawal is private"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "DL6Jo1tbzAoenM6GV85ZKWJp9QzaSoF1UF5vs2YhUj7B",
+          "executor": "borrower.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "self call without a dependency receipt is rejected",
+      "passed": true,
+      "transactionHash": "oNg5fQaZBUTCZdvb82y5Tv7CRNKZa4Mag6km2QxyM8G",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: panicked at contract\\src\\lib.rs:132:9:\nassertion `left == right` failed: Expected one transfer receipt\n  left: 0\n right: 1"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "2Jh5pBhcwoAgTkX4caBaus9c6BoZdsTmByBK96KpdGT8",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: panicked at contract\\src\\lib.rs:132:9:\nassertion `left == right` failed: Expected one transfer receipt\n  left: 0\n right: 1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "CC8kSRfqasCJYvQvSuxFbqLznEhEdR3Pa6goxAFWhYdY",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "insufficient withdrawal gas preserves available credit",
+      "passed": true,
+      "transactionHash": "8VmYENjUpR9tA8Pm95h6TvWZTQpyFTuQhHh1NWF181br",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: panicked at contract\\src\\lib.rs:108:9:\nAttach at least 50 TGas"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "BbfFjLER1CHMbA5h2cNJ17cAPASPD2DPwZ5VpBvZRfMw",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: panicked at contract\\src\\lib.rs:108:9:\nAttach at least 50 TGas"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "C24MZRG2ejwvJQ7QBt4nQoAfkkYeCHUanGkk2od5m4sb",
+          "executor": "borrower.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "liquid balance guard rolls back the already-created pending nonce",
+      "passed": true,
+      "transactionHash": "3seY2vqQSLQS1W6HzWAbkUUK3W2JioMnwKQMqK65ECwX",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: panicked at contract\\src\\lib.rs:115:9:\nInsufficient liquid balance after storage reserve"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "E7YoEeQ7FjgcvrSFe8eZVn4esXBPbHd5ahqoUU3d9adx",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: panicked at contract\\src\\lib.rs:115:9:\nInsufficient liquid balance after storage reserve"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "54g1U2E9sFo1hmDHfCzA6nU7PF8JJoqgrkWWhucmoZyP",
+          "executor": "borrower.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "second withdrawal in one receipt rejects pending spend and rolls back batch",
+      "passed": true,
+      "transactionHash": "DM2xnHhuBLjp1biLegGAEGtek1Febvcar4QA5iCr2aCH",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 1,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: A withdrawal is already pending"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "5Jr26qgdK6uUrM4pLHZZTSfxxUJ3GkV1mTfkEG61barN",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 1,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: A withdrawal is already pending"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "7Gc95TkS9HRQTDkVMU6yzBZPwGB1YNXRmbTdcLe6H7CJ",
+          "executor": "borrower.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "failed transfer restores credit and clears pending withdrawal",
+      "passed": true,
+      "transactionHash": "6YdY1hYMZ49KWbK9kyDkmU2hae3P8SaPLbwVmKkACyzJ",
+      "finalStatus": {
+        "SuccessValue": "dHJ1ZQ=="
+      },
+      "receipts": [
+        {
+          "id": "31XmjQqCao3MNpSXmBDKsuAR9hdYDm9UjbLWRMxWADR3",
+          "executor": "vanishing.test.near",
+          "status": {
+            "SuccessReceiptId": "DN9u33wJdhoMaUFQrUFKGvDvoCSCMqm26FArhDKKbBjR"
+          }
+        },
+        {
+          "id": "3gXgheb1G4JYGayLobauMdj3jxUUBcCKKV9MSKUsbuBS",
+          "executor": "vanishing.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "5Jtnz4wxjDTk7oQ5eBMJwqpENaoVPaQ5fnr1MMTpV83C",
+          "executor": "test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "FRKMXhdbMThuY27r8oGFH7jQkLVHe6EWYrh5p9D5u7BS",
+          "executor": "test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "DN9u33wJdhoMaUFQrUFKGvDvoCSCMqm26FArhDKKbBjR",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessReceiptId": "HXeccakieevsBfJL4QetrKfg7yLW5jLGMZrctbma8VSr"
+          }
+        },
+        {
+          "id": "FoTs2z9zS9zFzukjZxqgQ4JTfrazDeHdHjpy2BjqJR7h",
+          "executor": "vanishing.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "AccountDoesNotExist": {
+                    "account_id": "vanishing.test.near"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "G5xw77vMQZWahBYYEmWiqeRrUWdwdEr7ifR1JF7hkYTr",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "7qZpgF57bMLMqfTQz9RY6HUPHAUmq9DK6CmYuM4xcLst",
+          "executor": "test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "HXeccakieevsBfJL4QetrKfg7yLW5jLGMZrctbma8VSr",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": "dHJ1ZQ=="
+          }
+        },
+        {
+          "id": "BUK3xnKgyZZSbH4RHLWmXvTeQBB9TrKnGDSqqcckbN1N",
+          "executor": "test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "FpevHs9Y9rdTmHfWCsnRDca8sSrsV2irJBUqoo3WUsQR",
+          "executor": "test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "FHd6VqG9NPZFVWnaPkJmt56iWVsjz9gwKFmDTkMWtVKM",
+          "executor": "test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "retry pays exactly once after receiver recovery",
+      "passed": true,
+      "transactionHash": "BhKcd7kbEoMQYasD5Tuxj72R4vRLM9S6Yo6MA8sx2FvF",
+      "finalStatus": {
+        "SuccessValue": "dHJ1ZQ=="
+      },
+      "receipts": [
+        {
+          "id": "9w4ZBGzMxPiCXeCg2drCLbv6ow7RNM8YwSeqhpKArehq",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessReceiptId": "GkTuxTbuo3MKB5ttbmJ6DAncs2x9AekYqHNN5j8WXAh6"
+          }
+        },
+        {
+          "id": "BLjcAm5XdQVocvtzbFpQ2Ga95TgzFSHoz4jqDnDb8WAK",
+          "executor": "vanishing.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "EQCT6fb8CWPRXfzcrojKsHZ6NC7vmgeqaE657jXX7B1w",
+          "executor": "vanishing.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "GkTuxTbuo3MKB5ttbmJ6DAncs2x9AekYqHNN5j8WXAh6",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": "dHJ1ZQ=="
+          }
+        },
+        {
+          "id": "CpyeRJ63Byp9VuQMEpfsFvAD9ktg9S4Mi9tArX2K4Qoz",
+          "executor": "vanishing.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "62dG1h5LRfSQ9HYZbddL7bbbTTiKoEhbAUDmXYjGBG6f",
+          "executor": "vanishing.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "second withdrawal cannot spend the same credit",
+      "passed": true,
+      "transactionHash": "CZngC5AYMrTu8K9cRP7eUSy91j36ZuSTpeENUU9WLJfV",
+      "finalStatus": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: No available credit"
+              }
+            }
+          }
+        }
+      },
+      "receipts": [
+        {
+          "id": "EDVtPs4do5PYC3zMKSnVoydwmdzkUWe1BACjVHW7U6xU",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: No available credit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "Azz7KVpSP7ZuLfnxTRVQmiPi9Pzxth1msJFgWcPKvdUe",
+          "executor": "vanishing.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "duplicate failure callback cannot change credit or totals",
+      "passed": true,
+      "transactionHash": "Bj7iRkpngBdqsQpUBwPrRNxuSgApaTq9qrZTRuhtTj7N",
+      "finalStatus": {
+        "SuccessValue": "ZmFsc2U="
+      },
+      "receipts": [
+        {
+          "id": "HdMkw2KRUs8ddF5sq9whnBcTKQoKKu5ACpg44QzC4gbq",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessReceiptId": "EZegw3pQQQQkKjzoSH2AT4S4WiXuPwjkpbvdv4RN596y"
+          }
+        },
+        {
+          "id": "4qRxLsfiz8nARK2xrdZKDdGe3eTexd5ZLJzPgoDVZET9",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "6MhS6hMzVknMzUyJRSoW5RXux8W5BwEKtNjkCJyPCw6h",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "91qeqpVmjUizQuE4ksMxpjjBqB55JAWj3cKbCLj49dux",
+          "executor": "library.test.near",
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "MethodResolveError": "MethodNotFound"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "GdXSJ8aHq5mB2rHKWQWjkwEX61Ao7R9ag2B8pzJ7QQ8g",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "EZegw3pQQQQkKjzoSH2AT4S4WiXuPwjkpbvdv4RN596y",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": "ZmFsc2U="
+          }
+        },
+        {
+          "id": "E8GrFS2dgbN917zyrjcH6sFCet1XbsPwokC8zYJbCi7a",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "7pZugQdaac8MtvrFq99D12TdYBwH7SVx5cxh2QxM4WpG",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "duplicate success callback cannot change credit or totals",
+      "passed": true,
+      "transactionHash": "GVk91NMqt4FJ66xiFHh4awwWnjxkDD5WiRQ683PN6M7k",
+      "finalStatus": {
+        "SuccessValue": "ZmFsc2U="
+      },
+      "receipts": [
+        {
+          "id": "7v9M5FjMshvknA1JE4baT3wRpXRXHzm768c4ZqCEU9rt",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessReceiptId": "CD1qgVERMZjwcrLyqNBEwM6Hga6DcrtdgfSiM4xYL5w6"
+          }
+        },
+        {
+          "id": "8ZAgHVTDDJ48rboYT99HDRzB6Q9djhiHiE5mGLKePJmA",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "AXDBNZquJZhkrQCj51CJJC1s4iLtB49qN9yFTPzn79gN",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "DiYPpbCyR89MPQUunAwVUcw2jmNSHASzs7kPqV4dwex9",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "DFmaK7wRgaZzEajHhPtD1t71y6QoUzFrKs8TVBZSNqne",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "CD1qgVERMZjwcrLyqNBEwM6Hga6DcrtdgfSiM4xYL5w6",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": "ZmFsc2U="
+          }
+        },
+        {
+          "id": "J12kCcur1NhXotyDRVPV9RiRoJ9DEHTsX83hMD4NnTA8",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        },
+        {
+          "id": "E5MwBhDyCZNfMBoWCTH4CymwmxZi73BPNdANhPML9Ejk",
+          "executor": "library.test.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      ]
+    }
+  ],
+  "contractWasmSha256": "687dbd4f95d90c346eeabf738a1e270c2db9cc74a2d1bd5803ccb6c75761192c",
+  "driverWasmSha256": "f0f71cb4297db1918043310156ed4424ef5bb4e1ae19b473cde9660934926f2c",
+  "sputnik": {
+    "source": "ckdao-mw7e25at.sputnikv2.testnet",
+    "wasmSha256": "880bae9a58c99ec1efe8b10cf834b3f0c0ebc7a05d71206f3c1202c4280952da"
+  },
+  "finalLedger": {
+    "deposited": 22000,
+    "escrow": 0,
+    "credits": 11000,
+    "pending": 0,
+    "withdrawn": 11000,
+    "balanced": true
+  },
+  "passed": true,
+  "completedAt": "2026-11-08T08:38:34.496Z"
+}

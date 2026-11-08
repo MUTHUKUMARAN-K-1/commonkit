@@ -26,6 +26,15 @@ jobs:
         run: cargo +1.95.0 build -p commonkit-core --locked
       - run: npm run test:api
       - name: Build NEAR contract
-        run: cargo +1.95.0 build -p commonkit-contract --target wasm32-unknown-unknown --release --locked
+        run: cargo +1.95.0 build -p commonkit-contract --lib --examples --target wasm32-unknown-unknown --release --locked
         env:
           RUSTFLAGS: --cfg near
+      - name: Exercise compiled contract failures in NEAR Sandbox
+        run: npm run test:contract
+      - name: Save sandbox receipt report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: contract-failures-report
+          path: artifacts/contract-failures-report.json
+          if-no-files-found: ignore
