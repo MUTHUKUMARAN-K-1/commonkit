@@ -2,17 +2,33 @@
   "name": "commonkit",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "test": "node --test scripts/dao.test.mjs",
+    "test": "node --test scripts/dao.test.mjs scripts/wallet-result.test.mjs scripts/presentation.test.mjs",
     "test:browser": "node scripts/browser-test.mjs",
-    "test:api": "node scripts/api-test.mjs"
+    "test:api": "node scripts/api-test.mjs",
+    "dev": "vite app --host 127.0.0.1 --port 4318",
+    "build": "vite build app --outDir ../dist --emptyOutDir",
+    "build:vercel": "npm run build && node scripts/check-production.mjs",
+    "preview": "vite preview app --outDir ../dist --host 127.0.0.1 --port 4318",
+    "deploy:testnet": "node scripts/testnet.mjs --deploy-only",
+    "test:testnet": "node scripts/testnet.mjs",
+    "build:contract": "powershell -NoProfile -File scripts/build-contract.ps1",
+    "dev:wallet": "powershell -NoProfile -Command \"$env:VITE_DEV_WALLET='1'; npx vite --host 127.0.0.1 --port 4320 --strictPort\"",
+    "deploy:dao": "node scripts/deploy-dao.mjs",
+    "setup:dao": "node scripts/bootstrap-dao.mjs"
   },
   "engines": {
-    "node": ">=22"
+    "node": "24.x"
   },
   "devDependencies": {
     "playwright": "1.62.1"
+  },
+  "dependencies": {
+    "@hot-labs/near-connect": "0.12.0",
+    "near-kit": "0.20.2",
+    "vite": "8.3.6"
   }
 }

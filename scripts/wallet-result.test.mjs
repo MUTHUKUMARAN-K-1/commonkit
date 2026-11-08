@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {transactionHash, inspectFinalOutcome} from '../app/wallet-result.js';
+const expected = {hash:'A'.repeat(44), signerId:'borrower.testnet', receiverId:'library.testnet', method:'reserve'};
+const outcome = () => ({final_execution_status:'FINAL',transaction:{hash:expected.hash,signer_id:expected.signerId,receiver_id:expected.receiverId,actions:[{FunctionCall:{method_name:'reserve'}}]},status:{SuccessValue:''},receipts_outcome:[{outcome:{status:{SuccessValue:''}}}]});
+test('final, matching execution is confirmed',()=>assert.equal(inspectFinalOutcome(outcome(),expected).status,'executed'));
+test('a failed child receipt prevents success even when root succeeded',()=>{const result=outcome();result.receipts_outcome.push({outcome:{status:{Failure:{ActionError:'callback failed'}}}});assert.equal(inspectFinalOutcome(result,expected).status,'failed');});
+test('optimistic and missing results remain unconfirmed',()=>{const result=outcome();result.final_execution_status='EXECUTED_OPTIMISTIC';assert.throws(()=>inspectFinalOutcome(result,expected),/not final/);assert.equal(transactionHash(undefined),null);});
+test('unrelated signer, receiver, method or hash cannot become a demo receipt',()=>{for(const field of ['signerId','receiverId','method','hash'])assert.throws(()=>inspectFinalOutcome(outcome(),{...expected,[field]:'wrong'}),/does not match/);});
+test('final contract failure is reported',()=>{const result=outcome();result.status={Failure:'authorization failed'};assert.equal(inspectFinalOutcome(result,expected).status,'failed');});

@@ -1,0 +1,35 @@
+{
+  "verifiedAt": "2026-11-08T06:41:52.962Z",
+  "url": "https://commonkit-testnet.muthukumarank.chatgpt.site",
+  "projectId": "appgprj_6af00cb964348191be112f4549268caf",
+  "version": 2,
+  "commit": "7de07871193b9a4cb29e4b818dee45128d2e6220",
+  "deploymentId": "appgdep_6af01967451c8191a44d75d04eaca0f7",
+  "status": "succeeded",
+  "access": "public",
+  "tests": {
+    "passed": 15,
+    "productionBuild": "passed",
+    "archiveSecretScan": "passed",
+    "browserPublicLiveReads": "passed",
+    "browserRuntimeErrors": 0,
+    "designReview": "PASS",
+    "viewports": [
+      1440,
+      768,
+      390,
+      375
+    ]
+  },
+  "browserSigning": "Not rerun in this frontend polish. Prior11 Meteor signed transactions documented in meteor-receipts.txt.",
+  "screenshots": [
+    "polish-public-final.jpg",
+    "polish-review-desktop-final.jpg",
+    "polish-review-mobile-wallet-final.jpg",
+    "polish-review-mobile-council-final.jpg"
+  ],
+  "limits": [
+    "Pending/rejected proposals and connected role switching were not live-tested during this polish; presentation state regressions pass.",
+    "Independent design evaluator used the same model provider."
+  ]
+}

@@ -2,5 +2,20 @@
 /artifacts/
 /node_modules/
 .env
+.env.*
+!.env.example
 *.key
+.testnet/
+/dist/
+/.tmp/
+/hosting/
+/.vercel/
+/.openai/
+/.agents/
+/.codex/
+/docs/research-evidence/
+/docs/NEAR-*.html
+/docs/ui-brief.md
+*.log
+.DS_Store
 

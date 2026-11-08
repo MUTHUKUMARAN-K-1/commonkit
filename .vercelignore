@@ -1,0 +1,11 @@
+# Upload only the frontend build inputs for a manual CLI deployment.
+/*
+!/app
+!/package.json
+!/package-lock.json
+!/vercel.json
+!/scripts
+/scripts/*
+!/scripts/check-production.mjs
+/app/**/.env*
+/app/**/*.key

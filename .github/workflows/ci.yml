@@ -1,0 +1,31 @@
+name: Verify CommonKit
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build:vercel
+      - name: Install Rust toolchain
+        run: rustup toolchain install 1.95.0 --profile minimal --target wasm32-unknown-unknown
+      - name: Test shared contract state machine
+        run: cargo +1.95.0 test -p commonkit-core --locked
+      - name: Build the local simulation
+        run: cargo +1.95.0 build -p commonkit-core --locked
+      - run: npm run test:api
+      - name: Build NEAR contract
+        run: cargo +1.95.0 build -p commonkit-contract --target wasm32-unknown-unknown --release --locked
+        env:
+          RUSTFLAGS: --cfg near

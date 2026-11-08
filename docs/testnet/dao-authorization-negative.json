@@ -1,0 +1,5 @@
+{
+  "attempt": "borrower direct resolve",
+  "expectedRejection": "Contract call failed: library.ckdao-mw7e25at.testnet.resolve - Smart contract panicked: DAO authorization required",
+  "unchangedState": true
+}

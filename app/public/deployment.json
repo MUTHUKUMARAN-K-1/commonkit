@@ -1,0 +1,16 @@
+{
+  "network": "testnet",
+  "contractId": "library.ckdao-mw7e25at.testnet",
+  "daoId": "ckdao-mw7e25at.sputnikv2.testnet",
+  "council": [
+    "commonkit-mw7dph80.testnet",
+    "custodian.commonkit-mw7dph80.testnet"
+  ],
+  "governanceMode": "dao",
+  "accounts": {
+    "governance": "commonkit-mw7dph80.testnet",
+    "contract": "library.ckdao-mw7e25at.testnet",
+    "borrower": "borrower.commonkit-mw7dph80.testnet",
+    "custodian": "custodian.commonkit-mw7dph80.testnet"
+  }
+}

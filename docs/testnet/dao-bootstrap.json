@@ -1,0 +1,79 @@
+{
+  "dao": "ckdao-mw7e25at.sputnikv2.testnet",
+  "contract": "library.ckdao-mw7e25at.testnet",
+  "steps": [
+    {
+      "role": "governance",
+      "method": "add_proposal",
+      "hash": "YJfDskEAjxbeTTf16aCa2yCtVEZXtzczg7fSnWCqrwk",
+      "status": {
+        "SuccessValue": "MA=="
+      }
+    },
+    {
+      "role": "governance",
+      "method": "act_proposal",
+      "hash": "FdLRV3uffn1Gi2UrMktxpCBPAGYX5F3JZmKNviVVcodE",
+      "status": {
+        "SuccessValue": ""
+      }
+    },
+    {
+      "role": "custodian",
+      "method": "act_proposal",
+      "hash": "72ZNbETEX41SDrCAnEo5baezJzyaQUo9sHmcmmq4uqy9",
+      "status": {
+        "SuccessValue": ""
+      }
+    },
+    {
+      "role": "governance",
+      "method": "add_proposal",
+      "hash": "9hHgsPtXPtL9kEnryrtiXCUBTjFjYMexzirDvu5VMrae",
+      "status": {
+        "SuccessValue": "MQ=="
+      }
+    },
+    {
+      "role": "governance",
+      "method": "act_proposal",
+      "hash": "ArWszU5s4BzinWwgdk2nArv4HqHmyTW6ejYWrUhgp7A6",
+      "status": {
+        "SuccessValue": ""
+      }
+    },
+    {
+      "role": "custodian",
+      "method": "act_proposal",
+      "hash": "CRe9atqfAXTgzUaXpQBvAde8voXjCgwiWhmnUrRCKGHS",
+      "status": {
+        "SuccessValue": ""
+      }
+    }
+  ],
+  "state": {
+    "dao": "ckdao-mw7e25at.sputnikv2.testnet",
+    "members": [
+      "borrower.commonkit-mw7dph80.testnet"
+    ],
+    "assets": {
+      "campus-camera": {
+        "id": "campus-camera",
+        "name": "Campus camera kit",
+        "custodian": "custodian.commonkit-mw7dph80.testnet",
+        "fee": 1000,
+        "bond": 10000,
+        "enabled": true
+      }
+    },
+    "bookings": {},
+    "credits": {},
+    "reputation": {},
+    "pending": {},
+    "total_deposited": 0,
+    "total_withdrawn": 0,
+    "next_booking": 1,
+    "next_nonce": 1
+  },
+  "passed": true
+}

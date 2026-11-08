@@ -1,0 +1,17 @@
+[
+  {
+    "method": "GET",
+    "origin": "none",
+    "status": 403
+  },
+  {
+    "method": "POST",
+    "origin": "https://example.com",
+    "status": 403
+  },
+  {
+    "method": "POST",
+    "origin": "none",
+    "status": 403
+  }
+]

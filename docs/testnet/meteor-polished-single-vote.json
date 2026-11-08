@@ -1,0 +1,148 @@
+{
+  "at": "2026-11-08T06:57:18.160Z",
+  "url": "https://commonkit-testnet.muthukumarank.chatgpt.site",
+  "wallet": "Meteor Web in Chrome",
+  "deployment": {
+    "network": "testnet",
+    "contractId": "library.ckdao-mw7e25at.testnet",
+    "daoId": "ckdao-mw7e25at.sputnikv2.testnet",
+    "council": [
+      "commonkit-mw7dph80.testnet",
+      "custodian.commonkit-mw7dph80.testnet"
+    ],
+    "governanceMode": "dao",
+    "accounts": {
+      "governance": "commonkit-mw7dph80.testnet",
+      "contract": "library.ckdao-mw7e25at.testnet",
+      "borrower": "borrower.commonkit-mw7dph80.testnet",
+      "custodian": "custodian.commonkit-mw7dph80.testnet"
+    }
+  },
+  "state": {
+    "dao": "ckdao-mw7e25at.sputnikv2.testnet",
+    "members": [
+      "borrower.commonkit-mw7dph80.testnet"
+    ],
+    "assets": {
+      "campus-camera": {
+        "id": "campus-camera",
+        "name": "Campus camera kit",
+        "custodian": "custodian.commonkit-mw7dph80.testnet",
+        "fee": 1000,
+        "bond": 10000,
+        "enabled": true
+      }
+    },
+    "bookings": {
+      "1": {
+        "id": 1,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794115800,
+        "end": 1794119400,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": "7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55",
+        "damage": 3000
+      },
+      "2": {
+        "id": 2,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794116220,
+        "end": 1794119820,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": null,
+        "damage": 0
+      },
+      "3": {
+        "id": 3,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794117780,
+        "end": 1794121380,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Closed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": "7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55",
+        "damage": 3000
+      },
+      "4": {
+        "id": 4,
+        "asset_id": "campus-camera",
+        "borrower": "borrower.commonkit-mw7dph80.testnet",
+        "start": 1794120480,
+        "end": 1794124080,
+        "fee": 1000,
+        "bond": 10000,
+        "status": "Disputed",
+        "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+        "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+        "dispute_hash": "220958af92b38d0415d97febf9df26fe5da1b5839bbba975909bc6b8fcb18926",
+        "damage": 0
+      }
+    },
+    "credits": {
+      "borrower.commonkit-mw7dph80.testnet": 0,
+      "ckdao-mw7e25at.sputnikv2.testnet": 0
+    },
+    "reputation": {
+      "borrower.commonkit-mw7dph80.testnet": 1
+    },
+    "pending": {},
+    "total_deposited": 44000,
+    "total_withdrawn": 33000,
+    "next_booking": 5,
+    "next_nonce": 6
+  },
+  "ledger": {
+    "deposited": 44000,
+    "escrow": 11000,
+    "credits": 0,
+    "pending": 0,
+    "withdrawn": 33000,
+    "balanced": true
+  },
+  "proposals": [
+    {
+      "id": 6,
+      "proposer": "custodian.commonkit-mw7dph80.testnet",
+      "description": "CommonKit resolve: {\"id\":4,\"damage_micro_near\":3000,\"evidence_hash\":\"7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55\"}",
+      "kind": {
+        "FunctionCall": {
+          "receiver_id": "library.ckdao-mw7e25at.testnet",
+          "actions": [
+            {
+              "method_name": "resolve",
+              "args": "eyJpZCI6NCwiZGFtYWdlX21pY3JvX25lYXIiOjMwMDAsImV2aWRlbmNlX2hhc2giOiI3YjdmOTU3MTUzMmU3MGYzZWE2NmU2NWIyN2UyYmEyZDg4NzhiN2Q2NDU1NDk1MTVkM2Q1NzZjODdjMDI0ZTU1In0=",
+              "deposit": "0",
+              "gas": "100000000000000"
+            }
+          ]
+        }
+      },
+      "status": "InProgress",
+      "vote_counts": {
+        "council": [
+          1,
+          0,
+          0
+        ]
+      },
+      "votes": {
+        "custodian.commonkit-mw7dph80.testnet": "Approve"
+      },
+      "submission_time": "1794120947114722421"
+    }
+  ],
+  "passed": true
+}
