@@ -8,6 +8,8 @@ Campus clubs share cameras and projectors, but handovers and deposit disputes of
 
 The new cobalt/apricot interface is implemented locally with Library, Bookings and Council views, Motion transitions, booking review and explicit wallet roles. Four fresh Meteor rehearsals passed: desktop and responsive Chrome normal return/dispute, with 38 successful transactions and 96 receipt checks. See [cobalt integration validation](docs/testnet/cobalt/README.md) for manifests, receipts and screenshots. Responsive Chrome testing does not establish physical-phone wallet compatibility. The public link below still serves the previously rehearsed release; it has not been updated to this integration.
 
+A subsequent [focused UI polish](docs/UNSLOP-AUDIT.md) combines equipment-first navigation, community guidance and visible evidence: readable mobile labels, consistent icons, clearer credit language and restrained motion. The Meteor transaction handlers and DAO policy/payload logic are unchanged; this follow-up was checked locally and has not been deployed.
+
 [Live demo](https://commonkit-testnet.muthukumarank.chatgpt.site) · [Verify without a wallet](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html) · [Wallet guide](https://commonkit-testnet.muthukumarank.chatgpt.site/demo-guide.html) · [Three-minute demo script](docs/DEMO-SCRIPT.md) · [Vercel setup](docs/VERCEL.md) · [Submission checklist](docs/SUBMISSION.md)
 
 ## Try it: do this, see this

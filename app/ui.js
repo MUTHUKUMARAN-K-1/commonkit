@@ -1,22 +1,28 @@
+import {mountIcons} from './icons.js';
 import {animate} from 'motion/mini';
 import 'number-flow';
 const $=id=>document.getElementById(id);
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const viewCopy={
-  library:['LESS OWNING. MORE DOING.','Good gear.','Better together.','Borrow from your community. A little trust, built into every handover.'],
-  bookings:['EVERY HANDOVER HAS A NEXT STEP','Your borrowing,','all in order.','The right person. The right action. A clear record.'],
-  council:['COMMUNITY GOVERNANCE / LIVE ON NEAR','A fair decision.','Made together.','Clear votes and visible outcomes. See where the decision stands.']
+  library:['Community equipment library','Borrow community','equipment','Find the gear for your next project. Review the cost, arrange pickup and keep every handover on record.'],
+  bookings:['Bookings & handovers','Follow your','booking','See who acts next, what evidence is needed and where the fee and bond stand.'],
+  council:['Community governance','Review council','decisions','Inspect the proposal, follow both votes and verify what executed.']
 };
 let currentView='',filter='all',query='',review=null;
 const focusReturn=new WeakMap();
+function restoreDialogFocus(dialog){
+  const saved=focusReturn.get(dialog);
+  const target=saved?.element?.isConnected?saved.element:saved?.key?[...document.querySelectorAll('[data-focus-key]')].find(el=>el.dataset.focusKey===saved.key):saved?.id?$(saved.id):null;
+  if(target&&!target.disabled)target.focus({preventScroll:true});
+}
 const voteValues=new Map();
-export function animateVoteProgress(key,bar,value){const previous=voteValues.get(key);voteValues.set(key,value);bar.style.width=`${value*50}%`;if(previous!==undefined&&previous!==value&&!reduced())animate(bar,{width:[`${previous*50}%`,`${value*50}%`]},{duration:.28,ease:'easeOut'});}
+export function animateVoteProgress(key,bar,value){const previous=voteValues.get(key);voteValues.set(key,value);bar.style.transform=`scaleX(${value/2})`;if(previous!==undefined&&previous!==value&&!reduced())animate(bar,{transform:[`scaleX(${previous/2})`,`scaleX(${value/2})`]},{duration:.24,ease:[.22,1,.36,1]});}
 export const element=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
-function motionEnter(el){if(!reduced())animate(el,{opacity:[0,1],transform:['translateY(8px)','translateY(0)']},{duration:.24,ease:'easeOut'});}
+function motionEnter(el){if(!reduced())animate(el,{opacity:[0,1],transform:['translateY(8px)','translateY(0)']},{duration:.24,ease:[.22,1,.36,1]});}
 export function showView(view){
   if(!viewCopy[view])view='library';
   if(currentView===view)return;
-  currentView=view;
+  currentView=view;document.body.dataset.view=view;
   document.querySelectorAll('[data-view]').forEach(el=>el.hidden=el.dataset.view!==view);
   document.querySelectorAll('[data-route]').forEach(el=>{if(el.dataset.route===view)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});
   const [eyebrow,title,emphasis,intro]=viewCopy[view];
@@ -25,13 +31,13 @@ export function showView(view){
   document.title=`${view==='library'?'Shared equipment':view==='bookings'?'Your borrowing':'Council decisions'} · CommonKit`;
 }
 export function navigate(view){if(location.hash!==`#${view}`)location.hash=view;showView(view);}
-export function openDialog(id){const dialog=$(id);if(dialog.open)return;focusReturn.set(dialog,document.activeElement);dialog.showModal();if(!reduced())animate(dialog,{opacity:[0,1],transform:['translateY(16px)','translateY(0)']},{duration:.24,ease:'easeOut'});}
-export function closeDialog(id){const dialog=$(id);if(!dialog.open)return;dialog.close();focusReturn.get(dialog)?.focus?.();}
+export function openDialog(id){const dialog=$(id);if(dialog.open)return;const trigger=document.activeElement;focusReturn.set(dialog,{element:trigger,key:trigger?.dataset?.focusKey,id:trigger?.id});dialog.showModal();if(!reduced())animate(dialog,{opacity:[0,1],transform:['translateY(8px)','translateY(0)']},{duration:.24,ease:[.22,1,.36,1]});}
+export function closeDialog(id){const dialog=$(id);if(!dialog.open)return;dialog.close();restoreDialogFocus(dialog);}
 export function openReservation(){resetReview();openDialog('reserve-dialog');}
 export function resetReview(){review?.remove();review=null;$('reserve').textContent='Review booking →';$('reserve-form').querySelectorAll('input,select').forEach(e=>e.disabled=false);}
 export function reservationReview({name,start,end,total,signer,onConfirm}){
   review?.remove();review=element('section',undefined,'review-confirmation');review.id='reservation-review';review.setAttribute('aria-label','Review reservation before signing');
-  review.append(element('h3','Ready to make it yours?'),element('p',`${name} · ${start} → ${end}`),element('p',`Attached deposit: ${total}`),element('p',`Signing account: ${signer}`),element('p','Network gas is charged separately by NEAR. Review the exact request in Meteor before approving.','fine'));
+  review.append(element('h3','Review your booking'),element('p',`${name} · ${start} → ${end}`),element('p',`Attached deposit: ${total}`),element('p',`Signing account: ${signer}`),element('p','Network gas is charged separately by NEAR. Review the exact request in Meteor before approving.','fine'));
   const actions=element('div',undefined,'review-actions'),back=element('button','Edit booking'),confirm=element('button','Confirm in wallet ↗','primary');back.type=confirm.type='button';confirm.id='confirm-reservation';back.onclick=resetReview;confirm.onclick=()=>onConfirm(confirm);actions.append(back,confirm);review.append(actions);$('reserve-form').append(review);
   $('reserve-form').querySelectorAll('input,select').forEach(e=>e.disabled=true);$('reserve').textContent='Update review';motionEnter(review);confirm.focus();
 }
@@ -51,8 +57,9 @@ export function applyFilters(){
 export function preserveFocus(){const active=document.activeElement;const key=active?.dataset?.focusKey;return()=>{if(key){const target=[...document.querySelectorAll('[data-focus-key]')].find(e=>e.dataset.focusKey===key);if(target&&!target.disabled&&target!==document.activeElement)target.focus({preventScroll:true});}};}
 export function setBusy(value){document.querySelectorAll('.review-actions button,[data-close],#wallet-open').forEach(e=>e.disabled=value);}
 export function initUi(){
+  mountIcons();
   document.querySelectorAll('[data-close]').forEach(button=>button.onclick=()=>closeDialog(button.dataset.close));
-  document.querySelectorAll('dialog').forEach(d=>{d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog(d.id);}});d.addEventListener('close',()=>focusReturn.get(d)?.focus?.());});
+  document.querySelectorAll('dialog').forEach(d=>{d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog(d.id);}});d.addEventListener('close',()=>restoreDialogFocus(d));});
   $('wallet-open').onclick=()=>openDialog('wallet-dialog');$('refresh-short').onclick=()=>$('refresh').click();
   $('equipment-search').oninput=e=>{query=e.target.value.trim().toLowerCase();applyFilters();};
   document.querySelectorAll('[data-filter]').forEach(button=>button.onclick=()=>{filter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));applyFilters();});

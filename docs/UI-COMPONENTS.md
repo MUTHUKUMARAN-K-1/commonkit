@@ -27,4 +27,6 @@ The camera illustration was generated for CommonKit's accepted design preview an
 
 ## Behavior
 
+The follow-up polish uses Lucide for navigation, search, wallet and vote icons, with 18px SVG boxes and a 1.5 stroke. Its license is distributed in `app/public/licenses/lucide.txt`; the exact package version is pinned in `package.json` and the lockfile. The design method is credited to Unslop by Damir Sokolovsky (CC BY 4.0) in [the audit and report](UNSLOP-AUDIT.md).
+
 Animation honors reduced motion. Route and dialog movement use short opacity/transform transitions. Balances, attached deposits and receipt values are never animated through intermediate numeric amounts. Native dialogs close before invoking Meteor's connector so they cannot cover the wallet chooser.
