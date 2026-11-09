@@ -9,3 +9,4 @@
 *.jpg binary
 *.png binary
 docs/testnet/normal-*.txt text eol=lf
+docs/testnet/vercel/**/evidence/*.txt -text

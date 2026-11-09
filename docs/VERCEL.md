@@ -1,10 +1,10 @@
 # Vercel deployment
 
-**Deployed on 8 November 2026.** Production: https://commonkit-testnet.vercel.app. The owner authorized public deployment while keeping GitHub private. Vercel reported the production release ready and assigned this alias.
+**Deployed on 8 November; updated and rehearsed on 9 November 2026.** Production: https://commonkit-testnet.vercel.app. The owner authorized public deployment while keeping GitHub private. Vercel reported the production release ready and assigned this alias.
 
-The polished UI and `/judge.html` tour are included. The tour loaded publicly and completed playback in the in-app browser. Fresh Meteor borrowing and dispute cycles on this new origin remain **pending**: Chrome controls stalled and browser automation stopped before a new transaction could be verified. Existing local/Sites receipts are not Vercel-origin signing evidence.
+The polished UI and `/judge.html` tour are included. The tour loaded publicly and completed playback in the in-app browser; the 9 November release also fixes the playback note after seeking or replaying. **Both fresh Vercel-origin Meteor cycles completed:** normal return #10 (8 transactions / 21 checks) and dispute #11 (11 transactions / 27 checks). Both payouts are verified and the final principal ledger has zero escrow, credit and pending transfers. The owner handled Meteor Connect/Approve prompts after popup automation stalled. See [the complete receipt evidence](testnet/vercel/README.md).
 
-Recorded deployment: `dpl_3rxRQ9yWhRbCXSnsEtsmZL6JFVgf` ([deployment inspection](https://vercel.com/muthukumaran-k-1s-projects/commonkit-testnet/3rxRQ9yWhRbCXSnsEtsmZL6JFVgf), team access required). The older Sites URL remains a previous-release fallback.
+Rehearsed deployment: `dpl_7C6wEoq78K1NJLNWQJPp8n71oCmH`, source commit `73211f673389c21d564af37a13ab3916ca709ec1` ([deployment inspection](https://vercel.com/muthukumaran-k-1s-projects/commonkit-testnet/7C6wEoq78K1NJLNWQJPp8n71oCmH), team access required). The earlier 8 November release was `dpl_3rxRQ9yWhRbCXSnsEtsmZL6JFVgf`. Later documentation/evidence commits may create equivalent frontend deployments; the rehearsal metadata pins the actual release tested.
 
 ## Import settings
 
@@ -37,13 +37,13 @@ Open http://127.0.0.1:4318, `/judge.html`, `/verify.html`, `/demo-guide.html`, `
 
 `.vercelignore` allows only frontend build inputs for CLI uploads, excluding `.testnet`, local artifacts, research, screenshots, contract sources and the separate Sites checkout. The GitHub repository still contains contract sources and public validation evidence for review. No secret is required on Vercel.
 
-## Remaining public-origin validation
+## Public-origin validation and limits
 
-- Confirm the resulting URL loads live library and DAO state.
-- Open the guide, verification page and fixture links, including direct URL loads. Run all verification checks from the new origin to confirm RPC/CORS availability.
-- Connect Meteor on the **new Vercel origin**; a connection to the existing Sites origin does not automatically authorize the new origin. Verify account and contract IDs in every wallet prompt.
-- Test cancellation and one complete authorized testnet transaction before using the new URL in the recorded demo.
-- Check Vercel's deployment access controls: judges must be able to open the selected demo URL without a team login. Keep source/log exposure private; website access and repository visibility are different settings.
-- Keep the existing working demo available until the new origin is verified. Do not deploy a development server or enable `VITE_DEV_WALLET` on a hosted service.
+- The public URL loaded live library and DAO state, connected all three Meteor testnet identities, and completed both signed borrowing outcomes.
+- Both council votes, separate treasury withdrawals and borrower withdrawals were verified through finalized public receipts. The first-vote checkpoints were saved before the second votes.
+- Public verification remains wallet-free and selects the earlier historical cases. The fresh Vercel manifests are separate dated evidence.
+- These runs used desktop Chrome with manual wallet approvals. They do not establish physical-phone signing, a real equipment pilot or a fresh cancellation scenario.
+- Keep the demo accessible without a Vercel team login. Repository visibility remains private until the owner separately authorizes publication.
+- Never deploy a development signer or enable `VITE_DEV_WALLET` on a hosted service.
 
 References: [Vercel configuration](https://vercel.com/docs/project-configuration/vercel-json), [upload exclusions](https://vercel.com/docs/deployments/vercel-ignore), [Node.js versions](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions).

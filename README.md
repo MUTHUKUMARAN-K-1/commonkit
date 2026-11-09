@@ -12,7 +12,7 @@
 </p>
 <p align="center"><a href="#why-commonkit">Why CommonKit</a> · <a href="#in-action">In action</a> · <a href="#follow-the-money">The money</a> · <a href="#for-judges">For judges</a> · <a href="#run-locally">Run locally</a> · <a href="#scope-and-trust">Scope & trust</a></p>
 
-> **Release status:** working testnet prototype, publicly hosted on Vercel. Earlier Meteor rehearsals prove both borrowing outcomes on desktop and responsive Chrome. Fresh wallet signing on the Vercel origin remains pending after browser-control interruption. The repository stays private during preparation; final submission requires public source. [Deployment record](docs/VERCEL.md).
+> **Release status:** working testnet prototype, publicly hosted on Vercel. Both fresh Meteor flows passed on the public origin on 9 November: **19 finalized transactions, 48 receipt checks, both payouts complete**. The owner handled wallet approvals while the app and public verifier checked execution. Earlier rehearsals also cover responsive Chrome. The repository stays private during preparation; final submission requires public source. [Latest receipts](docs/testnet/vercel/README.md) · [Deployment record](docs/VERCEL.md).
 
 ## Why CommonKit
 
@@ -106,6 +106,7 @@ The library holds booking principal. Sputnik authorizes disputed allocation; it 
 | Receipt and accounting correctness | [Browser verifier](https://commonkit-testnet.vercel.app/verify.html), `npm run verify:testnet`, [verification engine](app/public/verification/engine.js) | 48 checks across the two historical flows; read-only, not a new signing rehearsal |
 | Failure behavior | [Compiled-contract sandbox suite](docs/CONTRACT-FAILURE-TESTS.md) | 19 targeted cases: authorization, rollback, failed transfers/retry, callback replay and DAO execution failure |
 | Browser integration | [Four cobalt UI rehearsals](docs/testnet/cobalt/README.md) | 38 transactions and 96 checks across desktop/responsive normal + dispute cycles; not physical-phone validation |
+| Current public deployment | [Vercel Meteor rehearsals](docs/testnet/vercel/README.md) | Booking #10 normal return and #11 dispute; 19 finalized transactions and 48 checks, including both withdrawals. Operator-assisted Meteor approvals |
 | Reproducibility | [CI workflow](.github/workflows/ci.yml), commands below, [deployment configuration](vercel.json) | 71 JS tests; 14 Rust lifecycle tests; separate sandbox evidence. Counts are not a security score |
 | Track fit and original work | [Submission facts](docs/SUBMISSION.md), [baseline comparison](https://github.com/MUTHUKUMARAN-K-1/commonkit/compare/baseline-v0.1...main) | Social Money: community-controlled equipment access and contested bond allocation |
 
@@ -178,11 +179,11 @@ Public deployment/operator scripts require private local configuration and submi
 - **Hashes bind files, not physical truth.** Rehearsal fixtures are synthetic. Evidence files remain local; SHA-256 hashes go on-chain.
 - **Access is permissioned.** The DAO admits borrowers. Successful normal returns record reputation; reputation does not automatically admit a visitor.
 - **Bounded storage.** Up to 32 assets, 64 admitted members and 256 lifetime bookings, without archival. Retained storage is not a refundable bond.
-- **Validation has limits.** Responsive desktop Chrome is not a physical-phone wallet test. Fresh Meteor cycles on the Vercel origin remain pending.
+- **Validation has limits.** Responsive desktop Chrome is not a physical-phone wallet test. The Vercel cycles used Chrome with operator-assisted Meteor approvals; public receipt checks establish their final execution.
 
 [Threat model](docs/THREAT-MODEL.md) · [Verification limitations](docs/VERIFICATION.md).
 
-Next validation priority: complete both new-origin Meteor cycles, then run one consented equipment-sharing pilot with separate people controlling the roles. Measure completion time and confusion before expanding the product. These are planned steps, not completed adoption.
+Next validation priority: run one consented equipment-sharing pilot with separate people controlling the roles. Measure completion time and confusion before expanding the product. This is planned, not completed adoption.
 
 ## Hackathon development and reuse
 

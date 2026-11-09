@@ -69,3 +69,7 @@ The final whole-library ledger at booking #9 completion records **99,000 microNE
 - Bringing newly opened Meteor windows to the foreground resolved browser automation stalls. The mobile viewport reset API was called at the end, but the existing tab still reported 390×844 after reload; it was left open with the completed council state.
 
 Physical-phone wallet signing and a fresh rehearsal on a deployed cobalt/apricot origin remain separate checks. The public proof page's existing historical cases were preserved.
+
+### Later public deployment
+
+The separate [9 November Vercel-origin rehearsals](../vercel/README.md) completed both flows with 19 finalized transactions and 48 passed receipt checks. This earlier folder remains evidence of the local-preview desktop/responsive runs. Physical-phone signing remains untested.

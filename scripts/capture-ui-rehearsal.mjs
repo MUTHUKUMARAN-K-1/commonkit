@@ -6,11 +6,12 @@ import {createHash} from 'node:crypto';
 import {createRpc} from '../app/public/verification/rpc.js';
 import {runVerification,checkTransaction,decode} from '../app/public/verification/engine.js';
 
-const [run,stage]=process.argv.slice(2);
+const [run,stage,suite='cobalt']=process.argv.slice(2);
+assert.ok(['cobalt','vercel'].includes(suite),'Unknown evidence suite');
 assert.match(run||'',/^(desktop|mobile)-(normal|dispute)$/);
 assert.ok(['baseline','reserved','single-vote','settled','treasury-single-vote','final'].includes(stage));
 const flow=run.endsWith('-normal')?'normal':'dispute';
-const dir=path.resolve('docs/testnet/cobalt',run);
+const dir=path.resolve('docs/testnet',suite,run);
 await fs.mkdir(dir,{recursive:true});
 const read=async name=>JSON.parse(await fs.readFile(path.join(dir,name),'utf8'));
 const write=async(name,data)=>fs.writeFile(path.join(dir,name),JSON.stringify(data,null,2)+'\n');
@@ -38,7 +39,8 @@ if(stage==='baseline'){
   assert.equal(b.fee,baseline.state.assets[b.asset_id].fee);assert.equal(b.bond,baseline.state.assets[b.asset_id].bond);
   assert.equal(ledger.deposited,baseline.ledger.deposited+b.fee+b.bond);
   const hashes={};
-  for(const name of ['pickup','return','damage','decision'])hashes[name]=createHash('sha256').update(await fs.readFile(`app/public/evidence/${name}.txt`)).digest('hex');
+  const evidenceDir=suite==='vercel'?path.join(dir,'evidence'):'app/public/evidence';
+  for(const name of ['pickup','return','damage','decision'])hashes[name]=createHash('sha256').update(await fs.readFile(path.join(evidenceDir,`${name}.txt`))).digest('hex');
   report.booking=b;
   const sid=Number(baseline.nextProposal),tid=sid+(flow==='dispute'?1:0);
   const proposal=async proposalId=>view(deployment.daoId,'get_proposal',{id:proposalId});

@@ -21,4 +21,4 @@ The tour's timing is explanatory, not the speed of blockchain execution. Fresh R
 - [Settled checkpoint](../app/public/verification/historical-settled.json): 0.007 borrower credit, 0.004 DAO credit.
 - [Final historical checkpoint](../app/public/verification/historical-final.json): withdrawals completed. Later demos can change aggregate library totals.
 
-Both demo council accounts are operated by one person. Fixtures simulate evidence and do not establish physical condition. See [the longer wallet-recording script](DEMO-SCRIPT.md) for a human-reviewed video, and [Vercel validation status](VERCEL.md) before claiming a fresh public-origin signing test.
+Both demo council accounts are operated by one person. Fixtures simulate evidence and do not establish physical condition. The tour continues to illustrate historical bookings #4/#5. Separate [fresh Vercel rehearsals](testnet/vercel/README.md) completed bookings #10/#11 on 9 November with operator-assisted Meteor approvals and all 48 receipt checks passing. See [the longer wallet-recording script](DEMO-SCRIPT.md) for a human-reviewed video.

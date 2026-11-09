@@ -13,7 +13,7 @@ This is a preparation checklist, not an application submission. No X post or app
 - Baseline: imported `baseline-v0.1` snapshot; current development changes identified by the README baseline-to-main compare link. `submission-ready` is an older intermediate tag, not the final submission. Commits are dated when created, not backdated.
 - Public verification: [48 checks across both flows, without a wallet](https://commonkit-testnet.vercel.app/verify.html), also `npm run verify:testnet`; [scope and limitations](VERIFICATION.md).
 - Proof: [normal return](testnet/METEOR-NORMAL-RETURN-REHEARSAL.md) (8 transactions / 21 checks) and [DAO dispute](testnet/METEOR-POLISHED-REHEARSAL.md) (11 transactions / 27 checks), with one-vote/two-vote snapshots. Later [cobalt UI rehearsals](testnet/cobalt/README.md) cover 4 separate desktop/responsive cycles, 38 transactions and 96 checks. Do not add these overlapping proof categories together.
-- Vercel: publicly deployed; fresh Meteor cycles on the new origin remain pending. Release status and tests are tracked in [VERCEL.md](VERCEL.md).
+- Vercel: publicly deployed; fresh Meteor normal-return (#10) and dispute (#11) cycles completed on 9 November, with 19 finalized transactions and 48 passed receipt checks. The owner handled Meteor approvals. [Final evidence](testnet/vercel/README.md) · [Deployment record](VERCEL.md).
 
 ## Project description draft
 
