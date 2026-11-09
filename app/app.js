@@ -172,6 +172,7 @@ function render(){
   if(!bookings.length)$('bookings').append(node('p',model?'No reservations yet. Choose equipment and a pickup time to get started.':'Bookings appear after the library is loaded.','empty'));
   const a=model?.assets[assetId];$('selected-name').textContent=a?.name||'Choose your equipment';$('fee').textContent=a?money(a.fee):'—';$('bond').textContent=a?money(a.bond):'—';$('storage').textContent=model?money(storage):'—';$('total').textContent=a?money(a.fee+a.bond+storage):'—';
   $('reserve').disabled=busy||dataStale||!account||!a?.enabled||!model.members.includes(account)||a.custodian===account;
+  $('reservation-onboarding').hidden=!!account;$('reserve-connect').disabled=busy||!a||!contractId;
   $('reserve-help').textContent=!account?'Connect an admitted member’s wallet to reserve.':!model?'Load the library first.':!model.members.includes(account)?'This wallet is not an admitted member. Ask the council to propose admission.':a?.custodian===account?'A custodian cannot borrow their own equipment.':'Your wallet will show the exact attached deposit before you sign.';
   $('withdraw').disabled=busy||dataStale||!account||!model||(model.credits[account]||0)<=0||Object.values(model.pending).some(w=>w.account===account);
   $('withdraw-help').textContent=!account?'Connect a wallet to check its withdrawable credit.':!model?'Load the library to check credit.':Object.values(model.pending).some(w=>w.account===account)?'Your withdrawal is awaiting confirmation.':(model.credits[account]||0)>0?`${money(model.credits[account])} is available for this wallet to withdraw.`:'This wallet has no available credit. Previously withdrawn funds are included in the library totals.';
@@ -214,6 +215,15 @@ async function syncWallet(){try{setAccounts(await(await wallet()).getAccounts({n
 async function connectWallet(walletId){if(devWallet){await devWallet.disconnect?.();devWallet=null;}closeDialog('wallet-dialog');message('Choose your testnet account in the wallet window. Allow popups for this site.');await connector.connect(walletId?{walletId}:undefined);await syncWallet();await refresh();message(account?'Testnet wallet connected. Your available actions reflect its on-chain roles.':'No wallet account selected.');}
 $('connect').onclick=()=>guard(()=>connectWallet());
 $('meteor-connect').onclick=()=>guard(()=>connectWallet('meteor-wallet'));
+$('reserve-connect').onclick=()=>{
+  const selectedAsset=assetId,selectedLibrary=contractId;
+  guard(async()=>{
+    closeDialog('reserve-dialog');
+    await connectWallet('meteor-wallet');
+    // Connection never reserves. Restore the quote only for this unchanged context.
+    if(account&&assetId===selectedAsset&&contractId===selectedLibrary&&model?.assets[selectedAsset])openReservation();
+  });
+};
 $('wallet-account').onchange=()=>{account=$('wallet-account').value;manualBookingSelection=false;if(model)bookingId=chooseBooking(model.bookings,account,model.assets);render();};
 $('disconnect').onclick=()=>guard(async()=>{if(devWallet){await devWallet.disconnect?.();devWallet=null;}else await connector.disconnect();setAccounts([]);message('Wallet disconnected. Choose another account in your wallet, then reconnect.');});
 $('dev-connect').onclick=()=>guard(async()=>{if(!devEnabled)throw Error('Development wallet unavailable');const module=await import('./dev-wallet.js');const selected=await module.connectDevWallet();if(selected){devWallet=selected;setAccounts(await devWallet.getAccounts({network:'testnet'}));message('Development testnet signer connected. Every action still sends a real signed testnet transaction.');}});

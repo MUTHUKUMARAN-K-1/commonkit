@@ -33,6 +33,8 @@ CommonKit makes that process inspectable. A borrower locks a refundable bond. A 
 
 **No wallet is needed for this judge path.** The illustrated tour explains recorded examples; the verifier performs fresh RPC reads.
 
+New here? Open the library's **Start here** guide to learn the three roles and compare both outcomes. Browse equipment and inspect its quote before connecting Meteor. [Visitor and borrowing paths](docs/ONBOARDING.md).
+
 | Time | Do this | See this |
 | --- | --- | --- |
 | 0–10s | Open the [judge tour](https://commonkit-testnet.vercel.app/judge.html) | The camera, the three roles and the borrowing journey |

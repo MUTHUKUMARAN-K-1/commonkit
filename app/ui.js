@@ -1,4 +1,5 @@
 import {mountIcons} from './icons.js';
+import {initOnboarding} from './onboarding.js';
 import {animate} from 'motion/mini';
 import 'number-flow';
 const $=id=>document.getElementById(id);
@@ -58,6 +59,7 @@ export function preserveFocus(){const active=document.activeElement;const key=ac
 export function setBusy(value){document.querySelectorAll('.review-actions button,[data-close],#wallet-open').forEach(e=>e.disabled=value);}
 export function initUi(){
   mountIcons();
+  initOnboarding();
   document.querySelectorAll('[data-close]').forEach(button=>button.onclick=()=>closeDialog(button.dataset.close));
   document.querySelectorAll('dialog').forEach(d=>{d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog(d.id);}});d.addEventListener('close',()=>restoreDialogFocus(d));});
   $('wallet-open').onclick=()=>openDialog('wallet-dialog');$('refresh-short').onclick=()=>$('refresh').click();
