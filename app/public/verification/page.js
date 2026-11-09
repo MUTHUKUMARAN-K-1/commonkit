@@ -1,8 +1,11 @@
 import {createRpc, DEFAULT_ENDPOINTS} from './rpc.js';
 import {runVerification, getCheckIds} from './engine.js';
 import {PROOF_CASES} from './cases.js';
+import {buildCaseFile} from './case-model.js';
+import {createCaseFile} from './case-file.js';
 
 const $ = id => document.getElementById(id);
+const caseFile = createCaseFile($('case-file'));
 const node = (tag, text, className) => { const el = document.createElement(tag); if (text !== undefined) el.textContent = text; if (className) el.className = className; return el; };
 const flows = {
   normal: {
@@ -61,6 +64,7 @@ async function run() {
   const flow = selected, config = flows[flow], token = ++generation;
   if (activeFlow && activeFlow !== flow) { $(`status-${activeFlow}`).textContent = 'Check interrupted'; $(`status-${activeFlow}`).removeAttribute('data-state'); }
   activeFlow = flow;
+  caseFile.reset(flow);
   report = null;
   $('run').disabled = true; $('download').disabled = true;
   document.querySelector('.result-panel').setAttribute('aria-busy', 'true');
@@ -77,6 +81,7 @@ async function run() {
   let ids = [];
   function showCheck(check) {
     if (!current()) return;
+    caseFile.update(check);
     const row = node('details', undefined, `check ${check.status}`);
     row.dataset.order = ids.indexOf(check.id);
     if (check.status !== 'PASS') row.open = true;
@@ -97,6 +102,7 @@ async function run() {
     const manifest = await response.json();
     if (!current()) return;
     if (manifest.flow !== flow || manifest.booking?.id !== config.bookingId) throw Error('Evidence manifest does not match the selected flow and booking');
+    try { caseFile.load(buildCaseFile(manifest)); } catch (error) { caseFile.fail(error.message); }
     ids = getCheckIds(manifest);
     $('check-count').textContent = `${ids.length} READ-ONLY CHECKS`;
     const transport = createRpc();
@@ -117,6 +123,7 @@ async function run() {
     $('download').disabled = false;
   } catch (error) {
     if (!current()) return;
+    caseFile.fail(error.message);
     $('result-title').textContent = 'Verification is incomplete.';
     $('progress').textContent = `UNVERIFIED: ${error.message}. No successful result is inferred. Retry when the connection is available.`;
     $('unverified').textContent = String(Math.max(1, Number($('unverified').textContent)));
@@ -136,7 +143,11 @@ function selectFlow(flow, updateUrl = true) {
   setFlowContent(flow); run();
 }
 for (const button of document.querySelectorAll('[data-flow]')) button.addEventListener('click', () => { if (button.dataset.flow !== selected) selectFlow(button.dataset.flow); });
-window.addEventListener('popstate', () => selectFlow(flowFromUrl(), false));
+window.addEventListener('popstate', () => {
+  const flow = flowFromUrl();
+  // In-page evidence links must not clear local file checks or restart RPC.
+  if (flow !== selected) selectFlow(flow, false);
+});
 $('run').addEventListener('click', run);
 $('download').addEventListener('click', () => {
   if (!report) return;

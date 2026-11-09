@@ -22,3 +22,5 @@ The tour's timing is explanatory, not the speed of blockchain execution. Fresh R
 - [Final historical checkpoint](../app/public/verification/vercel/dispute/final.json): withdrawals completed. Later demos can change aggregate library totals.
 
 Both demo council accounts are operated by one person. Fixtures simulate evidence and do not establish physical condition. The tour now illustrates the [completed Vercel rehearsals](testnet/vercel/README.md): bookings #10/#11 on 9 November with operator-assisted Meteor approvals. Both actual payouts completed; the public browser and CLI recheck these same 19 transactions with 48 checks. Earlier #4/#5 manifests remain archived at their original paths. See [the longer wallet-recording script](DEMO-SCRIPT.md) for a human-reviewed video.
+
+For a deeper look after the tour, open the [dispute case file](https://commonkit-testnet.vercel.app/verify.html?flow=dispute#case-file). Compare pickup, return, original damage and final decision evidence; then follow the two votes and actual withdrawals. File matching runs locally and does not prove physical condition.

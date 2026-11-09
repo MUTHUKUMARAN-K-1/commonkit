@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "test": "node --test scripts/dao.test.mjs scripts/wallet-result.test.mjs scripts/presentation.test.mjs scripts/verification.test.mjs scripts/live-ui.test.mjs",
+    "test": "node --test scripts/dao.test.mjs scripts/wallet-result.test.mjs scripts/presentation.test.mjs scripts/verification.test.mjs scripts/live-ui.test.mjs scripts/case-file.test.mjs",
     "test:browser": "node scripts/browser-test.mjs",
     "test:api": "node scripts/api-test.mjs",
     "test:contract": "node --test --test-concurrency=1 scripts/contract-failures.test.mjs",

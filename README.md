@@ -78,6 +78,8 @@ deposited principal = escrow + available credits + pending transfers + withdrawn
 
 The verifier independently recomputes the current whole-library ledger at one finalized block. Later bookings can change those totals without changing historical receipts. [Saved one-vote checkpoint](app/public/verification/vercel/dispute/single-vote.json) · [Normal-return manifest](app/public/verification/vercel/normal/manifest.json) · [Dispute manifest](app/public/verification/vercel/dispute/manifest.json).
 
+Read the [dispute case file](https://commonkit-testnet.vercel.app/verify.html?flow=dispute#case-file) to compare the original damage report with the council decision, inspect both votes and locally match evidence files. [How file matching works](docs/CASE-FILE.md).
+
 ## Architecture
 
 <img src="docs/brand/commonkit-architecture.svg" alt="Meteor signs borrower and custodian actions on the library and council votes on Sputnik DAO. Two approvals let the DAO resolve a dispute. The public verifier independently reads chain state and receipts." width="100%">
@@ -107,7 +109,7 @@ The library holds booking principal. Sputnik authorizes disputed allocation; it 
 | Failure behavior | [Compiled-contract sandbox suite](docs/CONTRACT-FAILURE-TESTS.md) | 19 targeted cases: authorization, rollback, failed transfers/retry, callback replay and DAO execution failure |
 | Browser integration | [Four cobalt UI rehearsals](docs/testnet/cobalt/README.md) | 38 transactions and 96 checks across desktop/responsive normal + dispute cycles; not physical-phone validation |
 | Current public deployment | [Vercel Meteor rehearsals](docs/testnet/vercel/README.md) | Booking #10 normal return and #11 dispute; 19 finalized transactions and 48 checks, including both withdrawals. Operator-assisted Meteor approvals |
-| Reproducibility | [CI workflow](.github/workflows/ci.yml), commands below, [deployment configuration](vercel.json) | 73 JS tests; 14 Rust lifecycle tests; separate sandbox evidence. Counts are not a security score |
+| Reproducibility | [CI workflow](.github/workflows/ci.yml), commands below, [deployment configuration](vercel.json) | 79 JS tests; 14 Rust lifecycle tests; separate sandbox evidence. Counts are not a security score |
 | Track fit and original work | [Submission facts](docs/SUBMISSION.md), [baseline comparison](https://github.com/MUTHUKUMARAN-K-1/commonkit/compare/baseline-v0.1...main) | Social Money: community-controlled equipment access and contested bond allocation |
 
 The public proof now checks the latest Vercel bookings #10/#11. Earlier rehearsals remain archived; repeated demo runs are not a user/adoption metric.

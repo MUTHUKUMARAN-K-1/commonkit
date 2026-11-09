@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light">
   <meta name="description" content="Verify CommonKit's normal return and DAO dispute settlement from public NEAR testnet receipts. Check both borrowing flows without a wallet.">
-  <title>Verify both borrowing flows · CommonKit</title><link rel="stylesheet" href="/verification/page.css">
+  <title>Verify both borrowing flows · CommonKit</title><link rel="stylesheet" href="/verification/page.css"><link rel="stylesheet" href="/verification/case-file.css">
 </head>
 <body>
 <a class="skip" href="#checks">Skip to verification results</a>
 <header><a class="brand" href="/">ck <span>CommonKit</span></a><span class="network">NEAR TESTNET</span><nav aria-label="Main navigation"><a href="/">Library</a><a href="/judge.html">60-second tour</a><a href="/verify.html" aria-current="page">Verify</a></nav></header>
 <main>
   <section class="hero">
-    <div><p class="eyebrow">THE COMMONKIT EVIDENCE DESK / SOCIAL MONEY</p><h1>Follow the gear.<br><em>Check the money.</em></h1><p class="intro">A smooth return. A disputed return.<br>Inspect both outcomes from public testnet receipts.</p></div>
+    <div><p class="eyebrow">THE COMMONKIT EVIDENCE DESK / SOCIAL MONEY</p><h1>Follow the gear.<br><em>Check the money.</em></h1><p class="intro">A smooth return. A disputed return.<br>Inspect both outcomes from public testnet receipts.</p><a class="case-jump" href="#case-file">Read the case file ↓</a></div>
     <aside><span class="eyebrow">NO WALLET NEEDED</span><h2>Evidence you can inspect.</h2><p>Choose a completed borrowing cycle from our public Vercel demo. We read fresh blockchain data and check the decisions, transfers and final receipts.</p><p class="fine">Read-only · no signing or spending<br>Vercel + Meteor · 9 Nov 2026</p></aside>
   </section>
   <section class="proof-picker" aria-labelledby="pick-title">
@@ -24,6 +24,7 @@
     <section class="claim-strip" aria-labelledby="claim-title"><div><span class="eyebrow" id="claim-title">RECORDED CLAIMS / NORMAL RETURN</span><p id="flow-reference">Booking #10 · zero damage · treasury proposal #15</p></div><dl><div><dt>Borrower refund</dt><dd id="borrower-amount">0.01 <small>NEAR</small></dd></div><div><dt id="dao-label">DAO usage fee</dt><dd id="dao-amount">0.001 <small>NEAR</small></dd></div></dl><p class="fine">Historical amounts to verify,<br>not current wallet balances.</p></section>
     <section class="result-panel" aria-labelledby="result-title" aria-busy="true"><div class="result-head"><div><p class="eyebrow" id="result-flow">LIVE VERIFICATION / NORMAL RETURN</p><h2 id="result-title">Connecting to public RPC…</h2></div><div class="buttons"><button id="run" type="button">Run checks again</button><button id="download" type="button" disabled>Download report ↓</button></div></div><p id="progress" role="status" aria-live="polite">No checks have passed yet. Reading fresh data…</p><div class="counts"><div><strong id="passed">0</strong><span>Passed</span></div><div><strong id="failed">0</strong><span>Mismatched</span></div><div><strong id="unverified">0</strong><span>Unverified</span></div></div><p id="anchor" class="mono">Finalized block: waiting for RPC</p><p class="fine result-key">PASS = evidence matches · FAIL = mismatch · UNVERIFIED = evidence unavailable.<br>Saved snapshots never substitute for a live result. Each flow is checked separately.</p></section>
     <section id="story" class="story" aria-label="What the selected rehearsal demonstrates"></section>
+    <section id="case-file" aria-label="Recorded borrowing case file"><p class="eyebrow">THE CASE FILE</p><h2>Evidence, decisions and payments.</h2><p>Loading the recorded case file…</p></section>
     <section id="checks" aria-labelledby="checks-title"><div class="section-heading"><h2 id="checks-title">Evidence, one check at a time.</h2><span id="check-count">21 READ-ONLY CHECKS</span></div><div id="groups"></div></section>
     <section class="accounting"><div><p class="eyebrow">02 / CURRENT LIBRARY TOTALS</p><h2>The books must balance.</h2><p>Recomputed from every booking, credit and pending transfer at the same finalized block. These are whole-library totals; later borrowing can change them without changing either recorded rehearsal.</p><p class="fine">Principal only. Retained storage, proposal bonds and gas are separate.</p></div><div><p id="ledger-status">Current ledger not verified yet.</p><dl id="ledger"></dl></div></section>
   </div>
