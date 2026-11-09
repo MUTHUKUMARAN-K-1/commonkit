@@ -1,6 +1,6 @@
 # Verify CommonKit without a wallet
 
-Open [the public verification page](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html). Select **Normal return** (21 checks, booking #5) or **DAO dispute** (27 checks, booking #4). It runs fresh read-only checks from your browser and provides an expandable explanation, receipt links and a downloadable JSON report. No login, wallet connection, private key or signing server is used.
+Open [the public verification page](https://commonkit-testnet.vercel.app/verify.html). Select **Normal return** (21 checks, booking #5) or **DAO dispute** (27 checks, booking #4). It runs fresh read-only checks from your browser and provides an expandable explanation, receipt links and a downloadable JSON report. No login, wallet connection, private key or signing server is used.
 
 From a clone, with Node.js 24 (dependency installation is unnecessary for this command):
 

@@ -1,6 +1,10 @@
-# Vercel deployment preparation
+# Vercel deployment
 
-**Prepared, not deployed to Vercel.** The current live demo remains https://commonkit-testnet.muthukumarank.chatgpt.site. The owner requested configuration only for Vercel.
+**Deployed on 8 November 2026.** Production: https://commonkit-testnet.vercel.app. The owner authorized public deployment while keeping GitHub private. Vercel reported the production release ready and assigned this alias.
+
+The polished UI and `/judge.html` tour are included. The tour loaded publicly and completed playback in the in-app browser. Fresh Meteor borrowing and dispute cycles on this new origin remain **pending**: Chrome controls stalled and browser automation stopped before a new transaction could be verified. Existing local/Sites receipts are not Vercel-origin signing evidence.
+
+Recorded deployment: `dpl_3rxRQ9yWhRbCXSnsEtsmZL6JFVgf` ([deployment inspection](https://vercel.com/muthukumaran-k-1s-projects/commonkit-testnet/3rxRQ9yWhRbCXSnsEtsmZL6JFVgf), team access required). The older Sites URL remains a previous-release fallback.
 
 ## Import settings
 
@@ -29,11 +33,11 @@ npm run build:vercel
 npm run preview
 ```
 
-Open http://127.0.0.1:4318, `/verify.html`, `/demo-guide.html`, `/deployment.json` and `/evidence/pickup.txt`. The build check requires all demo assets, a testnet configuration and absence of private-key values/development-wallet code in the static output. Production writes still require the user's browser wallet.
+Open http://127.0.0.1:4318, `/judge.html`, `/verify.html`, `/demo-guide.html`, `/deployment.json` and `/evidence/pickup.txt`. The build check requires all demo assets, a testnet configuration and absence of private-key values/development-wallet code in the static output. Production writes still require the user's browser wallet.
 
 `.vercelignore` allows only frontend build inputs for CLI uploads, excluding `.testnet`, local artifacts, research, screenshots, contract sources and the separate Sites checkout. The GitHub repository still contains contract sources and public validation evidence for review. No secret is required on Vercel.
 
-## After an authorized future deployment
+## Remaining public-origin validation
 
 - Confirm the resulting URL loads live library and DAO state.
 - Open the guide, verification page and fixture links, including direct URL loads. Run all verification checks from the new origin to confirm RPC/CORS availability.

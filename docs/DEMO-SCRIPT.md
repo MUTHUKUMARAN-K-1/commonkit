@@ -4,9 +4,9 @@ Record one fresh cycle through the public demo in Chrome and Meteor Web. Allow 1
 
 ## Before recording
 
-For the new cobalt/apricot integration, run `npm run build:vercel` and `npm run preview`, then use the local URL printed by Vite. The public demo still serves the earlier release until the new build is deployed. The new UI uses **Library** for equipment and booking review, **Bookings** for handover/return evidence and withdrawals, and **Council** for proposals and votes. Open the wallet button to connect, inspect roles or disconnect.
+Start with the [60-second judge tour](JUDGE-WALKTHROUGH.md) for a wallet-free introduction. For recording, use the production URL and release status in [VERCEL.md](VERCEL.md). For a local rehearsal, run `npm run build:vercel` and `npm run preview`. The new UI uses **Library** for equipment and booking review, **Bookings** for handover/return evidence and withdrawals, and **Council** for proposals and votes. Open the wallet button to connect, inspect roles or disconnect.
 
-- Open https://commonkit-testnet.muthukumarank.chatgpt.site and unlock Meteor privately. Never record the unlock password, seed phrase, key import screen or developer credentials.
+- Open https://commonkit-testnet.vercel.app and unlock Meteor privately. Never record the unlock password, seed phrase, key import screen or developer credentials.
 - Use the operator's three imported **testnet** wallets: borrower, custodian/council 2, and council 1. Both council accounts are controlled by the demo operator; say so.
 - Use the labeled [pickup](../app/public/evidence/pickup.txt), [return](../app/public/evidence/return.txt), [damage](../app/public/evidence/damage.txt) and [decision](../app/public/evidence/decision.txt) fixtures. These simulate evidence, not physical events.
 - Reserve a new booking with pickup a few minutes ahead. Note its actual booking ID and the two new proposal IDs. Existing proof is booking #4 / settlement #6 / treasury #7; do not reuse those IDs for a new transaction.
@@ -35,7 +35,7 @@ Click once, allow the popup, and inspect the existing Meteor window. Wait for th
 
 ## Judge verification without the operator wallets
 
-Open [Verify the flow](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html). Select Normal return for booking #5 (21 fresh checks), then DAO dispute for booking #4 (27 checks). Expand the actual borrower/DAO transfers and download each report. These recheck the two recorded rehearsals; they do not create a new booking or verify a newly recorded cycle automatically. The first-vote balance snapshots remain explicitly historical. The same 48 checks run with `npm run verify:testnet`; select one flow with `-- --flow normal` or `-- --flow dispute`.
+Open [Verify the flow](https://commonkit-testnet.vercel.app/verify.html). Select Normal return for booking #5 (21 fresh checks), then DAO dispute for booking #4 (27 checks). Expand the actual borrower/DAO transfers and download each report. These recheck the two recorded rehearsals; they do not create a new booking or verify a newly recorded cycle automatically. The first-vote balance snapshots remain explicitly historical. The same 48 checks run with `npm run verify:testnet`; select one flow with `-- --flow normal` or `-- --flow dispute`.
 
 ## Short fallback when live signing is unavailable
 

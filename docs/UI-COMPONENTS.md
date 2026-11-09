@@ -8,7 +8,7 @@ The production UI remains vanilla JavaScript, CSS and Vite. No React migration w
 | --- | --- | --- |
 | Motion | 14.10.1 | `motion/mini` animates route panels and native dialog entry using browser animation APIs |
 | NumberFlow | 0.6.2 | Vanilla custom element animates equipment/member integer counts; financial values remain exact strings |
-| Fontsource DM Sans | 5.3.0 | Self-hosted Latin body/control typography, weights 400–700 |
+| Fontsource DM Sans | 5.3.0 | Self-hosted Latin body/control typography, weights 400 / 500 / 600 |
 | Fontsource Instrument Serif | 5.3.0 | Self-hosted Latin italic display typography |
 
 Package licenses and notices remain in the installed packages and are recorded in the lockfile dependency metadata. Motion and NumberFlow use MIT licenses; font license texts are copied into `app/public/licenses/` for distribution with the font assets.
@@ -30,3 +30,12 @@ The camera illustration was generated for CommonKit's accepted design preview an
 The follow-up polish uses Lucide for navigation, search, wallet and vote icons, with 18px SVG boxes and a 1.5 stroke. Its license is distributed in `app/public/licenses/lucide.txt`; the exact package version is pinned in `package.json` and the lockfile. The design method is credited to Unslop by Damir Sokolovsky (CC BY 4.0) in [the audit and report](UNSLOP-AUDIT.md).
 
 Animation honors reduced motion. Route and dialog movement use short opacity/transform transitions. Balances, attached deposits and receipt values are never animated through intermediate numeric amounts. Native dialogs close before invoking Meteor's connector so they cannot cover the wallet chooser.
+
+
+## Judge walkthrough
+
+The static `/judge.html` tour uses six ten-second chapters, locally hosted DM Sans / Instrument Serif fonts, the existing illustrative camera asset and original CSS/SVG accounting diagrams. A user starts playback; chapters can be paused or selected, reduced-motion disables visual transitions, and leaving the tab pauses the clock. Amounts never count through invented intermediate values.
+
+The requested NullMotion, Remotion Create and HyperFrames skills were read for reference-study boundaries, focal hierarchy and motion timing. This deliverable is an interactive web walkthrough, not an MP4 or a Remotion/HyperFrames render. No third-party reference footage, templates, sound or video was copied. Existing font licenses are in `app/public/licenses/`.
+
+README identity, diagrams and voice guidelines: [BRAND.md](BRAND.md).

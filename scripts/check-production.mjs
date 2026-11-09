@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 
 // Validate the actual static artifact, not the source tree.
 const root = path.resolve('dist');
-const required = ['index.html', 'verify.html', 'verification/page.js', 'verification/page.css', 'verification/engine.js', 'verification/rpc.js', 'verification/manifest.json', 'verification/normal-manifest.json', 'verification/normal-historical-single-vote.json', 'verification/normal-historical-settled.json', 'verification/normal-historical-final.json', 'verification/historical-single-vote.json', 'verification/historical-settled.json', 'verification/historical-final.json', 'deployment.json', 'demo-guide.html', 'evidence/pickup.txt', 'evidence/return.txt', 'evidence/damage.txt', 'evidence/decision.txt'];
+const required = ['index.html', 'judge.html', 'judge/story.js', 'judge/story.css', 'judge/dm-sans.woff2', 'judge/instrument-serif.woff2', 'verify.html', 'verification/page.js', 'verification/page.css', 'verification/engine.js', 'verification/rpc.js', 'verification/manifest.json', 'verification/normal-manifest.json', 'verification/normal-historical-single-vote.json', 'verification/normal-historical-settled.json', 'verification/normal-historical-final.json', 'verification/historical-single-vote.json', 'verification/historical-settled.json', 'verification/historical-final.json', 'deployment.json', 'demo-guide.html', 'evidence/pickup.txt', 'evidence/return.txt', 'evidence/damage.txt', 'evidence/decision.txt'];
 for (const name of required) await fs.access(path.join(root, name));
 const deployment = JSON.parse(await fs.readFile(path.join(root, 'deployment.json'), 'utf8'));
 assert.equal(deployment.network, 'testnet');

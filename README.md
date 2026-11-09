@@ -1,74 +1,119 @@
-# CommonKit
+<p align="center">
+  <a href="https://commonkit-testnet.vercel.app"><img src="docs/brand/commonkit-banner.svg" alt="CommonKit — Shared gear. Accountable money. Community equipment borrowing on NEAR." width="100%"></a>
+</p>
 
-**Borrow community equipment, escrow a refundable bond, and resolve damage disputes with two council votes on NEAR.**
+<h1 align="center">CommonKit</h1>
+<p align="center"><strong>A community equipment library with refundable bonds and DAO-governed disputes.</strong><br>Reserve the gear. Record the handover. Follow every decision and payment.</p>
+<p align="center"><strong>NEAR testnet</strong> &nbsp; / &nbsp; Social Money &nbsp; / &nbsp; Sputnik DAO &nbsp; / &nbsp; Meteor Web &nbsp; / &nbsp; MIT</p>
+<p align="center">
+  <a href="https://commonkit-testnet.vercel.app"><strong>Open the library ↗</strong></a> &nbsp; · &nbsp;
+  <a href="https://commonkit-testnet.vercel.app/judge.html"><strong>60-second judge tour ↗</strong></a> &nbsp; · &nbsp;
+  <a href="https://commonkit-testnet.vercel.app/verify.html"><strong>Verify both flows ↗</strong></a>
+</p>
+<p align="center"><a href="#why-commonkit">Why CommonKit</a> · <a href="#in-action">In action</a> · <a href="#follow-the-money">The money</a> · <a href="#for-judges">For judges</a> · <a href="#run-locally">Run locally</a> · <a href="#scope-and-trust">Scope & trust</a></p>
 
-Campus clubs share cameras and projectors, but handovers and deposit disputes often depend on one organizer's spreadsheet. CommonKit records reservations and evidence hashes, separates borrower and custodian permissions, and makes the community's DAO authorize contested damage allocations. Settlement creates credits; separate withdrawals transfer funds.
+> **Release status:** working testnet prototype, publicly hosted on Vercel. Earlier Meteor rehearsals prove both borrowing outcomes on desktop and responsive Chrome. Fresh wallet signing on the Vercel origin remains pending after browser-control interruption. The repository stays private during preparation; final submission requires public source. [Deployment record](docs/VERCEL.md).
 
-**Status:** working NEAR testnet prototype. The polished frontend completed both an eleven-transaction dispute rehearsal and an eight-transaction normal-return rehearsal through Meteor Web on 8 November 2026. Repository visibility is private during preparation; it must become public before hackathon submission. MIT licensed.
+## Why CommonKit
 
-The new cobalt/apricot interface is implemented locally with Library, Bookings and Council views, Motion transitions, booking review and explicit wallet roles. Four fresh Meteor rehearsals passed: desktop and responsive Chrome normal return/dispute, with 38 successful transactions and 96 receipt checks. See [cobalt integration validation](docs/testnet/cobalt/README.md) for manifests, receipts and screenshots. Responsive Chrome testing does not establish physical-phone wallet compatibility. The public link below still serves the previously rehearsed release; it has not been updated to this integration.
+A campus club has one camera and many people who need it. Booking it is easy. Keeping track of who collected it, whether it came back damaged, and who should receive the deposit is harder.
 
-A subsequent [focused UI polish](docs/UNSLOP-AUDIT.md) combines equipment-first navigation, community guidance and visible evidence: readable mobile labels, consistent icons, clearer credit language and restrained motion. The Meteor transaction handlers and DAO policy/payload logic are unchanged; this follow-up was checked locally and has not been deployed.
+CommonKit makes that process inspectable. A borrower locks a refundable bond. A separate custodian records handover and inspects the return. If they disagree, the community's existing Sputnik DAO authorizes a damage allocation through two council approvals. The borrower and DAO then withdraw their credits, leaving public execution receipts.
 
-[Live demo](https://commonkit-testnet.muthukumarank.chatgpt.site) · [Verify without a wallet](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html) · [Wallet guide](https://commonkit-testnet.muthukumarank.chatgpt.site/demo-guide.html) · [Three-minute demo script](docs/DEMO-SCRIPT.md) · [Vercel setup](docs/VERCEL.md) · [Submission checklist](docs/SUBMISSION.md)
+**The first audience is campus clubs and small equipment-sharing communities.** The camera kit is the current demo asset; no real-world adoption or pilot results are claimed.
 
-## Try it: do this, see this
-
-No wallet is needed to inspect recorded testnet state. Open **Verify the flow**, then select **Normal return** (21 checks) or **DAO dispute** (27 checks) for fresh read-only checks, receipt links and a downloadable report. From a clone with Node 24, run `npm run verify:testnet` (no dependency installation needed), or `npm run --silent verify:testnet -- --json`. [What the checks prove and their limits](docs/VERIFICATION.md).
-
-| Do this | See this |
+| The community needs | CommonKit provides |
 | --- | --- |
-| Open the demo in Chrome | The live camera kit and borrower / custodian / council account roles. |
-| Select **Normal return** on the verifier | Booking **#5**, zero damage, full **0.01 NEAR** bond returned, **0.001 NEAR** DAO fee paid after two votes. |
-| Select booking **#4** | Pickup, return request, council review and settlement in its timeline. |
-| Inspect settlement proposal **#6** | Two named approvals, 0.003 NEAR damage, and matching closed library state. |
-| Inspect treasury proposal **#7** and accounting | The recorded run ended with 0.044 NEAR deposited and withdrawn; zero escrow, credits or pending transfers. |
-| Read the [one-vote snapshot](docs/testnet/meteor-polished-single-vote.json) | Booking disputed, proposal pending, 0.011 NEAR still escrowed, zero credits before vote two. |
-| Open the [eleven receipt hashes](docs/testnet/meteor-polished-receipts.txt) | Actual reserve, pickup, return, dispute, proposal, vote and withdrawal transactions. |
+| Clear borrowing terms | Availability, fee, refundable bond and retained storage shown before signing |
+| An accountable handover | Distinct borrower/custodian permissions and evidence hashes at pickup and return |
+| A way to handle disagreement | A DAO proposal binding the booking, damage amount and decision evidence |
+| A checkable payment history | Separate settlement and withdrawal states, final receipt checks and a public verifier |
 
-The shared testnet state changes with later demos. Historical booking allocations differ from current aggregate balances. The frontend verifies final execution and child receipts, not just wallet acceptance or DAO approval.
+## Try it in one minute
 
-To perform actions, use **Connect Meteor → Meteor Web** and select an authorized testnet account in Meteor's connection prompt. The operator controls the recorded demo accounts; their keys are not in this repo. Visitors can inspect state but cannot borrow until the DAO admits their account or vote without a council seat. Follow the [wallet guide](app/public/demo-guide.html) for a new cycle.
+**No wallet is needed for this judge path.** The illustrated tour explains recorded examples; the verifier performs fresh RPC reads.
 
-![Recorded council settlement](docs/testnet/meteor-polished-final.jpg)
+| Time | Do this | See this |
+| --- | --- | --- |
+| 0–10s | Open the [judge tour](https://commonkit-testnet.vercel.app/judge.html) | The camera, the three roles and the borrowing journey |
+| 10–20s | Select **Reserve** | 0.111 testnet NEAR attached: 0.011 principal plus 0.100 retained storage |
+| 20–30s | Select **Normal return** | Booking #5: the borrower receives the full 0.010 bond; the DAO receives the 0.001 fee |
+| 30–40s | Select **First vote** | The saved booking #4 checkpoint: one approval, 0.011 still escrowed, zero credits |
+| 40–50s | Select **Settlement** | Second approval authorizes 0.003 damage; credits and actual withdrawals remain distinct |
+| 50–60s | Select **Verify it**, then open either proof | 21 normal-return checks or 27 dispute checks, receipt links and a downloadable report |
 
-## What NEAR does
+RPC completion time is additional to the tour. A mismatch or unavailable receipt is reported; saved snapshots never substitute for a live pass. [Verification scope](docs/VERIFICATION.md) · [Narration and evidence map](docs/JUDGE-WALKTHROUGH.md).
 
-The Rust library contract enforces admission, reservations, custody, evidence binding and integer accounting. Native testnet NEAR funds escrow. An existing **Sputnik DAO** is the governance authority: both council accounts must approve a FunctionCall proposal before the DAO can call `resolve`. Treasury withdrawal needs a separate two-vote proposal. **Meteor Web through NEAR Connect** supplies actual wallet identities.
+To run a **new signed cycle**, use [the Meteor wallet guide](https://commonkit-testnet.vercel.app/demo-guide.html). Only DAO-admitted members can borrow; only authorized council accounts can vote. Public visitors can inspect both flows without our wallet accounts.
 
-```mermaid
-sequenceDiagram
-    participant B as Borrower wallet
-    participant C as Custodian / council 2
-    participant V as Council 1 wallet
-    participant L as CommonKit contract
-    participant D as Sputnik DAO
-    B->>L: Reserve + fee, bond, storage
-    C->>L: Pickup + evidence hash
-    B->>L: Request return + evidence hash
-    C->>L: Dispute + damage evidence
-    C->>D: Propose settlement + first vote
-    Note over L,D: One vote leaves principal escrowed
-    V->>D: Second approval of same proposal
-    D->>L: Resolve damage allocation
-    Note over B,D: Borrower and DAO credits are recorded
-    B->>L: Withdraw borrower credit
-    D->>L: Withdraw DAO credit after two new votes
+## In action
+
+### Find the kit. Understand the terms.
+
+<a href="https://commonkit-testnet.vercel.app"><img src="docs/testnet/unslop/final-desktop-library.jpg" alt="CommonKit library showing the camera kit, usage fee, refundable bond and booking progress" width="100%"></a>
+
+<table>
+<tr>
+<td width="50%" valign="top"><img src="docs/testnet/unslop/final-desktop-normal-return.jpg" alt="Normal return booking with its closed journey and recorded allocation" width="100%"><br><strong>A return you can follow.</strong><br>See the next actor, evidence and allocation in one booking view.</td>
+<td width="50%" valign="top"><img src="docs/testnet/unslop/final-desktop-council.jpg" alt="Council proposals showing both named approvals and library settlement status" width="100%"><br><strong>A decision you can inspect.</strong><br>Read the target, both votes and the resulting library state.</td>
+</tr>
+</table>
+
+<sub>Product captures from the local production preview on 8 November 2026, reading public testnet state. These screenshots are not new Vercel wallet receipts. The camera image is illustrative; displayed state can change. [Capture context](docs/testnet/unslop/README.md).</sub>
+
+## Follow the money
+
+**One camera booking attaches 0.111 testnet NEAR.** Of that, 0.100 is retained storage and 0.011 is tracked principal: a 0.010 bond plus a 0.001 usage fee. Gas and the separate 0.010 DAO proposal bond are outside this principal ledger.
+
+| Recorded outcome | Borrower withdrawal | DAO withdrawal | Evidence |
+| --- | --- | --- | --- |
+| Normal return, zero damage | **0.010 NEAR** | **0.001 NEAR** fee | [Booking #5 · 8 transactions](https://commonkit-testnet.vercel.app/verify.html?flow=normal) |
+| Dispute, 0.003 damage | **0.007 NEAR** | **0.004 NEAR** fee + damage | [Booking #4 · 11 transactions](https://commonkit-testnet.vercel.app/verify.html?flow=dispute) |
+
+The custodian accepts a normal return. A disputed return requires two council approvals. **One vote leaves the principal escrowed; settlement creates credits, and withdrawals transfer the money.** The DAO's own withdrawal requires a separate two-vote treasury proposal in either flow.
+
+```text
+deposited principal = escrow + available credits + pending transfers + withdrawn principal
 ```
 
-| Component | Testnet account |
+The verifier independently recomputes the current whole-library ledger at one finalized block. Later bookings can change those totals without changing historical receipts. [Saved one-vote checkpoint](app/public/verification/historical-single-vote.json) · [Normal-return manifest](app/public/verification/normal-manifest.json) · [Dispute manifest](app/public/verification/manifest.json).
+
+## Architecture
+
+<img src="docs/brand/commonkit-architecture.svg" alt="Meteor signs borrower and custodian actions on the library and council votes on Sputnik DAO. Two approvals let the DAO resolve a dispute. The public verifier independently reads chain state and receipts." width="100%">
+
+| Existing infrastructure | CommonKit's application logic |
 | --- | --- |
-| Library | `library.ckdao-mw7e25at.testnet` |
-| Sputnik DAO | `ckdao-mw7e25at.sputnikv2.testnet` |
-| Borrower | `borrower.commonkit-mw7dph80.testnet` |
-| Custodian / council 2 | `custodian.commonkit-mw7dph80.testnet` |
-| Council 1 | `commonkit-mw7dph80.testnet` |
+| **Sputnik DAO:** council membership, proposal policy, votes and approved FunctionCall execution | **Rust library contract:** member admission, equipment reservations, custody, return/dispute states, bond allocation and retryable withdrawals |
+| **Meteor Web + NEAR Connect:** browser wallet identities and signing | **Frontend:** role-aware controls, booking review, progress and final execution checks |
+| **NEAR:** account identities, contract execution and asynchronous receipts | **Public verifier:** expected call binding, child receipt outcomes, both payments and recomputed accounting |
 
-Public identifiers: [deployment.json](app/public/deployment.json). Deployed Wasm hash and validation: [VALIDATION.json](docs/VALIDATION.json).
+The library holds booking principal. Sputnik authorizes disputed allocation; it does not replace the library's state machine. There is no hosted signing backend in the production frontend.
 
-## Run from a fresh clone
+| Deployment | Public testnet account |
+| --- | --- |
+| Library | [`library.ckdao-mw7e25at.testnet`](https://testnet.nearblocks.io/address/library.ckdao-mw7e25at.testnet) |
+| Sputnik DAO | [`ckdao-mw7e25at.sputnikv2.testnet`](https://testnet.nearblocks.io/address/ckdao-mw7e25at.sputnikv2.testnet) |
 
-The testnet frontend needs **Node.js 24** and internet access. Reading the existing deployment needs neither Rust nor a private key.
+[All public account IDs](app/public/deployment.json) · [Recorded Wasm hash](docs/VALIDATION.json) · [Contract source](contract/src/lib.rs) · [Shared state machine](core/src/lib.rs).
+
+## For judges
+
+| What to assess | Where to look | Evidence boundary |
+| --- | --- | --- |
+| The complete borrowing lifecycle | [Normal return](docs/testnet/METEOR-NORMAL-RETURN-REHEARSAL.md) and [DAO dispute](docs/testnet/METEOR-POLISHED-REHEARSAL.md) | 8 and 11 finalized testnet transactions; synthetic equipment evidence |
+| Real collective authorization | [One-vote checkpoint](app/public/verification/historical-single-vote.json), [settlement checkpoint](app/public/verification/historical-settled.json) and [frontend governance actions](app/app.js) | Two distinct council accounts, both controlled by the demo operator |
+| Receipt and accounting correctness | [Browser verifier](https://commonkit-testnet.vercel.app/verify.html), `npm run verify:testnet`, [verification engine](app/public/verification/engine.js) | 48 checks across the two historical flows; read-only, not a new signing rehearsal |
+| Failure behavior | [Compiled-contract sandbox suite](docs/CONTRACT-FAILURE-TESTS.md) | 19 targeted cases: authorization, rollback, failed transfers/retry, callback replay and DAO execution failure |
+| Browser integration | [Four cobalt UI rehearsals](docs/testnet/cobalt/README.md) | 38 transactions and 96 checks across desktop/responsive normal + dispute cycles; not physical-phone validation |
+| Reproducibility | [CI workflow](.github/workflows/ci.yml), commands below, [deployment configuration](vercel.json) | 71 JS tests; 14 Rust lifecycle tests; separate sandbox evidence. Counts are not a security score |
+| Track fit and original work | [Submission facts](docs/SUBMISSION.md), [baseline comparison](https://github.com/MUTHUKUMARAN-K-1/commonkit/compare/baseline-v0.1...main) | Social Money: community-controlled equipment access and contested bond allocation |
+
+The historical public proof and the later browser rehearsals are different evidence sets. They are not added together as a user/adoption metric.
+
+## Run locally
+
+Use **Node.js 24**. While the repository is private, cloning requires an invited GitHub account.
 
 ```sh
 git clone https://github.com/MUTHUKUMARAN-K-1/commonkit.git
@@ -77,19 +122,25 @@ npm ci
 npm run dev
 ```
 
-Open **http://127.0.0.1:4318**. While private, cloning requires an invited GitHub account. No environment variables are required. RPC reads are public; signing uses your browser wallet.
+Open **http://127.0.0.1:4318**. No environment variables or private keys are needed to read the deployed testnet app. Signing uses a browser wallet with the appropriate on-chain role.
 
 ```sh
+# Public proof: no wallet and no dependency installation needed
+npm run verify:testnet
+npm run --silent verify:testnet -- --json
+
+# Frontend tests and deployable static artifact
 npm test
 npm run build:vercel
 npm run preview
 ```
 
-The deployable output is `dist/`. [vercel.json](vercel.json) sets Vite, `npm ci`, `npm run build:vercel` and `dist`; package engines select Node 24. Import the **repository root**, not `app/`, into Vercel. Configuration is prepared; no Vercel deployment was requested. See [VERCEL.md](docs/VERCEL.md).
+Vercel builds from the **repository root**, uses Node 24, runs `npm ci` and `npm run build:vercel`, and serves `dist/`. The artifact check rejects private-key patterns and development-signer code. [Deployment record and remaining checks](docs/VERCEL.md).
 
-## Contract and simulator checks
+<details>
+<summary><strong>Rust, local simulator and compiled-contract tests</strong></summary>
 
-Use Rust **1.95.0** and the Wasm target. These checks do not submit chain transactions:
+Use Rust **1.95.0** with the Wasm target:
 
 ```sh
 rustup toolchain install 1.95.0 --profile minimal --target wasm32-unknown-unknown
@@ -99,63 +150,56 @@ npm run test:api
 npm start
 ```
 
-The optional simulator runs at **http://127.0.0.1:4317** with simulated identities, clock and payments; its memory resets when stopped. The testnet frontend is `app/`; the original simulator is `web/`.
+The optional simulator runs at **http://127.0.0.1:4317** with simulated identities, time and payments. It is separate from `app/`, the real testnet frontend.
 
-Build the contract in PowerShell with `npm run build:contract`, or on macOS/Linux:
+Build the contract on Windows with `npm run build:contract`. On Linux/macOS:
 
 ```sh
 RUSTFLAGS='--cfg near' cargo +1.95.0 build -p commonkit-contract --target wasm32-unknown-unknown --release --locked
 ```
 
-Output: `target/wasm32-unknown-unknown/release/commonkit_contract.wasm`. Deployment is separate. `deploy:dao` and `setup:dao` are operator scripts requiring the private local account configuration, not fresh-clone commands. They send transactions and are excluded from CI. For your own instance, create your own funded testnet identities and Sputnik DAO, deploy and initialize the library with that DAO, then update the public deployment configuration.
-
-For compiled-contract failure tests, use Linux/macOS (or Linux Node in WSL):
+For isolated failure tests, use Linux/macOS or Linux Node inside WSL:
 
 ```sh
 RUSTFLAGS='--cfg near' cargo +1.95.0 build -p commonkit-contract --lib --examples --target wasm32-unknown-unknown --release --locked
 npm run test:contract
 ```
 
-These tests sign only inside an ephemeral local NEAR Sandbox. They exercise real failed transfers, credit recovery/retry, callback replay, authorization, receipt rollback and failed Sputnik execution. Windows can build the artifacts with `npm run build:contract:tests`. See [test setup and evidence boundaries](docs/CONTRACT-FAILURE-TESTS.md).
+These tests use disposable local NEAR Sandbox accounts. They do not read the demo's keys or sign public-network transactions. Windows can prepare artifacts with `npm run build:contract:tests`. [Full setup](docs/CONTRACT-FAILURE-TESTS.md).
 
-## Validation and accounting
+Public deployment/operator scripts require private local configuration and submit transactions; they are not fresh-clone verification commands. To deploy your own instance, fund your own testnet identities, create a Sputnik DAO, deploy and initialize the library with that DAO, and update the public deployment configuration.
 
-- 14 Rust lifecycle tests: authorization, overlap, settlement, callback restoration and replay behavior.
-- [Compiled Wasm sandbox failure suite](docs/CONTRACT-FAILURE-TESTS.md): 19 targeted cases passed, including actual failed-transfer recovery and real two-of-two Sputnik execution failure; [receipt report](docs/testnet/contract-failures-sandbox.json).
-- 52 JavaScript tests: DAO binding, receipt finality/failures, presentation state and 37 public-verifier tests, including altered-data cases.
-- Local API integration: normal return, failed-withdrawal recovery and origin rejection.
-- [Meteor rehearsal](docs/testnet/METEOR-POLISHED-REHEARSAL.md): booking #4, settlement #6, treasury #7, eleven final receipts independently verified by RPC.
-- [GitHub Actions](.github/workflows/ci.yml): JS tests, static build checks, Rust tests, API integration, Wasm compilation and isolated sandbox failures without wallet credentials.
+</details>
 
-The [Meteor normal-return rehearsal](docs/testnet/METEOR-NORMAL-RETURN-REHEARSAL.md) also passed: booking **#5**, zero damage, full **0.01 NEAR** borrower refund and **0.001 NEAR** DAO fee withdrawal through proposal **#8**. Its eight finalized transactions are separate from the eleven-transaction dispute proof. The whole-library ledger ended at **0.055 NEAR deposited and withdrawn**, with zero escrow, credits or pending transfers. Judges can select **Normal return** on the [public verifier](https://commonkit-testnet.muthukumarank.chatgpt.site/verify.html?flow=normal), or run `npm run verify:testnet -- --flow normal`. The default `npm run verify:testnet` verifies both flows (48 checks).
+## Scope and trust
 
-Camera deposit: **0.111 testnet NEAR = 0.001 fee + 0.01 refundable bond + 0.1 retained storage**. With 0.003 damage, settlement allocates 0.007 to the borrower and 0.004 to the DAO. A proposal separately attaches a 0.01 NEAR bond. Gas, proposal bonds and retained storage are outside the principal ledger:
+- **Testnet prototype, not audited.** No mainnet deployment, real-value custody or production-readiness claim.
+- **Governance depends on people.** Both demo council accounts belong to one operator. Inactive or colluding council members can block fair settlement.
+- **Hashes bind files, not physical truth.** Rehearsal fixtures are synthetic. Evidence files remain local; SHA-256 hashes go on-chain.
+- **Access is permissioned.** The DAO admits borrowers. Successful normal returns record reputation; reputation does not automatically admit a visitor.
+- **Bounded storage.** Up to 32 assets, 64 admitted members and 256 lifetime bookings, without archival. Retained storage is not a refundable bond.
+- **Validation has limits.** Responsive desktop Chrome is not a physical-phone wallet test. Fresh Meteor cycles on the Vercel origin remain pending.
 
-`deposited principal = escrow + available credits + pending transfers + withdrawn principal`
+[Threat model](docs/THREAT-MODEL.md) · [Verification limitations](docs/VERIFICATION.md).
 
-Evidence files stay local; only SHA-256 hashes go on-chain. The rehearsal fixtures are synthetic, not proof of physical events.
+Next validation priority: complete both new-origin Meteor cycles, then run one consented equipment-sharing pilot with separate people controlling the roles. Measure completion time and confusion before expanding the product. These are planned steps, not completed adoption.
 
-## Hackathon development and reuse disclosure
+## Hackathon development and reuse
 
-Selected track: **Social Money** for community-controlled equipment access and disputes. NEAR and Sputnik provide actual escrow and collective authorization. No NFTs, mainnet deployment or independent human council governance are claimed.
+Built for **NEAR HACKATHON / Social Money**. The [archived baseline](https://github.com/MUTHUKUMARAN-K-1/commonkit/tree/baseline-v0.1) contains the Rust state machine, local simulator, draft contract and unsigned DAO adapter. It is an import snapshot committed during preparation, not original commit history or a claim that it predates the hackathon.
 
-The archived v0.1 README is dated 7 November 2026 and already contained the Rust state machine, local simulator, draft contract and unsigned DAO adapter. [baseline-v0.1](https://github.com/MUTHUKUMARAN-K-1/commonkit/tree/baseline-v0.1) preserves that source. It is an import snapshot committed during repository preparation, not original commit history or a claim that it predates the hackathon.
+Subsequent work adds deployed testnet contracts, real Sputnik proposals/votes, Meteor signing with final receipt checks, both proof flows, the public verifier, contract failure tests and the polished frontend. Review the [baseline-to-main diff](https://github.com/MUTHUKUMARAN-K-1/commonkit/compare/baseline-v0.1...main). The older `submission-ready` tag is an intermediate snapshot. A new immutable submission tag remains to be frozen after final validation.
 
-Subsequent work adds deployed testnet contracts, real Sputnik proposals/votes, Meteor signing with final receipt checks, the public frontend and role/progress displays, lifecycle evidence and deployment documentation. Review the [baseline-to-submission-ready diff](https://github.com/MUTHUKUMARAN-K-1/commonkit/compare/baseline-v0.1...submission-ready). The tag marks this prepared snapshot; later changes remain visible on `main`.
+Reuse: `near-sdk`, `borsh`, `serde` / `serde_json`, `near-kit`, `@hot-labs/near-connect`, Sputnik DAO, Vite, Playwright, Motion, NumberFlow, Lucide and the DM Sans / Instrument Serif font packages. Versions are locked; notices remain in the source and distributed font/icon licenses. [Components and design references](docs/UI-COMPONENTS.md) · [Brand assets and usage](docs/BRAND.md).
 
-Reuse: `near-sdk` and `borsh` for contracts; `serde` / `serde_json` for state; `near-kit` for RPC/operator scripts; `@hot-labs/near-connect` for wallets; Vite for builds; Playwright for local checks; and Sputnik DAO on testnet. Versions are locked and dependencies retain their licenses. AI coding assistance was used for implementation, review, documentation and test orchestration; the user directed the product and authorized wallet activity.
+AI coding assistance was used for implementation, review, documentation and test orchestration. The user directed the product and authorized wallet activity. The README's presentation was informed by [AXIS](https://github.com/ReneeMattGH/ETHGBL); CommonKit's copy and brand diagrams are original, and no AXIS logos or screenshots are reused.
 
-## Limits and source layout
-
-This bounded prototype supports 32 assets, 64 admitted members and 256 lifetime booking records, without archival. An inactive or colluding council can block fair settlement; both demo council accounts belong to the operator. Evidence hashes cannot establish physical truth. Testnet success does not replace exhaustive receipt failure, capacity or gas/storage tests. See the [threat model](docs/THREAT-MODEL.md).
-
-| Path | Purpose |
+| Path | Contents |
 | --- | --- |
-| `app/` | Public testnet frontend and browser wallet integration |
-| `core/` | Shared Rust state machine and lifecycle tests |
-| `contract/` | NEAR contract wrapper and transfer callbacks |
-| `scripts/` | Tests, build checks and operator tooling |
-| `docs/testnet/` | Public transaction/state evidence |
+| `app/` | Real testnet frontend, wallet integration, judge tour and public verifier |
+| `core/`, `contract/` | Rust lifecycle and NEAR contract wrapper |
+| `scripts/` | Tests, build checks, read-only verification and operator tooling |
+| `docs/testnet/` | Dated state captures, transaction evidence and screenshots |
 | `web/`, `server.mjs` | Original local simulator |
 
-Private account files, build output, local research and the separate Sites hosting checkout are excluded. Production bundles exclude the optional development signer. License: [MIT](LICENSE).
+Private account files, local research and build artifacts are excluded from version control. **MIT licensed** — see [LICENSE](LICENSE).

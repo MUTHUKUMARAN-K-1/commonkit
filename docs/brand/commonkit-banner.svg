@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="540" viewBox="0 0 1280 540" role="img" aria-labelledby="title desc">
+<title id="title">CommonKit — Shared gear. Accountable money.</title><desc id="desc">A community equipment library on NEAR. A simple branching diagram shows normal returns and DAO-reviewed disputes leading to verifiable receipts.</desc>
+<rect width="1280" height="540" rx="18" fill="#202238"/>
+<path d="M64 112H1216M64 466H1216" stroke="#44465f"/>
+<text x="64" y="79" fill="#f4b49b" font-family="Georgia,serif" font-style="italic" font-size="49" letter-spacing="-6">ck</text>
+<text x="136" y="75" fill="#f7f5f0" font-family="Arial,sans-serif" font-size="28">CommonKit</text>
+<text x="1216" y="72" text-anchor="end" fill="#c4c7de" font-family="Arial,sans-serif" font-size="12" letter-spacing="2.5">THE CAMPUS COMMONS / NEAR TESTNET</text>
+<text x="64" y="210" fill="#f7f5f0" font-family="Arial,sans-serif" font-size="65" letter-spacing="-2.8">Shared gear.</text>
+<text x="64" y="288" fill="#f4b49b" font-family="Georgia,serif" font-style="italic" font-size="65" letter-spacing="-2.4">Accountable money.</text>
+<text x="67" y="347" fill="#c4c7de" font-family="Arial,sans-serif" font-size="19">A community equipment library with refundable bonds</text>
+<text x="67" y="378" fill="#c4c7de" font-family="Arial,sans-serif" font-size="19">and DAO-governed damage disputes.</text>
+<g font-family="Arial,sans-serif">
+<path d="M975 193V214H845V247M975 214H1105V247M845 303V351H1105V303M975 351V375" fill="none" stroke="#9199db" stroke-width="2"/>
+<rect x="894" y="147" width="162" height="47" rx="7" fill="#3d4ddb"/><text x="975" y="177" text-anchor="middle" fill="#fff" font-size="15">Borrow the kit</text>
+<rect x="757" y="247" width="176" height="56" rx="7" fill="#2d304b" stroke="#666e9f"/><text x="845" y="281" text-anchor="middle" fill="#f7f5f0" font-size="15">Normal return</text>
+<rect x="1017" y="247" width="176" height="56" rx="7" fill="#f4b49b"/><text x="1105" y="281" text-anchor="middle" fill="#202238" font-size="15">DAO dispute</text>
+<circle cx="975" cy="351" r="5" fill="#f4b49b"/>
+<rect x="871" y="375" width="208" height="47" rx="7" fill="#2d304b" stroke="#666e9f"/><text x="975" y="405" text-anchor="middle" fill="#f7f5f0" font-size="15">Check the receipts</text>
+<text x="65" y="504" fill="#c4c7de" font-size="12" letter-spacing="2">RESERVE / HAND OVER / RETURN / RESOLVE</text><text x="1216" y="504" text-anchor="end" fill="#f4b49b" font-size="12" letter-spacing="2">SOCIAL MONEY</text>
+</g></svg>
