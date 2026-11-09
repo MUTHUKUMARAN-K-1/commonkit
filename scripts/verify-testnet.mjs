@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import {createRpc} from '../app/public/verification/rpc.js';
 import {runVerification} from '../app/public/verification/engine.js';
+import {PROOF_CASES} from '../app/public/verification/cases.js';
 
 const args = process.argv.slice(2);
 let flow = 'all', json = false, help = false;
@@ -16,7 +17,8 @@ try {
   } else {
     const reports=[];
     for(const selected of flow==='all'?['normal','dispute']:[flow]) {
-      const manifest=JSON.parse(await fs.readFile(new URL(`../app/public/verification/${selected==='normal'?'normal-manifest':'manifest'}.json`,import.meta.url),'utf8'));
+      const manifest=JSON.parse(await fs.readFile(new URL(`../app/public${PROOF_CASES[selected].manifest}`,import.meta.url),'utf8'));
+      if(manifest.flow !== selected || manifest.booking?.id !== PROOF_CASES[selected].bookingId) throw Error('Evidence manifest does not match the selected flow and booking');
       const transport=createRpc();
       if(!json) console.log(`\n${selected.toUpperCase()} / BOOKING #${manifest.booking.id}`);
       const report=await runVerification(manifest,{rpc:transport.rpc,onCheck:json?undefined:c=>console.log(`${c.status.padEnd(10)} ${c.label}\n           ${c.detail}`)});

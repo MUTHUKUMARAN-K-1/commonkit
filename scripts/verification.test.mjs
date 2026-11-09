@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {runVerification} from '../app/public/verification/engine.js';
 import {createRpc, Unavailable} from '../app/public/verification/rpc.js';
+import {PROOF_CASES} from '../app/public/verification/cases.js';
 
 const fixture = JSON.parse(await fs.readFile(new URL('./fixtures/verification-rpc.json', import.meta.url)));
 const manifest = JSON.parse(await fs.readFile(new URL('../app/public/verification/manifest.json', import.meta.url)));
@@ -42,6 +43,40 @@ test('recorded real RPC fixture passes all 27 checks without signing', async () 
   assert.equal(report.passed, true, JSON.stringify(report.checks.filter(c => c.status !== 'PASS')));
   assert.deepEqual(report.summary, {pass: 27, fail: 0, unverified: 0});
 });
+
+for (const [flow, proof] of Object.entries(PROOF_CASES)) {
+  test(`current ${flow} Vercel proof validates captured receipts and rejects a changed payment`, async () => {
+    const current = JSON.parse(await fs.readFile(new URL(`../app/public${proof.manifest}`, import.meta.url)));
+    const captureRoot = new URL(`../docs/testnet/vercel/desktop-${flow}/`, import.meta.url);
+    const saved = JSON.parse(await fs.readFile(new URL('final.json', captureRoot)));
+    const transactions = JSON.parse(await fs.readFile(new URL('transactions.json', captureRoot)));
+    assert.equal(current.booking.id, proof.bookingId);
+    assert.deepEqual(current, JSON.parse(await fs.readFile(new URL('manifest.json', captureRoot))));
+    // Recorded Vercel state/receipts with synthetic query envelopes from the shared
+    // policy fixture. This deterministic regression is not a live RPC result.
+    const {data, rpc: baseRpc} = setup();
+    write(data.state, saved.state); write(data.ledger, saved.ledger);
+    write(data.treasury, saved.treasury);
+    if (saved.settlement) write(data.settlement, saved.settlement);
+    data.transactions = Object.values(transactions);
+    const rpc = async (method, params) => {
+      if (method === 'query' && params.method_name === 'get_proposal') {
+        assert.equal(params.block_id, data.block.header.hash);
+        const {id} = JSON.parse(Buffer.from(params.args_base64, 'base64'));
+        assert([current.treasury.id, current.settlement?.id].includes(id));
+        return id === current.treasury.id ? data.treasury : data.settlement;
+      }
+      return baseRpc(method, params);
+    };
+    const report = await runVerification(current, {rpc});
+    assert.deepEqual(report.summary, {pass: flow === 'normal' ? 21 : 27, fail: 0, unverified: 0}, JSON.stringify(report.checks.filter(c => c.status !== 'PASS')));
+    const transfer = transactions['borrower-withdraw'].receipts.find(r => r.predecessor_id === current.contractId && r.receipt.Action.actions[0].Transfer);
+    transfer.receipt.Action.actions[0].Transfer.deposit = '1';
+    const tampered = await runVerification(current, {rpc});
+    assert.equal(tampered.passed, false);
+    assert(tampered.checks.some(c => c.id === 'borrower-paid' && c.status === 'FAIL'));
+  });
+}
 
 const mutations = [
   ['wrong network', 'network', d => { d.status.chain_id = 'mainnet'; }],

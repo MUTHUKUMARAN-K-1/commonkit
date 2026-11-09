@@ -37,8 +37,8 @@ CommonKit makes that process inspectable. A borrower locks a refundable bond. A 
 | --- | --- | --- |
 | 0–10s | Open the [judge tour](https://commonkit-testnet.vercel.app/judge.html) | The camera, the three roles and the borrowing journey |
 | 10–20s | Select **Reserve** | 0.111 testnet NEAR attached: 0.011 principal plus 0.100 retained storage |
-| 20–30s | Select **Normal return** | Booking #5: the borrower receives the full 0.010 bond; the DAO receives the 0.001 fee |
-| 30–40s | Select **First vote** | The saved booking #4 checkpoint: one approval, 0.011 still escrowed, zero credits |
+| 20–30s | Select **Normal return** | Booking #10: the borrower receives the full 0.010 bond; the DAO receives the 0.001 fee |
+| 30–40s | Select **First vote** | The saved booking #11 checkpoint: one approval, 0.011 still escrowed, zero credits |
 | 40–50s | Select **Settlement** | Second approval authorizes 0.003 damage; credits and actual withdrawals remain distinct |
 | 50–60s | Select **Verify it**, then open either proof | 21 normal-return checks or 27 dispute checks, receipt links and a downloadable report |
 
@@ -67,8 +67,8 @@ To run a **new signed cycle**, use [the Meteor wallet guide](https://commonkit-t
 
 | Recorded outcome | Borrower withdrawal | DAO withdrawal | Evidence |
 | --- | --- | --- | --- |
-| Normal return, zero damage | **0.010 NEAR** | **0.001 NEAR** fee | [Booking #5 · 8 transactions](https://commonkit-testnet.vercel.app/verify.html?flow=normal) |
-| Dispute, 0.003 damage | **0.007 NEAR** | **0.004 NEAR** fee + damage | [Booking #4 · 11 transactions](https://commonkit-testnet.vercel.app/verify.html?flow=dispute) |
+| Normal return, zero damage | **0.010 NEAR** | **0.001 NEAR** fee | [Booking #10 · 8 transactions](https://commonkit-testnet.vercel.app/verify.html?flow=normal) |
+| Dispute, 0.003 damage | **0.007 NEAR** | **0.004 NEAR** fee + damage | [Booking #11 · 11 transactions](https://commonkit-testnet.vercel.app/verify.html?flow=dispute) |
 
 The custodian accepts a normal return. A disputed return requires two council approvals. **One vote leaves the principal escrowed; settlement creates credits, and withdrawals transfer the money.** The DAO's own withdrawal requires a separate two-vote treasury proposal in either flow.
 
@@ -76,7 +76,7 @@ The custodian accepts a normal return. A disputed return requires two council ap
 deposited principal = escrow + available credits + pending transfers + withdrawn principal
 ```
 
-The verifier independently recomputes the current whole-library ledger at one finalized block. Later bookings can change those totals without changing historical receipts. [Saved one-vote checkpoint](app/public/verification/historical-single-vote.json) · [Normal-return manifest](app/public/verification/normal-manifest.json) · [Dispute manifest](app/public/verification/manifest.json).
+The verifier independently recomputes the current whole-library ledger at one finalized block. Later bookings can change those totals without changing historical receipts. [Saved one-vote checkpoint](app/public/verification/vercel/dispute/single-vote.json) · [Normal-return manifest](app/public/verification/vercel/normal/manifest.json) · [Dispute manifest](app/public/verification/vercel/dispute/manifest.json).
 
 ## Architecture
 
@@ -102,15 +102,15 @@ The library holds booking principal. Sputnik authorizes disputed allocation; it 
 | What to assess | Where to look | Evidence boundary |
 | --- | --- | --- |
 | The complete borrowing lifecycle | [Normal return](docs/testnet/METEOR-NORMAL-RETURN-REHEARSAL.md) and [DAO dispute](docs/testnet/METEOR-POLISHED-REHEARSAL.md) | 8 and 11 finalized testnet transactions; synthetic equipment evidence |
-| Real collective authorization | [One-vote checkpoint](app/public/verification/historical-single-vote.json), [settlement checkpoint](app/public/verification/historical-settled.json) and [frontend governance actions](app/app.js) | Two distinct council accounts, both controlled by the demo operator |
-| Receipt and accounting correctness | [Browser verifier](https://commonkit-testnet.vercel.app/verify.html), `npm run verify:testnet`, [verification engine](app/public/verification/engine.js) | 48 checks across the two historical flows; read-only, not a new signing rehearsal |
+| Real collective authorization | [One-vote checkpoint](app/public/verification/vercel/dispute/single-vote.json), [settlement checkpoint](app/public/verification/vercel/dispute/settled.json) and [frontend governance actions](app/app.js) | Two distinct council accounts, both controlled by the demo operator |
+| Receipt and accounting correctness | [Browser verifier](https://commonkit-testnet.vercel.app/verify.html), `npm run verify:testnet`, [verification engine](app/public/verification/engine.js) | 48 checks across the two Vercel flows; read-only, not a new signing rehearsal |
 | Failure behavior | [Compiled-contract sandbox suite](docs/CONTRACT-FAILURE-TESTS.md) | 19 targeted cases: authorization, rollback, failed transfers/retry, callback replay and DAO execution failure |
 | Browser integration | [Four cobalt UI rehearsals](docs/testnet/cobalt/README.md) | 38 transactions and 96 checks across desktop/responsive normal + dispute cycles; not physical-phone validation |
 | Current public deployment | [Vercel Meteor rehearsals](docs/testnet/vercel/README.md) | Booking #10 normal return and #11 dispute; 19 finalized transactions and 48 checks, including both withdrawals. Operator-assisted Meteor approvals |
-| Reproducibility | [CI workflow](.github/workflows/ci.yml), commands below, [deployment configuration](vercel.json) | 71 JS tests; 14 Rust lifecycle tests; separate sandbox evidence. Counts are not a security score |
+| Reproducibility | [CI workflow](.github/workflows/ci.yml), commands below, [deployment configuration](vercel.json) | 73 JS tests; 14 Rust lifecycle tests; separate sandbox evidence. Counts are not a security score |
 | Track fit and original work | [Submission facts](docs/SUBMISSION.md), [baseline comparison](https://github.com/MUTHUKUMARAN-K-1/commonkit/compare/baseline-v0.1...main) | Social Money: community-controlled equipment access and contested bond allocation |
 
-The historical public proof and the later browser rehearsals are different evidence sets. They are not added together as a user/adoption metric.
+The public proof now checks the latest Vercel bookings #10/#11. Earlier rehearsals remain archived; repeated demo runs are not a user/adoption metric.
 
 ## Run locally
 

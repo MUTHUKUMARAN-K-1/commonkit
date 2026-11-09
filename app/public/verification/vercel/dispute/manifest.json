@@ -1,0 +1,337 @@
+{
+  "version": 1,
+  "network": "testnet",
+  "recordedAt": "2026-11-09T06:51:43.207Z",
+  "contractId": "library.ckdao-mw7e25at.testnet",
+  "daoId": "ckdao-mw7e25at.sputnikv2.testnet",
+  "council": [
+    "commonkit-mw7dph80.testnet",
+    "custodian.commonkit-mw7dph80.testnet"
+  ],
+  "codeHash": "82tc6wcj4LUyrNPmTtQMcrBwqqc99nHYY8hX4bJrDPeb",
+  "wasmSha256": "687dbd4f95d90c346eeabf738a1e270c2db9cc74a2d1bd5803ccb6c75761192c",
+  "booking": {
+    "id": 11,
+    "asset_id": "campus-camera",
+    "borrower": "borrower.commonkit-mw7dph80.testnet",
+    "start": 1794203340,
+    "end": 1794206940,
+    "fee": 1000,
+    "bond": 10000,
+    "status": "Closed",
+    "pickup_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f",
+    "return_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230",
+    "dispute_hash": "7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55",
+    "damage": 3000
+  },
+  "settlement": {
+    "id": 16,
+    "proposer": "custodian.commonkit-mw7dph80.testnet",
+    "description": "CommonKit resolve: {\"id\":11,\"damage_micro_near\":3000,\"evidence_hash\":\"7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55\"}",
+    "kind": {
+      "FunctionCall": {
+        "receiver_id": "library.ckdao-mw7e25at.testnet",
+        "actions": [
+          {
+            "method_name": "resolve",
+            "args": "eyJpZCI6MTEsImRhbWFnZV9taWNyb19uZWFyIjozMDAwLCJldmlkZW5jZV9oYXNoIjoiN2I3Zjk1NzE1MzJlNzBmM2VhNjZlNjViMjdlMmJhMmQ4ODc4YjdkNjQ1NTQ5NTE1ZDNkNTc2Yzg3YzAyNGU1NSJ9",
+            "deposit": "0",
+            "gas": "100000000000000"
+          }
+        ]
+      }
+    },
+    "status": "Approved",
+    "vote_counts": {
+      "council": [
+        2,
+        0,
+        0
+      ]
+    },
+    "votes": {
+      "commonkit-mw7dph80.testnet": "Approve",
+      "custodian.commonkit-mw7dph80.testnet": "Approve"
+    },
+    "submission_time": "1794203612763976872"
+  },
+  "treasury": {
+    "id": 17,
+    "proposer": "commonkit-mw7dph80.testnet",
+    "description": "CommonKit withdraw: {}",
+    "kind": {
+      "FunctionCall": {
+        "receiver_id": "library.ckdao-mw7e25at.testnet",
+        "actions": [
+          {
+            "method_name": "withdraw",
+            "args": "e30=",
+            "deposit": "0",
+            "gas": "100000000000000"
+          }
+        ]
+      }
+    },
+    "status": "Approved",
+    "vote_counts": {
+      "council": [
+        2,
+        0,
+        0
+      ]
+    },
+    "votes": {
+      "commonkit-mw7dph80.testnet": "Approve",
+      "custodian.commonkit-mw7dph80.testnet": "Approve"
+    },
+    "submission_time": "1794203773836312884"
+  },
+  "resolution": {
+    "id": 11,
+    "damage_micro_near": 3000,
+    "evidence_hash": "7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55"
+  },
+  "steps": [
+    {
+      "id": "reserve",
+      "label": "Borrower reserved equipment and attached 0.111 NEAR",
+      "hash": "GMMimQTEmm14ogCJ5nY3ek8yKP4j6AZeN3gTyfNutimk",
+      "signerId": "borrower.commonkit-mw7dph80.testnet",
+      "receiverId": "library.ckdao-mw7e25at.testnet",
+      "method": "reserve",
+      "args": {
+        "asset_id": "campus-camera",
+        "start": 1794203340,
+        "end": 1794206940
+      },
+      "deposit": "111000000000000000000000",
+      "returnValue": "MTE="
+    },
+    {
+      "id": "pickup",
+      "label": "Custodian acknowledged pickup and evidence",
+      "hash": "Aa5RVdMi1jsL1Wp7A7KRArgWyfYTwvXK76yKJGVqNmU9",
+      "signerId": "custodian.commonkit-mw7dph80.testnet",
+      "receiverId": "library.ckdao-mw7e25at.testnet",
+      "method": "pickup",
+      "args": {
+        "id": 11,
+        "evidence_hash": "e2a4fa7ace59f7a243c02119a6f4b227120625a308c1e17305ae105b0011592f"
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "return",
+      "label": "Borrower requested return with evidence",
+      "hash": "3fjvonUduUADaLNmtYVPtwmWYADRDxKS8tFGUQ8N156B",
+      "signerId": "borrower.commonkit-mw7dph80.testnet",
+      "receiverId": "library.ckdao-mw7e25at.testnet",
+      "method": "request_return",
+      "args": {
+        "id": 11,
+        "evidence_hash": "2ce9e440dc8d0e69538a0fabb5abbf825614e0b169d16f00e4794f30180d2230"
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "dispute",
+      "label": "Custodian reported a dispute",
+      "hash": "8tDLmwwiRWa9zmzUPkkuh99NtZF3fUjKjgYXeZty1AsH",
+      "signerId": "custodian.commonkit-mw7dph80.testnet",
+      "receiverId": "library.ckdao-mw7e25at.testnet",
+      "method": "dispute",
+      "args": {
+        "id": 11,
+        "evidence_hash": "220958af92b38d0415d97febf9df26fe5da1b5839bbba975909bc6b8fcb18926"
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "settlement-proposal",
+      "label": "Council proposed the 0.003 NEAR damage decision",
+      "hash": "5VHtBsey4ZRPF1NdnAJLzMuF4BScN8PSC8xm3J5dCXxX",
+      "signerId": "custodian.commonkit-mw7dph80.testnet",
+      "receiverId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "method": "add_proposal",
+      "args": {
+        "proposal": {
+          "description": "CommonKit resolve: {\"id\":11,\"damage_micro_near\":3000,\"evidence_hash\":\"7b7f9571532e70f3ea66e65b27e2ba2d8878b7d645549515d3d576c87c024e55\"}",
+          "kind": {
+            "FunctionCall": {
+              "receiver_id": "library.ckdao-mw7e25at.testnet",
+              "actions": [
+                {
+                  "method_name": "resolve",
+                  "args": "eyJpZCI6MTEsImRhbWFnZV9taWNyb19uZWFyIjozMDAwLCJldmlkZW5jZV9oYXNoIjoiN2I3Zjk1NzE1MzJlNzBmM2VhNjZlNjViMjdlMmJhMmQ4ODc4YjdkNjQ1NTQ5NTE1ZDNkNTc2Yzg3YzAyNGU1NSJ9",
+                  "deposit": "0",
+                  "gas": "100000000000000"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "deposit": "10000000000000000000000",
+      "returnValue": "MTY="
+    },
+    {
+      "id": "settlement-vote-1",
+      "label": "Council member 2 cast the first settlement vote",
+      "hash": "Cccw46RjqkSMfA93LbdUCebdWasEnK2M2DARoD4KUomZ",
+      "signerId": "custodian.commonkit-mw7dph80.testnet",
+      "receiverId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "method": "act_proposal",
+      "args": {
+        "id": 16,
+        "action": "VoteApprove",
+        "proposal": {
+          "FunctionCall": {
+            "receiver_id": "library.ckdao-mw7e25at.testnet",
+            "actions": [
+              {
+                "method_name": "resolve",
+                "args": "eyJpZCI6MTEsImRhbWFnZV9taWNyb19uZWFyIjozMDAwLCJldmlkZW5jZV9oYXNoIjoiN2I3Zjk1NzE1MzJlNzBmM2VhNjZlNjViMjdlMmJhMmQ4ODc4YjdkNjQ1NTQ5NTE1ZDNkNTc2Yzg3YzAyNGU1NSJ9",
+                "deposit": "0",
+                "gas": "100000000000000"
+              }
+            ]
+          }
+        },
+        "memo": null
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "settlement-vote-2",
+      "label": "Council member 1 cast the second settlement vote",
+      "hash": "B18RMKVFAeeHqX1RySjCBRz9PME2QQsyekR86G7EFWTT",
+      "signerId": "commonkit-mw7dph80.testnet",
+      "receiverId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "method": "act_proposal",
+      "args": {
+        "id": 16,
+        "action": "VoteApprove",
+        "proposal": {
+          "FunctionCall": {
+            "receiver_id": "library.ckdao-mw7e25at.testnet",
+            "actions": [
+              {
+                "method_name": "resolve",
+                "args": "eyJpZCI6MTEsImRhbWFnZV9taWNyb19uZWFyIjozMDAwLCJldmlkZW5jZV9oYXNoIjoiN2I3Zjk1NzE1MzJlNzBmM2VhNjZlNjViMjdlMmJhMmQ4ODc4YjdkNjQ1NTQ5NTE1ZDNkNTc2Yzg3YzAyNGU1NSJ9",
+                "deposit": "0",
+                "gas": "100000000000000"
+              }
+            ]
+          }
+        },
+        "memo": null
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "treasury-proposal",
+      "label": "Council proposed withdrawing the DAO credit",
+      "hash": "CB4AqLZHhmeRaY3Expj2rz1M8GBC1dxAfh8rCBrVZw1j",
+      "signerId": "commonkit-mw7dph80.testnet",
+      "receiverId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "method": "add_proposal",
+      "args": {
+        "proposal": {
+          "description": "CommonKit withdraw: {}",
+          "kind": {
+            "FunctionCall": {
+              "receiver_id": "library.ckdao-mw7e25at.testnet",
+              "actions": [
+                {
+                  "method_name": "withdraw",
+                  "args": "e30=",
+                  "deposit": "0",
+                  "gas": "100000000000000"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "deposit": "10000000000000000000000",
+      "returnValue": "MTc="
+    },
+    {
+      "id": "treasury-vote-1",
+      "label": "Council member 1 cast the first treasury vote",
+      "hash": "FLQGNHpQFWcCDLhNrsEZqh5aR2WDGowDgJVQcC5d4iQy",
+      "signerId": "commonkit-mw7dph80.testnet",
+      "receiverId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "method": "act_proposal",
+      "args": {
+        "id": 17,
+        "action": "VoteApprove",
+        "proposal": {
+          "FunctionCall": {
+            "receiver_id": "library.ckdao-mw7e25at.testnet",
+            "actions": [
+              {
+                "method_name": "withdraw",
+                "args": "e30=",
+                "deposit": "0",
+                "gas": "100000000000000"
+              }
+            ]
+          }
+        },
+        "memo": null
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "treasury-vote-2",
+      "label": "Council member 2 cast the second treasury vote",
+      "hash": "AcaSqQEvD5DuXP3N4EDLjLzwVum7ndcfD13ty8zL5jgQ",
+      "signerId": "custodian.commonkit-mw7dph80.testnet",
+      "receiverId": "ckdao-mw7e25at.sputnikv2.testnet",
+      "method": "act_proposal",
+      "args": {
+        "id": 17,
+        "action": "VoteApprove",
+        "proposal": {
+          "FunctionCall": {
+            "receiver_id": "library.ckdao-mw7e25at.testnet",
+            "actions": [
+              {
+                "method_name": "withdraw",
+                "args": "e30=",
+                "deposit": "0",
+                "gas": "100000000000000"
+              }
+            ]
+          }
+        },
+        "memo": null
+      },
+      "deposit": "0",
+      "returnValue": ""
+    },
+    {
+      "id": "borrower-withdraw",
+      "label": "Borrower withdrew their available credit",
+      "hash": "73dGx8M9mYaXdWKmLpjYHe65v371tZL4VC8LFedGai57",
+      "signerId": "borrower.commonkit-mw7dph80.testnet",
+      "receiverId": "library.ckdao-mw7e25at.testnet",
+      "method": "withdraw",
+      "args": {},
+      "deposit": "0",
+      "returnValue": "dHJ1ZQ=="
+    }
+  ],
+  "flow": "dispute",
+  "withdrawals": {
+    "borrowerNonce": 21,
+    "daoNonce": 20
+  }
+}

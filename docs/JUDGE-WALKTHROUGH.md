@@ -15,10 +15,10 @@ The tour's timing is explanatory, not the speed of blockchain execution. Fresh R
 
 ## Evidence map
 
-- Normal return: booking #5, treasury proposal #8, [8 transaction claims](../app/public/verification/normal-manifest.json), [21 browser checks](https://commonkit-testnet.vercel.app/verify.html?flow=normal).
-- Dispute: booking #4, settlement proposal #6, treasury proposal #7, [11 transaction claims](../app/public/verification/manifest.json), [27 browser checks](https://commonkit-testnet.vercel.app/verify.html?flow=dispute).
-- [One-vote checkpoint](../app/public/verification/historical-single-vote.json): 0.011 principal remains escrowed, zero credits.
-- [Settled checkpoint](../app/public/verification/historical-settled.json): 0.007 borrower credit, 0.004 DAO credit.
-- [Final historical checkpoint](../app/public/verification/historical-final.json): withdrawals completed. Later demos can change aggregate library totals.
+- Normal return: booking #10, treasury proposal #15, [8 transaction claims](../app/public/verification/vercel/normal/manifest.json), [21 browser checks](https://commonkit-testnet.vercel.app/verify.html?flow=normal).
+- Dispute: booking #11, settlement proposal #16, treasury proposal #17, [11 transaction claims](../app/public/verification/vercel/dispute/manifest.json), [27 browser checks](https://commonkit-testnet.vercel.app/verify.html?flow=dispute).
+- [One-vote checkpoint](../app/public/verification/vercel/dispute/single-vote.json): 0.011 principal remains escrowed, zero credits.
+- [Settled checkpoint](../app/public/verification/vercel/dispute/settled.json): 0.007 borrower credit, 0.004 DAO credit.
+- [Final historical checkpoint](../app/public/verification/vercel/dispute/final.json): withdrawals completed. Later demos can change aggregate library totals.
 
-Both demo council accounts are operated by one person. Fixtures simulate evidence and do not establish physical condition. The tour continues to illustrate historical bookings #4/#5. Separate [fresh Vercel rehearsals](testnet/vercel/README.md) completed bookings #10/#11 on 9 November with operator-assisted Meteor approvals and all 48 receipt checks passing. See [the longer wallet-recording script](DEMO-SCRIPT.md) for a human-reviewed video.
+Both demo council accounts are operated by one person. Fixtures simulate evidence and do not establish physical condition. The tour now illustrates the [completed Vercel rehearsals](testnet/vercel/README.md): bookings #10/#11 on 9 November with operator-assisted Meteor approvals. Both actual payouts completed; the public browser and CLI recheck these same 19 transactions with 48 checks. Earlier #4/#5 manifests remain archived at their original paths. See [the longer wallet-recording script](DEMO-SCRIPT.md) for a human-reviewed video.

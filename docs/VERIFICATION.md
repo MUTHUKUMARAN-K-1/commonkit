@@ -1,6 +1,6 @@
 # Verify CommonKit without a wallet
 
-Open [the public verification page](https://commonkit-testnet.vercel.app/verify.html). Select **Normal return** (21 checks, booking #5) or **DAO dispute** (27 checks, booking #4). It runs fresh read-only checks from your browser and provides an expandable explanation, receipt links and a downloadable JSON report. No login, wallet connection, private key or signing server is used.
+Open [the public verification page](https://commonkit-testnet.vercel.app/verify.html). Select **Normal return** (21 checks, booking #10) or **DAO dispute** (27 checks, booking #11). It runs fresh read-only checks from your browser and provides an expandable explanation, receipt links and a downloadable JSON report. No login, wallet connection, private key or signing server is used.
 
 From a clone, with Node.js 24 (dependency installation is unnecessary for this command):
 
@@ -13,17 +13,17 @@ npm run --silent verify:testnet -- --json > verification-report.json
 
 Exit codes: **0** means all selected checks pass; **1** means at least one mismatch; **2** means evidence is unavailable or verification could not complete. An RPC outage, timeout, pruned transaction, malformed response or non-final execution never becomes a pass. The transport uses FastNEAR testnet with NEAR public RPC as a fallback, records endpoint usage in JSON, limits each request to 12 seconds, and only permits read methods. Live RPC verification is not required by CI; CI runs deterministic failure tests instead.
 
-## Normal return: booking #5
+## Normal return: booking #10
 
-The [normal-return manifest](../app/public/verification/normal-manifest.json) records eight distinct Meteor transactions and treasury proposal **#8**. Its **21 checks** comprise three manifest/network/block checks, seven deployment/governance/accounting checks, eight exact transaction/receipt checks, and three treasury/payment checks.
+The [normal-return manifest](../app/public/verification/vercel/normal/manifest.json) records eight distinct Meteor transactions and treasury proposal **#15**. Its **21 checks** comprise three manifest/network/block checks, seven deployment/governance/accounting checks, eight exact transaction/receipt checks, and three treasury/payment checks.
 
-The custodian acceptance must match the recorded return hash; booking #5 must be Closed with zero damage and no dispute. The first treasury vote must not withdraw; the second must execute the DAO-to-library withdrawal. Exact transfers are **0.01 NEAR to the borrower** and **0.001 NEAR to the DAO**, with successful transfer-bound callbacks at nonces 8 and 9. Normal return does not need a dispute settlement proposal; only the DAO fee withdrawal needs both council approvals.
+The custodian acceptance must match the recorded return hash; booking #10 must be Closed with zero damage and no dispute. The first treasury vote must not withdraw; the second must execute the DAO-to-library withdrawal. Exact transfers are **0.01 NEAR to the borrower** and **0.001 NEAR to the DAO**, with successful transfer-bound callbacks at nonces 19 (borrower) and 18 (DAO). Normal return does not need a dispute settlement proposal; only the DAO fee withdrawal needs both council approvals.
 
-[Settled](../app/public/verification/normal-historical-settled.json), [one-vote](../app/public/verification/normal-historical-single-vote.json), and [final](../app/public/verification/normal-historical-final.json) snapshots are labeled historical and never used to manufacture live passes. See the [Meteor rehearsal](testnet/METEOR-NORMAL-RETURN-REHEARSAL.md) for the original capture and receipts.
+[Settled](../app/public/verification/vercel/normal/settled.json), [one-vote](../app/public/verification/vercel/normal/treasury-single-vote.json), and [final](../app/public/verification/vercel/normal/final.json) snapshots are labeled historical and never used to manufacture live passes. See the [Vercel Meteor rehearsal](testnet/vercel/README.md) for the capture and receipts.
 
-## DAO dispute: booking #4
+## DAO dispute: booking #11
 
-The [public manifest](../app/public/verification/manifest.json) records expected claims for booking **#4**, settlement proposal **#6**, treasury proposal **#7**, and the eleven transactions captured in the 8 November Meteor rehearsal. It contains expected IDs, payloads, hashes and amounts, not saved pass results. Changing it changes the claims being checked and must be reviewed as such.
+The [public manifest](../app/public/verification/vercel/dispute/manifest.json) records expected claims for booking **#11**, settlement proposal **#16**, treasury proposal **#17**, and the eleven transactions captured in the 9 November Vercel Meteor rehearsal. It contains expected IDs, payloads, hashes and amounts, not saved pass results. Changing it changes the claims being checked and must be reviewed as such.
 
 | Checks | Evidence |
 | --- | --- |
@@ -34,7 +34,7 @@ The [public manifest](../app/public/verification/manifest.json) records expected
 
 The payment checks require **0.004 NEAR to the DAO** and **0.007 NEAR to the borrower**, originating from the library. System gas refunds cannot satisfy them. A successful outer DAO vote is insufficient: its library execution and the eventual payment receipts must also succeed.
 
-Current views use the **same finalized block hash and height**, including the library state and ledger. The verifier recomputes principal deposits from all booking records, escrow from active bookings, credits and pending amounts from their maps, then checks conservation and agreement with the contract ledger. It does not require today's ledger to equal the historical 0.044 NEAR/zero-escrow snapshot; later valid bookings may add funds or credits.
+Current views use the **same finalized block hash and height**, including the library state and ledger. The verifier recomputes principal deposits from all booking records, escrow from active bookings, credits and pending amounts from their maps, then checks conservation and agreement with the contract ledger. It does not require today's ledger to equal either saved final snapshot; later valid bookings may add funds or credits.
 
 ## Boundaries of the evidence
 
@@ -51,7 +51,7 @@ Current views use the **same finalized block hash and height**, including the li
 
 Browser and Node use the identical [engine](../app/public/verification/engine.js) and [read-only transport](../app/public/verification/rpc.js). The browser contains no wallet imports. The original transaction-signing page remains separate.
 
-`npm test` includes 51 verification tests (71 JavaScript tests overall after the UI integration). The original dispute cases cover the genuine recorded RPC fixture, 32 altered-data cases, later valid borrowing, RPC outage, pruned history and transport restrictions/fallback. Cases include wrong votes/receivers/deposits, unsafe integers, disconnected or missing receipts, hidden child failures, false callbacks and gas refunds substituted for principal. Fourteen additional normal-proof cases cover real captured receipts, altered acceptance evidence, nonzero damage, an unexpected dispute, missing approval, wrong payments/nonces, unbound callback, failed child, pruned acceptance, invalid manifests, later activity and RPC outage. Normal tests combine recorded normal state and receipt bodies with the shared deployment/policy fixture using synthetic query envelopes; they are deterministic tests, not live network evidence.
+`npm test` includes 53 verification tests (73 JavaScript tests overall). Two current-proof regressions also replay the captured Vercel receipts and reject altered borrower transfers, using synthetic query envelopes. The original dispute cases cover the genuine recorded RPC fixture, 32 altered-data cases, later valid borrowing, RPC outage, pruned history and transport restrictions/fallback. Cases include wrong votes/receivers/deposits, unsafe integers, disconnected or missing receipts, hidden child failures, false callbacks and gas refunds substituted for principal. Fourteen additional normal-proof cases cover real captured receipts, altered acceptance evidence, nonzero damage, an unexpected dispute, missing approval, wrong payments/nonces, unbound callback, failed child, pruned acceptance, invalid manifests, later activity and RPC outage. Normal tests combine recorded normal state and receipt bodies with the shared deployment/policy fixture using synthetic query envelopes; they are deterministic tests, not live network evidence.
 
 The [dispute fixture](../scripts/fixtures/verification-rpc.json) was read from public testnet on 8 November 2026 at block 276747851. Signatures, public keys, gas profiles and node host metadata were removed. Tests replace only the fixture's block timestamp with the test clock; they do not claim to be fresh network checks.
 
@@ -61,4 +61,4 @@ RPC references: [NEAR transaction status and finality](https://docs.near.org/api
 
 Dual-flow update: all **48 live RPC checks** and **66 JavaScript tests** passed. The default CLI now emits an aggregate report with two flow reports; `--flow normal` or `--flow dispute` emits one report. Browser selection, counts, download filename, command and historical links follow the selected flow. Later legitimate borrowing may change current balances or reputation without invalidating either historical flow.
 
-Vercel-origin update, 9 November: separate [Meteor rehearsals](testnet/vercel/README.md) completed bookings #10/#11 with 19 finalized transactions and 48 checks against newly captured manifests. The public browser/CLI default cases remain #4/#5. These runs used owner-assisted wallet approvals and verify both actual payouts, not just settlement credits.
+Vercel-origin update, 9 November: separate [Meteor rehearsals](testnet/vercel/README.md) completed bookings #10/#11 with 19 finalized transactions and 48 checks against newly captured manifests. The public browser, CLI and judge tour now select #10/#11 by default. Original #4/#5 manifests and snapshots remain at their old public paths for historical links and deterministic regression fixtures. These runs used owner-assisted wallet approvals and verify both actual payouts, not just settlement credits.

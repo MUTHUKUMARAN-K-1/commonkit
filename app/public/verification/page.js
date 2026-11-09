@@ -1,12 +1,13 @@
 import {createRpc, DEFAULT_ENDPOINTS} from './rpc.js';
 import {runVerification, getCheckIds} from './engine.js';
+import {PROOF_CASES} from './cases.js';
 
 const $ = id => document.getElementById(id);
 const node = (tag, text, className) => { const el = document.createElement(tag); if (text !== undefined) el.textContent = text; if (className) el.className = className; return el; };
 const flows = {
   normal: {
-    title: 'Normal return', count: 21, bookingId: 5, manifest: '/verification/normal-manifest.json', archive: 'normal-historical',
-    reference: 'Booking #5 · zero damage · treasury proposal #8', borrower: '0.01', dao: '0.001', daoLabel: 'DAO usage fee',
+    ...PROOF_CASES.normal, title: 'Normal return', count: 21,
+    reference: 'Booking #10 · zero damage · treasury proposal #15', borrower: '0.010', dao: '0.001', daoLabel: 'DAO usage fee',
     boundary: 'Normal return is accepted by the custodian. Two council votes authorize the DAO fee withdrawal; the first vote must not execute that withdrawal.',
     stories: [
       ['Borrow & bring it back', 'The borrower reserves the camera, the custodian records pickup, and the borrower requests return with evidence.'],
@@ -16,8 +17,8 @@ const flows = {
     singleVote: 'One treasury vote · DAO fee still unpaid',
   },
   dispute: {
-    title: 'DAO dispute', count: 27, bookingId: 4, manifest: '/verification/manifest.json', archive: 'historical',
-    reference: 'Booking #4 · settlement #6 · treasury #7', borrower: '0.007', dao: '0.004', daoLabel: 'DAO fee + damage',
+    ...PROOF_CASES.dispute, title: 'DAO dispute', count: 27,
+    reference: 'Booking #11 · settlement #16 · treasury #17', borrower: '0.007', dao: '0.004', daoLabel: 'DAO fee + damage',
     boundary: 'The first settlement vote must not call resolve; the second executes the exact DAO decision. A separate two-vote proposal authorizes the DAO credit withdrawal.',
     stories: [
       ['Borrow & request return', 'The borrower reserves the camera, the custodian records pickup, and the borrower requests return with evidence.'],
@@ -47,9 +48,11 @@ function setFlowContent(flow) {
   $('copy-status').textContent = '';
   const links = [
     [config.manifest, 'Expected claims & transaction hashes', 'Published inputs to the verifier'],
-    [`/verification/${config.archive}-single-vote.json`, config.singleVote, 'Historical checkpoint'],
-    [`/verification/${config.archive}-settled.json`, 'Return settled · credits allocated', 'Historical checkpoint'],
-    [`/verification/${config.archive}-final.json`, 'Both withdrawals completed', 'Historical checkpoint'],
+    [`/verification/${config.archive}/${flow === 'normal' ? 'treasury-single-vote' : 'single-vote'}.json`, config.singleVote, 'Saved checkpoint · 9 November 2026'],
+    [`/verification/${config.archive}/settled.json`, 'Return settled · credits allocated', 'Saved checkpoint · 9 November 2026'],
+    ...(flow === 'dispute' ? [[`/verification/${config.archive}/treasury-single-vote.json`, 'One treasury vote · DAO payout still pending', 'Saved checkpoint · separate withdrawal proposal #17']] : []),
+    [`/verification/${config.archive}/final.json`, 'Both withdrawals completed', 'Saved final state · not a fresh verification result'],
+    ['/verification/vercel/deployment.json', 'Where these receipts were captured', 'Public Vercel origin · Meteor approvals · pinned source commit'],
   ];
   $('evidence-links').replaceChildren(...links.map(([href, label, note]) => { const item = node('li'); const link = node('a', `${label} ↗`); link.href = href; item.append(link, node('span', note)); return item; }));
 }

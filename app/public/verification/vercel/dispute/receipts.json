@@ -1,0 +1,57 @@
+[
+  {
+    "id": "reserve",
+    "hash": "GMMimQTEmm14ogCJ5nY3ek8yKP4j6AZeN3gTyfNutimk",
+    "signerId": "borrower.commonkit-mw7dph80.testnet"
+  },
+  {
+    "id": "pickup",
+    "hash": "Aa5RVdMi1jsL1Wp7A7KRArgWyfYTwvXK76yKJGVqNmU9",
+    "signerId": "custodian.commonkit-mw7dph80.testnet"
+  },
+  {
+    "id": "return",
+    "hash": "3fjvonUduUADaLNmtYVPtwmWYADRDxKS8tFGUQ8N156B",
+    "signerId": "borrower.commonkit-mw7dph80.testnet"
+  },
+  {
+    "id": "dispute",
+    "hash": "8tDLmwwiRWa9zmzUPkkuh99NtZF3fUjKjgYXeZty1AsH",
+    "signerId": "custodian.commonkit-mw7dph80.testnet"
+  },
+  {
+    "id": "settlement-proposal",
+    "hash": "5VHtBsey4ZRPF1NdnAJLzMuF4BScN8PSC8xm3J5dCXxX",
+    "signerId": "custodian.commonkit-mw7dph80.testnet"
+  },
+  {
+    "id": "settlement-vote-1",
+    "hash": "Cccw46RjqkSMfA93LbdUCebdWasEnK2M2DARoD4KUomZ",
+    "signerId": "custodian.commonkit-mw7dph80.testnet"
+  },
+  {
+    "id": "settlement-vote-2",
+    "hash": "B18RMKVFAeeHqX1RySjCBRz9PME2QQsyekR86G7EFWTT",
+    "signerId": "commonkit-mw7dph80.testnet"
+  },
+  {
+    "id": "treasury-proposal",
+    "hash": "CB4AqLZHhmeRaY3Expj2rz1M8GBC1dxAfh8rCBrVZw1j",
+    "signerId": "commonkit-mw7dph80.testnet"
+  },
+  {
+    "id": "treasury-vote-1",
+    "hash": "FLQGNHpQFWcCDLhNrsEZqh5aR2WDGowDgJVQcC5d4iQy",
+    "signerId": "commonkit-mw7dph80.testnet"
+  },
+  {
+    "id": "treasury-vote-2",
+    "hash": "AcaSqQEvD5DuXP3N4EDLjLzwVum7ndcfD13ty8zL5jgQ",
+    "signerId": "custodian.commonkit-mw7dph80.testnet"
+  },
+  {
+    "id": "borrower-withdraw",
+    "hash": "73dGx8M9mYaXdWKmLpjYHe65v371tZL4VC8LFedGai57",
+    "signerId": "borrower.commonkit-mw7dph80.testnet"
+  }
+]

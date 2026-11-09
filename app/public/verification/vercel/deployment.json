@@ -1,0 +1,29 @@
+{
+  "origin": "https://commonkit-testnet.vercel.app",
+  "deploymentId": "dpl_7C6wEoq78K1NJLNWQJPp8n71oCmH",
+  "deploymentUrl": "https://commonkit-testnet-pkn1pobfv-muthukumaran-k-1s-projects.vercel.app",
+  "sourceCommit": "73211f673389c21d564af37a13ab3916ca709ec1",
+  "network": "testnet",
+  "wallet": "Meteor Web",
+  "browser": "Chrome",
+  "physicalMobile": false,
+  "evidence": "Synthetic fixtures; both council accounts controlled by one operator",
+  "walletApproval": "Owner clicked Meteor Connect/Approve prompts; app actions and public receipt verification were automated.",
+  "completedAt": "2026-11-09T06:51:43.207Z",
+  "results": {
+    "normal": {
+      "booking": 10,
+      "transactions": 8,
+      "checks": 21
+    },
+    "dispute": {
+      "booking": 11,
+      "transactions": 11,
+      "checks": 27
+    },
+    "finalPrincipalMicroNear": 121000,
+    "escrow": 0,
+    "credits": 0,
+    "pending": 0
+  }
+}

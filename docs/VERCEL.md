@@ -41,7 +41,7 @@ Open http://127.0.0.1:4318, `/judge.html`, `/verify.html`, `/demo-guide.html`, `
 
 - The public URL loaded live library and DAO state, connected all three Meteor testnet identities, and completed both signed borrowing outcomes.
 - Both council votes, separate treasury withdrawals and borrower withdrawals were verified through finalized public receipts. The first-vote checkpoints were saved before the second votes.
-- Public verification remains wallet-free and selects the earlier historical cases. The fresh Vercel manifests are separate dated evidence.
+- Public verification and the 60-second tour select Vercel bookings #10/#11. Browser and CLI use the same manifests; original #4/#5 cases remain archived.
 - These runs used desktop Chrome with manual wallet approvals. They do not establish physical-phone signing, a real equipment pilot or a fresh cancellation scenario.
 - Keep the demo accessible without a Vercel team login. Repository visibility remains private until the owner separately authorizes publication.
 - Never deploy a development signer or enable `VITE_DEV_WALLET` on a hosted service.
