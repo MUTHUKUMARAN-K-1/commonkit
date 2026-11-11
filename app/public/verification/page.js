@@ -1,4 +1,4 @@
-import {createRpc, DEFAULT_ENDPOINTS} from './rpc.js';
+import {createRpc, DEFAULT_ENDPOINTS, ARCHIVAL_ENDPOINT} from './rpc.js';
 import {runVerification, getCheckIds} from './engine.js';
 import {PROOF_CASES} from './cases.js';
 import {buildCaseFile} from './case-model.js';
@@ -155,5 +155,5 @@ $('download').addEventListener('click', () => {
   const link = node('a'); link.href = url; link.download = `commonkit-${selected}-verification.json`; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 $('copy').addEventListener('click', async () => { const flow = selected, command = `npm run verify:testnet -- --flow ${flow}`; try { await navigator.clipboard.writeText(command); if (flow === selected) $('copy-status').textContent = 'Selected-flow command copied.'; } catch { if (flow === selected) $('copy-status').textContent = `Copy this command: ${command}`; } });
-$('providers').textContent = `Read-only RPC providers: ${DEFAULT_ENDPOINTS.join(' · ')}. Failed requests may fall back to the next provider; each downloaded report lists which served its requests.`;
+$('providers').textContent = `Current-state RPC: ${DEFAULT_ENDPOINTS.join(' · ')}. Historical receipts: ${ARCHIVAL_ENDPOINT}, with fallback to the current-state providers. Each downloaded report lists which provider served its requests.`;
 selectFlow(flowFromUrl(), false);

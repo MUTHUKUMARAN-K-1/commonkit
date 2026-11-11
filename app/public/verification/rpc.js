@@ -1,14 +1,17 @@
 // Read-only JSON-RPC transport shared by the browser and Node command.
 export const DEFAULT_ENDPOINTS = ['https://test.rpc.fastnear.com', 'https://rpc.testnet.near.org'];
+export const ARCHIVAL_ENDPOINT = 'https://archival-rpc.testnet.near.org';
 export class Unavailable extends Error {}
-export function createRpc({endpoints = DEFAULT_ENDPOINTS, fetchImpl = fetch, timeoutMs = 12000} = {}) {
+export function createRpc({endpoints = DEFAULT_ENDPOINTS, receiptEndpoints = endpoints === DEFAULT_ENDPOINTS ? [ARCHIVAL_ENDPOINT, ...endpoints] : endpoints, fetchImpl = fetch, timeoutMs = 12000} = {}) {
   const requests = [];
   const allowed = new Set(['status', 'block', 'query', 'EXPERIMENTAL_tx_status']);
   const queries = new Set(['view_account', 'view_access_key_list', 'call_function']);
   async function rpc(method, params) {
     if (!allowed.has(method) || (method === 'query' && !queries.has(params.request_type))) throw Error('Read-only RPC method required');
     const errors = [];
-    for (const endpoint of endpoints) {
+    // Completed rehearsals outlive the recent-node transaction retention window.
+    // An explicit endpoint override still controls every request (including tests).
+    for (const endpoint of method === 'EXPERIMENTAL_tx_status' ? receiptEndpoints : endpoints) {
       const started = Date.now();
       try {
         const response = await fetchImpl(endpoint, {method: 'POST', headers: {'Content-Type': 'application/json'},

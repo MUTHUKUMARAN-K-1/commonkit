@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {runVerification} from '../app/public/verification/engine.js';
-import {createRpc, Unavailable} from '../app/public/verification/rpc.js';
+import {createRpc, Unavailable, ARCHIVAL_ENDPOINT, DEFAULT_ENDPOINTS} from '../app/public/verification/rpc.js';
 import {PROOF_CASES} from '../app/public/verification/cases.js';
 
 const fixture = JSON.parse(await fs.readFile(new URL('./fixtures/verification-rpc.json', import.meta.url)));
@@ -142,6 +142,19 @@ test('read transport refuses write methods and falls back only after an unavaila
   assert.equal((await rpc('status', [])).chain_id, 'testnet'); assert.equal(requests.length, 2);
 });
 
+
+test('historical receipts use archive first, retain fallback, and leave current-state reads on recent nodes', async () => {
+  const urls = [];
+  const {rpc} = createRpc({fetchImpl: async url => {
+    urls.push(url);
+    return url === ARCHIVAL_ENDPOINT ? {ok: false, status: 503} : {ok: true, json: async () => ({result: {status: 'available'}})};
+  }});
+  await rpc('query', {request_type: 'call_function'});
+  assert.deepEqual(urls, [DEFAULT_ENDPOINTS[0]]);
+  urls.length = 0;
+  await rpc('EXPERIMENTAL_tx_status', ['hash', 'signer.testnet']);
+  assert.deepEqual(urls, [ARCHIVAL_ENDPOINT, DEFAULT_ENDPOINTS[0]]);
+});
 
 test('recorded normal-return receipts pass all 21 checks', async () => {
   const report=await runVerification(normalManifest,setup(true));

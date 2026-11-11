@@ -29,6 +29,10 @@ Connection is separate from reservation. The existing review step and wallet
 signature remain required, with fresh state, account, equipment and cost checks
 before sending. Onboarding never signs, submits a reservation or changes roles.
 
+Cancelling or failing a connection from the quote restores that quote with its
+selected time and duration, provided the visitor has not changed equipment,
+library or view. It never submits a booking automatically.
+
 The introduction can be reopened after dismissal. Its preference is separate
 from wallet state; browser storage failures must not prevent exploring the app.
 
@@ -39,3 +43,24 @@ dismiss/reopen, keyboard focus, route changes, and the reservation connection
 entry at desktop and phone widths. Keep recorded receipt verification distinct
 from a new signed wallet rehearsal. Run the existing JavaScript regression suite
 and production artifact checks before deployment.
+
+### 11 November 2026 recheck
+
+- Public desktop visitor path: outcome previews and the disconnected equipment
+  quote were inspected. A quote explains the 0.111 testnet NEAR total, including
+  retained storage, and keeps booking disabled until a member connects.
+- A 390 × 844 isolated browser viewport had no horizontal document overflow.
+  Mobile quote cancellation and a fresh signed booking remain pending; this is
+  responsive browser testing, not a physical-phone wallet test.
+- Connection cancellation now restores the quote. Its live cancellation recheck
+  remains pending because browser automation lost its session.
+- The recorded booking #10 and #11 verification passed all 48 live checks on
+  11 November. Recent RPC nodes could no longer serve their old receipts, so the
+  verifier now requests historical transactions from NEAR's documented
+  [testnet archival endpoint](https://docs.near.org/api/rpc/providers) first,
+  retaining the original providers as fallback. Current-state reads stay on
+  recent nodes. Reports still identify the provider for every request; an outage
+  remains unverified, never a cached pass.
+- 80 JavaScript tests and the production artifact checks passed. No new booking
+  was submitted in this recheck; historical proof is distinct from a fresh
+  Meteor rehearsal.
