@@ -219,9 +219,11 @@ $('reserve-connect').onclick=()=>{
   const selectedAsset=assetId,selectedLibrary=contractId;
   guard(async()=>{
     closeDialog('reserve-dialog');
-    await connectWallet('meteor-wallet');
-    // Connection never reserves. Restore the quote only for this unchanged context.
-    if(account&&assetId===selectedAsset&&contractId===selectedLibrary&&model?.assets[selectedAsset])openReservation();
+    try{await connectWallet('meteor-wallet');}
+    finally{
+      // Keep the quote on cancellation/error too. Never reopen over a different view or selection.
+      if(document.body.dataset.view==='library'&&assetId===selectedAsset&&contractId===selectedLibrary&&model?.assets[selectedAsset])openReservation();
+    }
   });
 };
 $('wallet-account').onchange=()=>{account=$('wallet-account').value;manualBookingSelection=false;if(model)bookingId=chooseBooking(model.bookings,account,model.assets);render();};
