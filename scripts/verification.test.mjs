@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {runVerification} from '../app/public/verification/engine.js';
-import {createRpc, Unavailable, ARCHIVAL_ENDPOINT, DEFAULT_ENDPOINTS} from '../app/public/verification/rpc.js';
+import {createRpc, createArchiveQueue, Unavailable, ARCHIVAL_ENDPOINT, DEFAULT_ENDPOINTS} from '../app/public/verification/rpc.js';
 import {PROOF_CASES} from '../app/public/verification/cases.js';
 
 const fixture = JSON.parse(await fs.readFile(new URL('./fixtures/verification-rpc.json', import.meta.url)));
@@ -161,6 +161,41 @@ test('recorded normal-return receipts pass all 21 checks', async () => {
   assert.equal(report.flow,'normal'); assert.equal(report.passed,true,JSON.stringify(report.checks.filter(c=>c.status!=='PASS')));
   assert.deepEqual(report.summary,{pass:21,fail:0,unverified:0});
   assert(!report.checks.some(c=>c.id==='settlement'));
+});
+
+test('archive queue serializes reads, spaces starts, and recovers after a rejected read', async () => {
+  let clock = 0, release;
+  const waits = [], starts = [];
+  const queue = createArchiveQueue({now: () => clock, wait: async ms => {waits.push(ms); clock += ms;}});
+  const first = queue(async () => {starts.push(clock); await new Promise(resolve => {release = resolve;}); throw Error('archive unavailable');});
+  const rejection = assert.rejects(first, /archive unavailable/);
+  const second = queue(async () => {starts.push(clock); return 'fresh second result';});
+  await Promise.resolve();
+  assert.deepEqual(starts, [0]);
+  release(); await rejection;
+  assert.equal(await second, 'fresh second result');
+  assert.deepEqual(starts, [0, 6500]); assert.deepEqual(waits, [6500]);
+});
+
+test('proof transports can share archive pacing while current-state reads stay independent', async () => {
+  let release, active = 0, peak = 0, reads = 0;
+  const queue = createArchiveQueue({intervalMs: 0});
+  const fetchImpl = async (_url, options) => {
+    const {method} = JSON.parse(options.body);
+    if (method === 'status') return {ok: true, json: async () => ({result: {chain_id: 'testnet'}})};
+    active++; peak = Math.max(peak, active); reads++;
+    if (reads === 1) await new Promise(resolve => {release = resolve;});
+    active--;
+    return {ok: true, json: async () => ({result: {freshRead: reads}})};
+  };
+  const first = createRpc({fetchImpl, archiveQueue: queue}), second = createRpc({fetchImpl, archiveQueue: queue});
+  const a = first.rpc('EXPERIMENTAL_tx_status', {}), b = second.rpc('EXPERIMENTAL_tx_status', {});
+  await Promise.resolve();
+  assert.equal((await second.rpc('status', [])).chain_id, 'testnet');
+  assert.equal(reads, 1); release();
+  const results = await Promise.all([a, b]);
+  assert.equal(peak, 1); assert.equal(reads, 2);
+  assert.deepEqual(results.map(r => r.freshRead), [1, 2]);
 });
 const normalMutations = [
  ['wrong return hash in acceptance', 'accept-return', d=>{d.transactions[3].transaction.actions[0].FunctionCall.args=Buffer.from(JSON.stringify({id:5,expected_hash:'wrong'})).toString('base64');}],

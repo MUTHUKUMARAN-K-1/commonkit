@@ -1,0 +1,38 @@
+{
+  "origin": "https://commonkit-testnet.vercel.app",
+  "checkedAt": "2026-11-12T14:23:39.017Z",
+  "walletUsed": false,
+  "layouts": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "exploreBothOutcomes": true,
+      "disconnectedQuote": true,
+      "membershipGuidance": true,
+      "bookingDisabledWithoutWallet": true,
+      "routes": true,
+      "sixTourChapters": true,
+      "reducedMotion": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "exploreBothOutcomes": true,
+      "disconnectedQuote": true,
+      "membershipGuidance": true,
+      "bookingDisabledWithoutWallet": true,
+      "routes": true,
+      "sixTourChapters": true,
+      "reducedMotion": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "checks": [
+    "Natural 60-second playback completed",
+    "normal: 21/21 fresh checks"
+  ],
+  "pageErrors": [],
+  "passed": false,
+  "error": "{\"pass\":14,\"fail\":0,\"unverified\":13}\n\nfalse !== true\n"
+}

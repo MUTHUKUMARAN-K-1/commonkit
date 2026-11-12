@@ -1,13 +1,14 @@
 # Verify CommonKit without a wallet
 
-Open [the public verification page](https://commonkit-testnet.vercel.app/verify.html). Select **Normal return** (21 checks, booking #10) or **DAO dispute** (27 checks, booking #11). It runs fresh read-only checks from your browser and provides an expandable explanation, receipt links and a downloadable JSON report. No login, wallet connection, private key or signing server is used.
+Open [the public verification page](https://commonkit-testnet.vercel.app/verify.html). Select **Normal return** (21 checks, booking #10) or **DAO dispute** (27 checks, booking #11). It runs fresh read-only checks from your browser and provides an expandable explanation, receipt links and a downloadable JSON report. The separate [mobile reservation](https://commonkit-testnet.vercel.app/verify.html#mobile-proof) checks booking #13 with six fresh checks and clearly labeled saved browser evidence. No login, wallet connection, private key or signing server is used.
 
 From a clone, with Node.js 24 (dependency installation is unnecessary for this command):
 
 ```sh
-npm run verify:testnet # both flows: 48 checks
+npm run verify:testnet # both completed flows + mobile reservation: 54 checks
 npm run verify:testnet -- --flow normal
 npm run verify:testnet -- --flow dispute
+npm run verify:testnet -- --flow mobile
 npm run --silent verify:testnet -- --json > verification-report.json
 ```
 
@@ -51,7 +52,7 @@ Current views use the **same finalized block hash and height**, including the li
 
 Browser and Node use the identical [engine](../app/public/verification/engine.js) and [read-only transport](../app/public/verification/rpc.js). The browser contains no wallet imports. The original transaction-signing page remains separate.
 
-`npm test` includes 53 verification tests (79 JavaScript tests overall, including six case-file regressions). Two current-proof regressions also replay the captured Vercel receipts and reject altered borrower transfers, using synthetic query envelopes. The original dispute cases cover the genuine recorded RPC fixture, 32 altered-data cases, later valid borrowing, RPC outage, pruned history and transport restrictions/fallback. Cases include wrong votes/receivers/deposits, unsafe integers, disconnected or missing receipts, hidden child failures, false callbacks and gas refunds substituted for principal. Fourteen additional normal-proof cases cover real captured receipts, altered acceptance evidence, nonzero damage, an unexpected dispute, missing approval, wrong payments/nonces, unbound callback, failed child, pruned acceptance, invalid manifests, later activity and RPC outage. Normal tests combine recorded normal state and receipt bodies with the shared deployment/policy fixture using synthetic query envelopes; they are deterministic tests, not live network evidence.
+`npm test` includes 94 JavaScript tests. The seven mobile-proof tests cover successful execution, changed deposits and failed children, unavailable receipts, altered booking terms, unbalanced accounting, later valid cancellation, wrong block/network and inconsistent manifests. Two current-proof regressions also replay the captured Vercel receipts and reject altered borrower transfers, using synthetic query envelopes. The original dispute cases cover the genuine recorded RPC fixture, 32 altered-data cases, later valid borrowing, RPC outage, pruned history and transport restrictions/fallback. Cases include wrong votes/receivers/deposits, unsafe integers, disconnected or missing receipts, hidden child failures, false callbacks and gas refunds substituted for principal. Fourteen additional normal-proof cases cover real captured receipts, altered acceptance evidence, nonzero damage, an unexpected dispute, missing approval, wrong payments/nonces, unbound callback, failed child, pruned acceptance, invalid manifests, later activity and RPC outage. Normal tests combine recorded normal state and receipt bodies with the shared deployment/policy fixture using synthetic query envelopes; they are deterministic tests, not live network evidence.
 
 The [dispute fixture](../scripts/fixtures/verification-rpc.json) was read from public testnet on 8 November 2026 at block 276747851. Signatures, public keys, gas profiles and node host metadata were removed. Tests replace only the fixture's block timestamp with the test clock; they do not claim to be fresh network checks.
 
@@ -59,8 +60,39 @@ Original dispute-page validation: 27/27 live checks passed in both Node and a br
 
 RPC references: [NEAR transaction status and finality](https://docs.near.org/api/rpc/transactions), [read-only account and contract queries](https://docs.near.org/api/rpc/contracts).
 
-Dual-flow update: all **48 live RPC checks** and **66 JavaScript tests** passed. The default CLI now emits an aggregate report with two flow reports; `--flow normal` or `--flow dispute` emits one report. Browser selection, counts, download filename, command and historical links follow the selected flow. Later legitimate borrowing may change current balances or reputation without invalidating either historical flow.
+Historical dual-flow update: all **48 live RPC checks** and **66 then-existing JavaScript tests** passed. At that release, the default CLI emitted an aggregate report with two flow reports; `--flow normal` or `--flow dispute` emits one report. Browser selection, counts, download filename, command and historical links follow the selected flow. Later legitimate borrowing may change current balances or reputation without invalidating either historical flow.
 
 Vercel-origin update, 9 November: separate [Meteor rehearsals](testnet/vercel/README.md) completed bookings #10/#11 with 19 finalized transactions and 48 checks against newly captured manifests. The public browser, CLI and judge tour now select #10/#11 by default. Original #4/#5 manifests and snapshots remain at their old public paths for historical links and deterministic regression fixtures. These runs used owner-assisted wallet approvals and verify both actual payouts, not just settlement credits.
 
 The [case-file view](CASE-FILE.md) presents these same recorded claims with readable synthetic evidence and local file matching. Its fingerprint matches are separate from the 48 live receipt checks.
+
+## Mobile reservation: booking #13 (12 November)
+
+The [mobile engine](../app/public/verification/mobile-engine.js) shares the exact
+transaction-graph and ledger checks with the completed-flow engine. It checks
+manifest consistency, testnet identity, a fresh finalized block, the exact reserve
+call and every child receipt, immutable booking terms, and current principal
+conservation. Browser and CLI run the same six checks. Current booking status can
+change without invalidating its historical reservation receipt.
+
+The [review screenshot and viewport record](../app/public/verification/mobile/README.md)
+are off-chain operator evidence. They document 390 × 844 Chrome review/signature
+initiation; later confirmation was observed at desktop width. This is neither a
+physical-phone test nor a completed borrowing flow. Signatures and public-key
+fields are omitted from the published saved execution receipt.
+
+The current default command aggregates three proof reports (54 checks), including
+mobile. The original capture's eight before/after checks are separate historical
+validation, not the public verifier's six checks. [Publication checks](testnet/mobile-booking-2026-11-12/public-pages/README.md).
+
+### Archive request pacing
+
+The free NEAR archive is documented as severely rate limited. A final browser
+recheck encountered unavailable historical receipts. Archive receipt reads now
+share a sequential queue across proof panels, with at least 6.5 seconds between
+request starts. Current-state reads remain independent. This reduces request
+bursts; it does not guarantee provider availability. Every check still fetches
+fresh data, retains endpoint provenance and reports UNVERIFIED on unavailable
+receipts. No saved receipt is used to manufacture a live pass. Two regression
+tests cover pacing/recovery and shared queues without blocking current-state
+reads. [Provider documentation](https://docs.near.org/api/rpc/providers).

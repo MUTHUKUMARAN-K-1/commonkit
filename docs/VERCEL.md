@@ -60,3 +60,26 @@ https://commonkit-testnet-js5j9esmk-muthukumaran-k-1s-projects.vercel.app,
 aliased to https://commonkit-testnet.vercel.app.
 The static build passed its 74-file production check. No wallet signer or keys
 were added. See [public-page checks](testnet/mobile-booking-2026-11-12/public-pages/README.md).
+
+## 12 November: final submission documentation check
+
+The corrected demo guide is deployed as `dpl_Df1fBt5YyHuPEo4njNakRRnLJMr2`,
+https://commonkit-testnet-abouiecln-muthukumaran-k-1s-projects.vercel.app,
+aliased to the public demo. Application transaction code and its built JS/CSS
+bundles are unchanged. The guide points to completed bookings #10/#11 and the
+separate #13 mobile reservation, and explains that other active bookings can
+leave nonzero escrow. [Final readiness review](SUBMISSION-CHECK-2026-11-12.md).
+
+The final audit then found unavailable historical receipts on the free archive.
+The verifier now shares a paced archive queue across proof panels while keeping
+current-state reads independent and preserving UNVERIFIED on failure. This
+follow-up is deployed as `dpl_FSLtFjLL8oW3mmuFnhM8AswaC6Gk`,
+https://commonkit-testnet-44n52etzr-muthukumaran-k-1s-projects.vercel.app,
+with the same public alias. The main app's wallet behavior is unchanged.
+
+A one-second start gap still left the last dispute receipt unavailable. The final
+conservative gap is 6.5 seconds; this is a courtesy pacing setting, not a claimed
+provider quota. Current deployment: `dpl_Bch9VUbK8kDdJSKFzLmCr5zFu1BZ`,
+https://commonkit-testnet-5d758plf4-muthukumaran-k-1s-projects.vercel.app.
+The public alias remains https://commonkit-testnet.vercel.app. Provider outages
+can still produce UNVERIFIED; the verifier never substitutes cached successes.

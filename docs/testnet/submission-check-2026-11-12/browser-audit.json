@@ -1,0 +1,39 @@
+{
+  "origin": "https://commonkit-testnet.vercel.app",
+  "checkedAt": "2026-11-12T14:23:39.017Z",
+  "walletUsed": false,
+  "layouts": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "exploreBothOutcomes": true,
+      "disconnectedQuote": true,
+      "membershipGuidance": true,
+      "bookingDisabledWithoutWallet": true,
+      "routes": true,
+      "sixTourChapters": true,
+      "reducedMotion": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "exploreBothOutcomes": true,
+      "disconnectedQuote": true,
+      "membershipGuidance": true,
+      "bookingDisabledWithoutWallet": true,
+      "routes": true,
+      "sixTourChapters": true,
+      "reducedMotion": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "checks": [
+    "Natural 60-second playback completed"
+  ],
+  "pageErrors": [],
+  "passed": false,
+  "receiptRecheckStartedAt": "2026-11-12T14:34:22.851Z",
+  "initialReceiptResult": "Dispute: 14 passed, 13 unavailable, zero mismatches; retained separately",
+  "error": "[{\"id\":\"treasury-vote-2\",\"label\":\"Council member 2 cast the second treasury vote\",\"category\":\"Recorded transaction flow\",\"status\":\"UNVERIFIED\",\"detail\":\"https://archival-rpc.testnet.near.org: Failed to fetch; https://test.rpc.fastnear.com: HTTP 408; https://rpc.testnet.near.org: signal timed out\",\"transactionHash\":\"AcaSqQEvD5DuXP3N4EDLjLzwVum7ndcfD13ty8zL5jgQ\"},{\"id\":\"borrower-withdraw\",\"label\":\"Borrower withdrew their available credit\",\"category\":\"Recorded transaction flow\",\"status\":\"UNVERIFIED\",\"detail\":\"https://archival-rpc.testnet.near.org: Failed to fetch; https://test.rpc.fastnear.com: HTTP 408; https://rpc.testnet.near.org: signal timed out\",\"transactionHash\":\"73dGx8M9mYaXdWKmLpjYHe65v371tZL4VC8LFedGai57\"},{\"id\":\"dao-paid\",\"label\":\"DAO received 0.004 NEAR and its callback confirmed payment\",\"category\":\"Execution & funds\",\"status\":\"UNVERIFIED\",\"detail\":\"Required transaction treasury-vote-2 is not verified\"},{\"id\":\"borrower-paid\",\"label\":\"Borrower received 0.007 NEAR and its callback confirmed payment\",\"category\":\"Execution & funds\",\"status\":\"UNVERIFIED\",\"detail\":\"Required transaction borrower-withdraw is not verified\"}]\n\nfalse !== true\n"
+}

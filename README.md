@@ -12,7 +12,7 @@
 </p>
 <p align="center"><a href="#why-commonkit">Why CommonKit</a> · <a href="#in-action">In action</a> · <a href="#follow-the-money">The money</a> · <a href="#for-judges">For judges</a> · <a href="#run-locally">Run locally</a> · <a href="#scope-and-trust">Scope & trust</a></p>
 
-> **Release status:** working testnet prototype, publicly hosted on Vercel. Both fresh Meteor flows passed on the public origin on 9 November: **19 finalized transactions, 48 receipt checks, both payouts complete**. The owner handled wallet approvals while the app and public verifier checked execution. Earlier rehearsals also cover responsive Chrome. The repository stays private during preparation; final submission requires public source. [Latest receipts](docs/testnet/vercel/README.md) · [Deployment record](docs/VERCEL.md).
+> **Release status:** working testnet prototype, publicly hosted on Vercel. Both fresh Meteor flows passed on the public origin on 9 November: **19 finalized transactions, 48 receipt checks, both payouts complete**. The owner handled wallet approvals while the app and public verifier checked execution. Booking #13 adds a real Meteor reservation initiated from a 390 × 844 review, with six additional public checks (54 total). It is not a completed return or physical-phone test. The repository stays private during preparation; final submission requires public source. [Latest receipts](docs/testnet/vercel/README.md) · [Deployment record](docs/VERCEL.md).
 
 ## Why CommonKit
 
@@ -38,11 +38,11 @@ New here? Open the library's **Start here** guide to learn the three roles and c
 | Time | Do this | See this |
 | --- | --- | --- |
 | 0–10s | Open the [judge tour](https://commonkit-testnet.vercel.app/judge.html) | The camera, the three roles and the borrowing journey |
-| 10–20s | Select **Reserve** | 0.111 testnet NEAR attached: 0.011 principal plus 0.100 retained storage |
+| 10–20s | Select **Reserve** | Mobile-width reservation #13; 0.111 testnet NEAR attached: 0.011 principal plus 0.100 retained storage |
 | 20–30s | Select **Normal return** | Booking #10: the borrower receives the full 0.010 bond; the DAO receives the 0.001 fee |
 | 30–40s | Select **First vote** | The saved booking #11 checkpoint: one approval, 0.011 still escrowed, zero credits |
 | 40–50s | Select **Settlement** | Second approval authorizes 0.003 damage; credits and actual withdrawals remain distinct |
-| 50–60s | Select **Verify it**, then open either proof | 21 normal-return checks or 27 dispute checks, receipt links and a downloadable report |
+| 50–60s | Select **Verify it**, then open a proof | 21 normal-return, 27 dispute or 6 mobile-reservation checks, receipts and a downloadable report |
 
 RPC completion time is additional to the tour. A mismatch or unavailable receipt is reported; saved snapshots never substitute for a live pass. [Verification scope](docs/VERIFICATION.md) · [Narration and evidence map](docs/JUDGE-WALKTHROUGH.md).
 
@@ -105,17 +105,17 @@ The library holds booking principal. Sputnik authorizes disputed allocation; it 
 
 | What to assess | Where to look | Evidence boundary |
 | --- | --- | --- |
-| The complete borrowing lifecycle | [Normal return](docs/testnet/METEOR-NORMAL-RETURN-REHEARSAL.md) and [DAO dispute](docs/testnet/METEOR-POLISHED-REHEARSAL.md) | 8 and 11 finalized testnet transactions; synthetic equipment evidence |
+| The complete borrowing lifecycle | [Vercel normal return #10](docs/testnet/vercel/README.md) and [DAO dispute #11](docs/testnet/vercel/desktop-dispute/manifest.json) | 8 and 11 finalized testnet transactions; synthetic equipment evidence |
 | Real collective authorization | [One-vote checkpoint](app/public/verification/vercel/dispute/single-vote.json), [settlement checkpoint](app/public/verification/vercel/dispute/settled.json) and [frontend governance actions](app/app.js) | Two distinct council accounts, both controlled by the demo operator |
 | Mobile-width reservation | [Booking #13 public proof](https://commonkit-testnet.vercel.app/verify.html#mobile-proof), [capture record](docs/testnet/mobile-booking-2026-11-12/README.md) | 390 × 844 review and signature initiation, real Meteor approval; later desktop confirmation. Reservation only, not a physical-phone test |
 | Receipt and accounting correctness | [Browser verifier](https://commonkit-testnet.vercel.app/verify.html), `npm run verify:testnet`, [verification engine](app/public/verification/engine.js) | 48 checks across the two completed Vercel flows plus 6 for mobile reservation #13; read-only, not a new signing rehearsal |
 | Failure behavior | [Compiled-contract sandbox suite](docs/CONTRACT-FAILURE-TESTS.md) | 19 targeted cases: authorization, rollback, failed transfers/retry, callback replay and DAO execution failure |
 | Browser integration | [Four cobalt UI rehearsals](docs/testnet/cobalt/README.md) | 38 transactions and 96 checks across desktop/responsive normal + dispute cycles; not physical-phone validation |
 | Current public deployment | [Vercel Meteor rehearsals](docs/testnet/vercel/README.md) | Booking #10 normal return and #11 dispute; 19 finalized transactions and 48 checks, including both withdrawals. Operator-assisted Meteor approvals |
-| Reproducibility | [CI workflow](.github/workflows/ci.yml), commands below, [deployment configuration](vercel.json) | 79 JS tests; 14 Rust lifecycle tests; separate sandbox evidence. Counts are not a security score |
+| Reproducibility | [CI workflow](.github/workflows/ci.yml), commands below, [deployment configuration](vercel.json) | 94 JS tests; 14 Rust lifecycle tests; separate sandbox evidence. Counts are not a security score |
 | Track fit and original work | [Submission facts](docs/SUBMISSION.md), [baseline comparison](https://github.com/MUTHUKUMARAN-K-1/commonkit/compare/baseline-v0.1...main) | Social Money: community-controlled equipment access and contested bond allocation |
 
-The public proof now checks the latest Vercel bookings #10/#11. Earlier rehearsals remain archived; repeated demo runs are not a user/adoption metric.
+The public proof checks completed Vercel bookings #10/#11 and the separate mobile reservation #13. Earlier rehearsals remain archived; repeated demo runs are not a user/adoption metric.
 
 ## Run locally
 
@@ -191,11 +191,13 @@ Public deployment/operator scripts require private local configuration and submi
 
 Next validation priority: run one consented equipment-sharing pilot with separate people controlling the roles. Measure completion time and confusion before expanding the product. This is planned, not completed adoption.
 
+See the [final readiness check](docs/SUBMISSION-CHECK-2026-11-12.md) for verified requirements and the owner’s remaining publication steps. The illustrated tour is not a published X demo post.
+
 ## Hackathon development and reuse
 
-Built for **NEAR HACKATHON / Social Money**. The [archived baseline](https://github.com/MUTHUKUMARAN-K-1/commonkit/tree/baseline-v0.1) contains the Rust state machine, local simulator, draft contract and unsigned DAO adapter. It is an import snapshot committed during preparation, not original commit history or a claim that it predates the hackathon.
+Built for **NEAR HACKATHON / Social Money** (`social`). CommonKit is the owner’s only project in this hackathon, confirmed on 12 November 2026. It uses existing Sputnik approvals for equipment access and contested deposits; it does not implement a replacement multisig. The app is testnet-only; any eventual prize payout requires a separate mainnet account. The [archived baseline](https://github.com/MUTHUKUMARAN-K-1/commonkit/tree/baseline-v0.1) contains the Rust state machine, local simulator, draft contract and unsigned DAO adapter. It is an import snapshot committed during preparation, not original commit history or a claim that it predates the hackathon.
 
-Subsequent work adds deployed testnet contracts, real Sputnik proposals/votes, Meteor signing with final receipt checks, both proof flows, the public verifier, contract failure tests and the polished frontend. Review the [baseline-to-main diff](https://github.com/MUTHUKUMARAN-K-1/commonkit/compare/baseline-v0.1...main). The older `submission-ready` tag is an intermediate snapshot. A new immutable submission tag remains to be frozen after final validation.
+Subsequent work adds deployed testnet contracts, real Sputnik proposals/votes, Meteor signing with final receipt checks, both proof flows, the public verifier, contract failure tests and the polished frontend. Review the [baseline-to-main diff](https://github.com/MUTHUKUMARAN-K-1/commonkit/compare/baseline-v0.1...main). The older `submission-ready` tag is an intermediate snapshot. The immutable `submission-candidate-2026-11-12` tag pins this reviewed candidate; [review its exact diff](https://github.com/MUTHUKUMARAN-K-1/commonkit/compare/baseline-v0.1...submission-candidate-2026-11-12). This is a preparation snapshot, not an application submission. Any later changes need a new reviewed tag.
 
 Reuse: `near-sdk`, `borsh`, `serde` / `serde_json`, `near-kit`, `@hot-labs/near-connect`, Sputnik DAO, Vite, Playwright, Motion, NumberFlow, Lucide and the DM Sans / Instrument Serif font packages. Versions are locked; notices remain in the source and distributed font/icon licenses. [Components and design references](docs/UI-COMPONENTS.md) · [Brand assets and usage](docs/BRAND.md).
 
