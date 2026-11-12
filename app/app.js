@@ -9,15 +9,17 @@ import {Near} from 'near-kit';
 import {transactionHash,inspectFinalOutcome} from './wallet-result.js';
 import {chooseBooking,walletRoles,statusLabel,bookingJourney,nextBookingStep,proposalSummary,settlementMatches} from './presentation.js';
 import {micro,money,yoctoMoney,toMicro,validAccount,attachedDeposit} from './amounts.js';
-import {assertWalletAccount,pendingReceipt,executionSucceeded} from './wallet-session.js';
+import {assertWalletAccount,pendingReceipt,executionSucceeded,connectAccounts,connectionMessage,connectedWallet,uniqueWalletAccounts} from './wallet-session.js';
+import {initMembership,renderMembership} from './membership-view.js';
 import {equipmentAvailability} from './live-state.js';
-import {initUi,navigate,openReservation,closeDialog,reservationReview,updateTransactionNotice,setCount,applyFilters,preserveFocus,setBusy,animateVoteProgress} from './ui.js';
+import {initUi,navigate,openDialog,openReservation,closeDialog,reservationReview,updateTransactionNotice,setCount,applyFilters,preserveFocus,setBusy,animateVoteProgress} from './ui.js';
 const $=id=>document.getElementById(id);
 const near=new Near({network:'testnet'});
 const connector=new NearConnector({network:'testnet',features:{testnet:true}});
 const devEnabled=import.meta.env.DEV&&import.meta.env.VITE_DEV_WALLET==='1';
 let devWallet=null,account='',walletAccounts=[],contractId='',model=null,ledger=null,storage=0,config={},assetId='',bookingId=null,busy=false,readSequence=0;
 let manualBookingSelection=false;
+let walletReturnQuote=null;
 let guardContext=null,lastRender='',lastUpdated=0,refreshInFlight=null,dataStale=true,evidenceBookingIdentity=null;
 let daoPolicy=null,proposals=[],policyVerified=false,daoError='',receiptHistory=[];
 const receiptKey='commonkit.testnet.receipts.v1';
@@ -25,7 +27,7 @@ try{const records=JSON.parse(localStorage.getItem(receiptKey)||'[]');if(Array.is
 const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
 const contract=s=>{if(!validAccount(s)||!s.endsWith('.testnet'))throw Error('Use a named .testnet contract account');return s;};
 const date=n=>new Date(n*1000).toLocaleString([],{dateStyle:'medium',timeStyle:'short'});
-const wallet=async()=>devWallet||await connector.wallet();
+const wallet=async()=>devWallet||await connectedWallet(connector);
 const council=()=>daoPolicy?.roles?.find(r=>r.name==='council')?.kind?.Group||[];
 function message(text,error=false,stage='idle'){$('notice').textContent=text;$('notice').classList.toggle('error',error);updateTransactionNotice(text,error?'error':stage);}
 async function guard(fn){if(busy)return;busy=true;guardContext={account,contractId,bookingId,assetId};render();try{await fn();}catch(e){message(e.message||String(e),true);}finally{busy=false;guardContext=null;render();}}
@@ -89,7 +91,7 @@ async function transact(method,args={},deposit='0',receiverId=contractId){
   try{await confirmReceipt(record);}catch(error){await refresh().catch(()=>{});throw Error(error.message+' Check the receipt before submitting again.');}
   await refresh();
   const saved=receiptHistory.find(r=>r.hash===hash);if(!executionSucceeded(saved)){message('The transaction has a receipt but final execution remains unconfirmed. Check confirmation in Activity before retrying.',true);return result;}
-  if(method==='reserve'){closeDialog('reserve-dialog');navigate('bookings');manualBookingSelection=false;bookingId=chooseBooking(model.bookings,account,model.assets);render();}
+  if(method==='reserve'){closeDialog('reserve-dialog');navigate('bookings');manualBookingSelection=false;bookingId=chooseBooking(model.bookings,account,model.assets);$('booking-filter').value='active';render();$('booking-detail').scrollIntoView({behavior:'instant',block:'start'});$('detail-title').tabIndex=-1;$('detail-title').focus({preventScroll:true});}
   message(receiverId===daoId?'DAO transaction confirmed on testnet. Review the proposal and resulting library state below.':'Transaction confirmed on testnet. Library state refreshed.',false,'confirmed');
   return result;
 }
@@ -158,6 +160,7 @@ function render(){
   $('meteor-connect').hidden=!!account;$('meteor-connect').disabled=busy;
   $('wallet-account').replaceChildren();for(const a of walletAccounts){const option=node('option',a.accountId);option.value=a.accountId;$('wallet-account').append(option);}$('wallet-account').value=account;$('wallet-account').hidden=walletAccounts.length<2;$('wallet-account').disabled=busy;
   renderRoles();
+  renderMembership({account,model,fresh:!dataStale,policyVerified,proposals,contractId,council:council(),policy:daoPolicy,asset:model?.assets[assetId],busy});
   $('connect').disabled=busy;$('disconnect').disabled=busy;$('refresh').disabled=busy||!contractId;$('contract-form').querySelector('button[type=submit]').disabled=busy;
   setCount('asset-count',model?Object.keys(model.assets).length:'—');setCount('member-count',model?model.members.length:'—');$('credit').textContent=model&&account?money(model.credits[account]||0):'—';$('balance-status').textContent=ledger?(ledger.balanced?'Balanced':'Check required'):'—';$('wallet-summary').replaceChildren(...(account?[node('span',account.split('.')[0],'wallet-name'),node('span',walletRoles(account,model,council()).map(role=>role==='Member / borrower'?'Borrower':role==='Council voter'?'Council':role).join(' + '),'wallet-role-summary')]:[document.createTextNode('Connect wallet')]));$('wallet-open').title=account||'Connect your testnet wallet';$('refresh-short').disabled=busy||!contractId;
   $('assets').replaceChildren();$('bookings').replaceChildren();$('ledger').replaceChildren();
@@ -210,21 +213,30 @@ function render(){
   const next=model?.bookings[bookingId];$('library-next-title').textContent=next?`Booking #${next.id}: ${statusLabel(next.status)}`:'Ready for your next project?';$('library-next-copy').textContent=next?nextBookingStep(next,model.assets[next.asset_id],Math.floor(Date.now()/1000)).body:'Reserve community equipment, record your handover, and return it with confidence.';applyFilters();restoreFocus();
 }
 async function evidence(prefix='evidence'){const file=$(`${prefix}-file`).files[0];if(file){if(file.size>25*1024*1024)throw Error('Choose an evidence file smaller than 25 MB');const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',await file.arrayBuffer())),n=>n.toString(16).padStart(2,'0')).join('');$(`${prefix}-hash`).value=hash;return hash;}const hash=$(`${prefix}-hash`).value.trim();if(!/^[a-f0-9]{64}$/.test(hash))throw Error(prefix==='decision-evidence'?'Add a decision evidence file or its 64-character lowercase SHA-256 hash in the council form.':'Choose a file or enter its 64-character lowercase SHA-256 hash');return hash;}
-function setAccounts(accounts){const previous=account;walletAccounts=(accounts||[]).filter(a=>validAccount(a.accountId));if(!walletAccounts.some(a=>a.accountId===account))account=walletAccounts[0]?.accountId||'';if(previous!==account){manualBookingSelection=false;if(model)bookingId=chooseBooking(model.bookings,account,model.assets);}}
-async function syncWallet(){try{setAccounts(await(await wallet()).getAccounts({network:'testnet'}));}catch{setAccounts([]);}}
-async function connectWallet(walletId){if(devWallet){await devWallet.disconnect?.();devWallet=null;}closeDialog('wallet-dialog');message('Choose your testnet account in the wallet window. Allow popups for this site.');await connector.connect(walletId?{walletId}:undefined);await syncWallet();await refresh();message(account?'Testnet wallet connected. Your available actions reflect its on-chain roles.':'No wallet account selected.');}
+function setAccounts(accounts){const previous=account;walletAccounts=uniqueWalletAccounts(accounts);if(!walletAccounts.some(a=>a.accountId===account))account=walletAccounts[0]?.accountId||'';if(previous!==account){manualBookingSelection=false;if(model)bookingId=chooseBooking(model.bookings,account,model.assets);}}
+async function syncWallet(){const hadAccount=!!account;try{setAccounts(await(await wallet()).getAccounts({network:'testnet'}));}catch{setAccounts([]);if(hadAccount)message('The wallet account could not be verified. Refresh access or reconnect before booking; your quote is kept.',true);}}
+async function connectWallet(walletId){
+  const returnQuote=walletReturnQuote;walletReturnQuote=null;
+  if(devWallet){await devWallet.disconnect?.();devWallet=null;}
+  closeDialog('wallet-dialog');closeDialog('reserve-dialog');
+  message('In Meteor Connect, choose Meteor Web for this browser. Unlock Meteor and select your testnet account. Connecting does not make a booking.',false,'wallet');
+  const reminder=setTimeout(()=>message('Still waiting for Meteor. Choose Meteor Web, allow its popup and unlock the wallet. To stop, close Meteor Connect; your quote will be kept.',false,'wallet'),15000);
+  try{
+    setAccounts(await connectAccounts(connector,walletId));clearTimeout(reminder);
+    if(!account)throw Error('No valid testnet account was returned.');
+    try{await refresh();}catch{message('Wallet connected, but library access could not be refreshed. Use Refresh access before booking.',true);return;}
+    message(model?.members.includes(account)?'Wallet connected · library member. Review your quote before approving a separate booking transaction.':'Wallet connected · borrowing membership needed. Open the membership request guidance to learn how to borrow.');
+  }catch(error){message(connectionMessage(error),true);}
+  finally{
+    clearTimeout(reminder);
+    if(returnQuote&&document.body.dataset.view==='library'&&assetId===returnQuote.assetId&&contractId===returnQuote.contractId&&model?.assets[assetId])openReservation();
+    else if(!returnQuote)openDialog('wallet-dialog');
+  }
+}
 $('connect').onclick=()=>guard(()=>connectWallet());
 $('meteor-connect').onclick=()=>guard(()=>connectWallet('meteor-wallet'));
 $('reserve-connect').onclick=()=>{
-  const selectedAsset=assetId,selectedLibrary=contractId;
-  guard(async()=>{
-    closeDialog('reserve-dialog');
-    try{await connectWallet('meteor-wallet');}
-    finally{
-      // Keep the quote on cancellation/error too. Never reopen over a different view or selection.
-      if(document.body.dataset.view==='library'&&assetId===selectedAsset&&contractId===selectedLibrary&&model?.assets[selectedAsset])openReservation();
-    }
-  });
+  if(busy)return;walletReturnQuote={assetId,contractId};guard(()=>connectWallet('meteor-wallet'));
 };
 $('wallet-account').onchange=()=>{account=$('wallet-account').value;manualBookingSelection=false;if(model)bookingId=chooseBooking(model.bookings,account,model.assets);render();};
 $('disconnect').onclick=()=>guard(async()=>{if(devWallet){await devWallet.disconnect?.();devWallet=null;}else await connector.disconnect();setAccounts([]);message('Wallet disconnected. Choose another account in your wallet, then reconnect.');});
@@ -240,6 +252,11 @@ $('resolve-form').onsubmit=e=>{e.preventDefault();guard(async()=>{const b=model?
 $('dao-withdraw').onclick=()=>guard(()=>propose('withdraw',{}));
 const future=new Date(Date.now()+5*60000);future.setSeconds(0,0);$('start').value=new Date(future.getTime()-future.getTimezoneOffset()*60000).toISOString().slice(0,16);
 async function init(){try{const r=await fetch('/deployment.json',{cache:'no-store'});if(r.ok)config=await r.json();}catch{}try{contractId=contract(localStorage.getItem('commonkit.testnet.contract')||config.contractId||'');$('contract').value=contractId;await refresh();message('Library ready. Browse equipment, follow a booking or review council decisions.');}catch(e){message(contractId?e.message:'No deployment configured. Enter the deployed CommonKit .testnet account above.',true);}await syncWallet();render();}
+initMembership({
+  onRefresh:()=>guard(async()=>{await syncWallet();await refresh();message(account?'Wallet and membership refreshed from testnet.':'Library refreshed. Connect a wallet to check its borrowing membership.');}),
+  onSwitch:fromQuote=>{if(busy)return;if(fromQuote){walletReturnQuote={assetId,contractId};closeDialog('reserve-dialog');}openDialog('wallet-dialog');message('Disconnect here, choose another account in Meteor, then reconnect. Your booking time and duration stay in the quote.');},
+  onCouncil:()=>{closeDialog('reserve-dialog');closeDialog('wallet-dialog');walletReturnQuote=null;navigate('council');$('governance').open=true;if(account)$('member').value=account;$('governance').scrollIntoView({block:'start'});}
+});
 initUi();init();
 async function refreshVisible(){if(document.hidden||busy||refreshInFlight||!contractId)return;refreshInFlight=(async()=>{try{await syncWallet();await refresh();}catch(error){$('data-freshness').textContent='Live refresh unavailable · last loaded state';message(`Could not refresh testnet: ${error.message}. Check the connection and refresh before acting.`,true);}finally{refreshInFlight=null;}})();await refreshInFlight;}
 setInterval(refreshVisible,30000);setInterval(()=>{if(!busy)render();},15000);

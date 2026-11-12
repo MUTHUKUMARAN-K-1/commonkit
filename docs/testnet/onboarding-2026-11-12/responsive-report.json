@@ -1,0 +1,19 @@
+{
+  "testedAt": "2026-11-12T13:28:07.173Z",
+  "url": "https://commonkit-testnet.vercel.app/",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "browser": "isolated Chrome via Playwright",
+  "wallet": "disconnected; real Meteor chooser cancellation only; no transaction signed",
+  "checks": [
+    "390 x 844 viewport and no horizontal document overflow",
+    "Disconnected normal return preview",
+    "Disconnected dispute preview",
+    "Quote shows full deposit and requires membership",
+    "Meteor chooser cancellation restores the mobile quote",
+    "No uncaught page errors"
+  ],
+  "errors": []
+}

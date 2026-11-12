@@ -1,0 +1,17 @@
+{
+  "testedAt": "2026-11-12T13:32:44.683Z",
+  "url": "https://commonkit-testnet.vercel.app",
+  "wallet": "real Meteor testnet connection",
+  "account": "Account: commonkit-mw7dph80.testnet",
+  "copyStatus": "Draft copied. Nothing has been sent. Share it with your organizer.",
+  "duration": "7200",
+  "membership": "Not admitted to borrow",
+  "pickup": "2026-11-12T20:30",
+  "reviewDisabled": true,
+  "councilHandoff": {
+    "governanceOpen": true,
+    "prefilledAccount": "commonkit-mw7dph80.testnet",
+    "proposalSummary": "0 awaiting a decision · 18 recent proposals"
+  },
+  "proposalSubmitted": false
+}
