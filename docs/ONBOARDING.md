@@ -103,3 +103,11 @@ and production artifact checks before deployment.
 - 85 JavaScript tests and the production artifact checks passed. Screenshots,
   the reservation receipt and detailed scope are in
   [the rehearsal record](testnet/onboarding-2026-11-12/README.md).
+
+### 12 November 2026 signed mobile-width follow-up
+
+Booking 13 was reviewed and its signature requested at 390 × 844 on the public
+Vercel demo, then approved through real Meteor. Eight independent receipt and
+state checks passed. The later confirmation was observed at desktop width;
+this was Chrome emulation, not a physical-phone test. See the
+[receipt, screenshots and exact scope](testnet/mobile-booking-2026-11-12/README.md).

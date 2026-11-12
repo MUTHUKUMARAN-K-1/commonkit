@@ -1,0 +1,13 @@
+{
+  "capturedAt": "2026-11-12T13:51:56.207Z",
+  "account": "borrower.commonkit-mw7dph80.testnet",
+  "durationSeconds": "3600",
+  "origin": "https://commonkit-testnet.vercel.app",
+  "pickup": "2026-11-12T20:30",
+  "review": "Review your booking\n\nCampus camera kit · Nov 12, 2026, 8:30 PM → Nov 12, 2026, 9:30 PM\n\nAttached deposit: 0.111 NEAR\n\nSigning account: borrower.commonkit-mw7dph80.testnet\n\nNetwork gas is charged separately by NEAR. Review the exact request in Meteor before approving.\n\nEdit booking\nConfirm in wallet ↗",
+  "viewport": {
+    "height": 844,
+    "scrollWidth": 390,
+    "width": 390
+  }
+}
