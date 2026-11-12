@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-11-12T14:43:46.272Z",
+  "origin": "https://commonkit-testnet.vercel.app",
+  "publicResources": [
+    "/",
+    "/judge.html",
+    "/verify.html",
+    "/demo-guide.html",
+    "/deployment.json",
+    "/verification/mobile/manifest.json",
+    "/verification/mobile/mobile-review.jpg",
+    "/verification/vercel/normal/manifest.json",
+    "/verification/vercel/dispute/manifest.json",
+    "/evidence/pickup.txt",
+    "/evidence/return.txt",
+    "/evidence/damage.txt",
+    "/evidence/decision.txt"
+  ],
+  "allHttp200": true,
+  "authenticatedSession": false,
+  "mobileSummary": {
+    "pass": 6,
+    "fail": 0,
+    "unverified": 0
+  },
+  "mobileTransportNote": "Recent-state fallback provider only, to honor the archive cooldown; not a full default-transport UI replay."
+}

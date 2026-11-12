@@ -4,11 +4,13 @@
 confirmed that CommonKit is their only entry and that no demo post or application
 has been sent. The GitHub repository remains **private**, intentionally.
 
-**Open technical item:** the free archive returned HTTP 429 with a 397-second
-retry delay during this check. The latest dispute recheck is incomplete; do not
-interpret earlier successful receipts as a fresh pass. Pacing reduces bursts but
-does not resolve every provider outage. Honor the cooldown before a final recheck;
-a dedicated archival provider may be needed for dependable judging access.
+**Current result:** all three proof reports passed: normal 21/21, dispute 27/27,
+mobile 6/6. The final dispute recheck completed at **14:49 UTC / 20:19 IST** after
+honoring the archive cooldown. The free archive had returned HTTP 429 with a
+397-second retry delay; pacing reduces request bursts but does not guarantee
+future provider availability. Keep UNVERIFIED distinct from failure or success
+and recheck before the demo. A dedicated archival provider remains an option if
+free-tier availability is insufficient.
 
 The organizer deadline is **14 November 2026, 23:59 UTC — 15 November, 05:29 IST**.
 Rules must be rechecked immediately before submission.
@@ -57,11 +59,10 @@ The example is guidance, not a requirement to build its sample bounty board.
 
 ## Validation and release evidence
 
-- [CI for implementation commit e6a4ddc](https://github.com/MUTHUKUMARAN-K-1/commonkit/actions/runs/43235052347)
-  passed: dependency install, 92 JavaScript tests, production build, 14 Rust core
-  tests, API lifecycle, Wasm build and 19 compiled-contract Sandbox cases. The
-  review then added archive pacing after encountering unavailable receipts; all
-  94 current JavaScript tests and the production build passed locally.
+- [CI for reviewed implementation e4da0d5](https://github.com/MUTHUKUMARAN-K-1/commonkit/actions/runs/43240079381)
+  passed: dependency install, 94 JavaScript tests, production build, 14 Rust core
+  tests, API lifecycle, Wasm build and 19 compiled-contract Sandbox cases.
+  Later changes in the candidate record the final reports and documentation.
 - The current production build passed the 74-file artifact check. The main
   application JS/CSS bundles remain unchanged by this documentation review.
 - [Final public browser audit](testnet/submission-check-2026-11-12/README.md)

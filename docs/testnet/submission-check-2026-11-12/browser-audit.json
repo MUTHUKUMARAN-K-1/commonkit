@@ -29,11 +29,58 @@
     }
   ],
   "checks": [
-    "Natural 60-second playback completed"
+    "Natural 60-second playback completed",
+    "normal: 21/21 fresh checks"
   ],
   "pageErrors": [],
-  "passed": false,
-  "receiptRecheckStartedAt": "2026-11-12T14:34:22.851Z",
-  "initialReceiptResult": "Dispute: 14 passed, 13 unavailable, zero mismatches; retained separately",
-  "error": "[{\"id\":\"treasury-vote-2\",\"label\":\"Council member 2 cast the second treasury vote\",\"category\":\"Recorded transaction flow\",\"status\":\"UNVERIFIED\",\"detail\":\"https://archival-rpc.testnet.near.org: Failed to fetch; https://test.rpc.fastnear.com: HTTP 408; https://rpc.testnet.near.org: signal timed out\",\"transactionHash\":\"AcaSqQEvD5DuXP3N4EDLjLzwVum7ndcfD13ty8zL5jgQ\"},{\"id\":\"borrower-withdraw\",\"label\":\"Borrower withdrew their available credit\",\"category\":\"Recorded transaction flow\",\"status\":\"UNVERIFIED\",\"detail\":\"https://archival-rpc.testnet.near.org: Failed to fetch; https://test.rpc.fastnear.com: HTTP 408; https://rpc.testnet.near.org: signal timed out\",\"transactionHash\":\"73dGx8M9mYaXdWKmLpjYHe65v371tZL4VC8LFedGai57\"},{\"id\":\"dao-paid\",\"label\":\"DAO received 0.004 NEAR and its callback confirmed payment\",\"category\":\"Execution & funds\",\"status\":\"UNVERIFIED\",\"detail\":\"Required transaction treasury-vote-2 is not verified\"},{\"id\":\"borrower-paid\",\"label\":\"Borrower received 0.007 NEAR and its callback confirmed payment\",\"category\":\"Execution & funds\",\"status\":\"UNVERIFIED\",\"detail\":\"Required transaction borrower-withdraw is not verified\"}]\n\nfalse !== true\n"
+  "passed": true,
+  "finalArchiveRecheckStartedAt": "2026-11-12T14:47:50.706Z",
+  "finishedAt": "2026-11-12T14:49:02.717Z",
+  "archiveCooldownHonored": true,
+  "proofs": {
+    "normal": {
+      "passed": true,
+      "summary": {
+        "pass": 21,
+        "fail": 0,
+        "unverified": 0
+      },
+      "finishedAt": "2026-11-12T14:25:02.770Z"
+    },
+    "dispute": {
+      "passed": true,
+      "summary": {
+        "pass": 27,
+        "fail": 0,
+        "unverified": 0
+      },
+      "finishedAt": "2026-11-12T14:49:02.219Z"
+    },
+    "mobile": {
+      "passed": true,
+      "summary": {
+        "pass": 6,
+        "fail": 0,
+        "unverified": 0
+      },
+      "finishedAt": "2026-11-12T14:43:42.871Z",
+      "transportNote": "Recent-state fallback provider only, to honor the archive cooldown; not a full default-transport UI replay."
+    }
+  },
+  "publicResources": [
+    "/",
+    "/judge.html",
+    "/verify.html",
+    "/demo-guide.html",
+    "/deployment.json",
+    "/verification/mobile/manifest.json",
+    "/verification/mobile/mobile-review.jpg",
+    "/verification/vercel/normal/manifest.json",
+    "/verification/vercel/dispute/manifest.json",
+    "/evidence/pickup.txt",
+    "/evidence/return.txt",
+    "/evidence/damage.txt",
+    "/evidence/decision.txt"
+  ],
+  "allPublicResourcesHttp200": true
 }

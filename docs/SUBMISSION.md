@@ -33,7 +33,7 @@ CommonKit is a community equipment library on NEAR testnet. Members reserve shar
 - [ ] Obtain the human's explicit contact-notice consent and approval of the complete, final application payload. Only then submit once. No placeholder application JSON is prepared here.
 - [ ] Keep the hosted demo available through 18 November, ideally 25 November.
 
-The current official rules permit testnet-only projects and require baseline/reuse disclosure and a license. The private preparation repository is not yet eligible for submission as-is. See [official HACKATHON.md](https://nearhackathon.com/HACKATHON.md), rechecked 12 November. No additional integration or mainnet deployment is required for this Social Money implementation; the payout account must be mainnet. Recheck the live rules immediately before submitting.
+The current official rules permit testnet-only projects and require baseline/reuse disclosure and a license. The private preparation repository is not yet eligible for submission as-is. See [official HACKATHON.md](https://nearhackathon.com/HACKATHON.md), rechecked 12 November. No additional integration or mainnet deployment is required for this Social Money implementation; the payout account must be mainnet. Recheck the live rules immediately before submitting. The final reports passed 54 checks across three runs; public archive throttling can still make a future read UNVERIFIED.
 
 ## Final application handling
 

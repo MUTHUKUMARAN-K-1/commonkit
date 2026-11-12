@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "flow": "mobile",
+  "bookingId": 13,
+  "network": "testnet",
+  "startedAt": "2026-11-12T14:43:40.658Z",
+  "block": {
+    "hash": "yfV1AsqudHJBE4hAVQs2nVB1Lfqp1dpxgFRJK9RccES",
+    "height": 277376800,
+    "time": "2026-11-12T14:43:36.683Z"
+  },
+  "checks": [
+    {
+      "id": "manifest",
+      "label": "Published reservation claim is internally consistent",
+      "status": "PASS",
+      "detail": "Booking #13 · 0.111 testnet NEAR attached. Published values are claims, not cached passes."
+    },
+    {
+      "id": "network",
+      "label": "RPC identifies NEAR testnet",
+      "status": "PASS",
+      "detail": "Verified against fresh public testnet RPC."
+    },
+    {
+      "id": "block",
+      "label": "Current reads share a fresh finalized block",
+      "status": "PASS",
+      "detail": "Final block 277376800 · 2026-11-12T14:43:36.683Z"
+    },
+    {
+      "id": "reserve",
+      "label": "Exact reservation and every child receipt finalized successfully",
+      "status": "PASS",
+      "detail": "2 connected receipts finalized; exact signer, receiver, deposit and arguments match."
+    },
+    {
+      "id": "booking",
+      "label": "Booking #13 matches the signed reservation",
+      "status": "PASS",
+      "detail": "Immutable reservation terms match. Current status: Reserved. Later returns or cancellations do not invalidate this reservation receipt."
+    },
+    {
+      "id": "ledger",
+      "label": "Current whole-library principal balances",
+      "status": "PASS",
+      "detail": "All amounts in microNEAR: 143000 deposited = 22000 escrow + 0 credit + 0 pending + 121000 withdrawn. Storage and gas excluded."
+    }
+  ],
+  "ledger": {
+    "deposited": 143000,
+    "escrow": 22000,
+    "credits": 0,
+    "pending": 0,
+    "withdrawn": 121000,
+    "balanced": true
+  },
+  "limits": [
+    "Reservation only; completed returns are separate bookings #10 and #11.",
+    "390 × 844 review and signature initiation are operator-captured browser evidence, not chain attestations.",
+    "Meteor approval was real; final UI confirmation was observed at 1280 × 609. No physical-phone test.",
+    "Fresh public RPC evidence, not a light-client proof or security audit."
+  ],
+  "bookingStatus": "Reserved",
+  "finishedAt": "2026-11-12T14:43:42.871Z",
+  "summary": {
+    "pass": 6,
+    "fail": 0,
+    "unverified": 0
+  },
+  "passed": true,
+  "requests": [
+    {
+      "endpoint": "https://test.rpc.fastnear.com",
+      "method": "status",
+      "ok": true,
+      "elapsedMs": 427
+    },
+    {
+      "endpoint": "https://test.rpc.fastnear.com",
+      "method": "block",
+      "ok": true,
+      "elapsedMs": 337
+    },
+    {
+      "endpoint": "https://test.rpc.fastnear.com",
+      "method": "EXPERIMENTAL_tx_status",
+      "ok": true,
+      "elapsedMs": 548
+    },
+    {
+      "endpoint": "https://test.rpc.fastnear.com",
+      "method": "query",
+      "ok": true,
+      "elapsedMs": 554
+    },
+    {
+      "endpoint": "https://test.rpc.fastnear.com",
+      "method": "query",
+      "ok": true,
+      "elapsedMs": 341
+    }
+  ],
+  "transportNote": "Recent-state fallback provider only, to honor the archive cooldown; not a full default-transport UI replay."
+}

@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "flow": "dispute",
-  "startedAt": "2026-11-12T14:34:24.819Z",
+  "startedAt": "2026-11-12T14:47:51.745Z",
   "network": "testnet",
   "bookingId": 11,
   "contractId": "library.ckdao-mw7e25at.testnet",
   "daoId": "ckdao-mw7e25at.sputnikv2.testnet",
   "block": {
-    "hash": "9An3RAE3PN3UNTTXtkHguiu9yY1jUBnD6xKZc9CFr8jY",
-    "height": 277375833,
-    "time": "2026-11-12T14:34:20.868Z"
+    "hash": "2DXfRFYL7nRjsRoDKBTBe19aNagbdvNESBWShPyHiUiy",
+    "height": 277377219,
+    "time": "2026-11-12T14:47:47.221Z"
   },
   "checks": [
     {
@@ -31,7 +31,7 @@
       "label": "Current reads share one finalized block",
       "category": "Deployment",
       "status": "PASS",
-      "detail": "Final block 277375833 · 2026-11-12T14:34:20.868Z"
+      "detail": "Final block 277377219 · 2026-11-12T14:47:47.221Z"
     },
     {
       "id": "code",
@@ -165,16 +165,16 @@
       "id": "treasury-vote-2",
       "label": "Council member 2 cast the second treasury vote",
       "category": "Recorded transaction flow",
-      "status": "UNVERIFIED",
-      "detail": "https://archival-rpc.testnet.near.org: Failed to fetch; https://test.rpc.fastnear.com: HTTP 408; https://rpc.testnet.near.org: signal timed out",
+      "status": "PASS",
+      "detail": "12 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
       "transactionHash": "AcaSqQEvD5DuXP3N4EDLjLzwVum7ndcfD13ty8zL5jgQ"
     },
     {
       "id": "borrower-withdraw",
       "label": "Borrower withdrew their available credit",
       "category": "Recorded transaction flow",
-      "status": "UNVERIFIED",
-      "detail": "https://archival-rpc.testnet.near.org: Failed to fetch; https://test.rpc.fastnear.com: HTTP 408; https://rpc.testnet.near.org: signal timed out",
+      "status": "PASS",
+      "detail": "6 connected receipts finalized; exact signer, receiver, deposit and arguments match.",
       "transactionHash": "73dGx8M9mYaXdWKmLpjYHe65v371tZL4VC8LFedGai57"
     },
     {
@@ -202,15 +202,15 @@
       "id": "dao-paid",
       "label": "DAO received 0.004 NEAR and its callback confirmed payment",
       "category": "Execution & funds",
-      "status": "UNVERIFIED",
-      "detail": "Required transaction treasury-vote-2 is not verified"
+      "status": "PASS",
+      "detail": "Verified against public testnet RPC."
     },
     {
       "id": "borrower-paid",
       "label": "Borrower received 0.007 NEAR and its callback confirmed payment",
       "category": "Execution & funds",
-      "status": "UNVERIFIED",
-      "detail": "Required transaction borrower-withdraw is not verified"
+      "status": "PASS",
+      "detail": "Verified against public testnet RPC."
     }
   ],
   "ledger": {
@@ -227,91 +227,121 @@
     "Both demo council accounts are controlled by one operator.",
     "The one-vote balance snapshot is historical documentation, not a fresh historical-state query."
   ],
-  "finishedAt": "2026-11-12T14:35:54.226Z",
+  "finishedAt": "2026-11-12T14:49:02.219Z",
   "summary": {
-    "pass": 23,
+    "pass": 27,
     "fail": 0,
-    "unverified": 4
+    "unverified": 0
   },
-  "passed": false,
+  "passed": true,
   "requests": [
     {
       "endpoint": "https://test.rpc.fastnear.com",
       "method": "status",
       "ok": true,
-      "elapsedMs": 396
+      "elapsedMs": 403
     },
     {
       "endpoint": "https://test.rpc.fastnear.com",
       "method": "block",
       "ok": true,
-      "elapsedMs": 380
+      "elapsedMs": 369
     },
     {
       "endpoint": "https://test.rpc.fastnear.com",
       "method": "query",
       "ok": true,
-      "elapsedMs": 325
+      "elapsedMs": 352
     },
     {
       "endpoint": "https://test.rpc.fastnear.com",
       "method": "query",
       "ok": true,
-      "elapsedMs": 358
+      "elapsedMs": 354
     },
     {
       "endpoint": "https://test.rpc.fastnear.com",
       "method": "query",
       "ok": true,
-      "elapsedMs": 474
+      "elapsedMs": 580
     },
     {
       "endpoint": "https://test.rpc.fastnear.com",
       "method": "query",
       "ok": true,
-      "elapsedMs": 339
+      "elapsedMs": 362
     },
     {
       "endpoint": "https://test.rpc.fastnear.com",
       "method": "query",
       "ok": true,
-      "elapsedMs": 350
+      "elapsedMs": 376
     },
     {
       "endpoint": "https://test.rpc.fastnear.com",
       "method": "query",
       "ok": true,
-      "elapsedMs": 356
+      "elapsedMs": 340
     },
     {
       "endpoint": "https://test.rpc.fastnear.com",
       "method": "query",
       "ok": true,
-      "elapsedMs": 356
+      "elapsedMs": 352
     },
     {
       "endpoint": "https://archival-rpc.testnet.near.org",
       "method": "EXPERIMENTAL_tx_status",
       "ok": true,
-      "elapsedMs": 3780
+      "elapsedMs": 3409
     },
     {
       "endpoint": "https://archival-rpc.testnet.near.org",
       "method": "EXPERIMENTAL_tx_status",
       "ok": true,
-      "elapsedMs": 3349
+      "elapsedMs": 3362
     },
     {
       "endpoint": "https://archival-rpc.testnet.near.org",
       "method": "EXPERIMENTAL_tx_status",
       "ok": true,
-      "elapsedMs": 3345
+      "elapsedMs": 3342
     },
     {
       "endpoint": "https://archival-rpc.testnet.near.org",
       "method": "EXPERIMENTAL_tx_status",
       "ok": true,
-      "elapsedMs": 3344
+      "elapsedMs": 3342
+    },
+    {
+      "endpoint": "https://archival-rpc.testnet.near.org",
+      "method": "EXPERIMENTAL_tx_status",
+      "ok": true,
+      "elapsedMs": 3338
+    },
+    {
+      "endpoint": "https://archival-rpc.testnet.near.org",
+      "method": "EXPERIMENTAL_tx_status",
+      "ok": true,
+      "elapsedMs": 3341
+    },
+    {
+      "endpoint": "https://archival-rpc.testnet.near.org",
+      "method": "EXPERIMENTAL_tx_status",
+      "ok": true,
+      "elapsedMs": 3338
+    },
+    {
+      "endpoint": "https://archival-rpc.testnet.near.org",
+      "method": "EXPERIMENTAL_tx_status",
+      "ok": true,
+      "elapsedMs": 3342
+    },
+    {
+      "endpoint": "https://archival-rpc.testnet.near.org",
+      "method": "EXPERIMENTAL_tx_status",
+      "ok": true,
+      "elapsedMs": 3331
     },
     {
       "endpoint": "https://archival-rpc.testnet.near.org",
@@ -323,61 +353,7 @@
       "endpoint": "https://archival-rpc.testnet.near.org",
       "method": "EXPERIMENTAL_tx_status",
       "ok": true,
-      "elapsedMs": 3351
-    },
-    {
-      "endpoint": "https://archival-rpc.testnet.near.org",
-      "method": "EXPERIMENTAL_tx_status",
-      "ok": true,
-      "elapsedMs": 3422
-    },
-    {
-      "endpoint": "https://archival-rpc.testnet.near.org",
-      "method": "EXPERIMENTAL_tx_status",
-      "ok": true,
-      "elapsedMs": 3344
-    },
-    {
-      "endpoint": "https://archival-rpc.testnet.near.org",
-      "method": "EXPERIMENTAL_tx_status",
-      "ok": true,
-      "elapsedMs": 3336
-    },
-    {
-      "endpoint": "https://archival-rpc.testnet.near.org",
-      "method": "EXPERIMENTAL_tx_status",
-      "ok": false,
-      "elapsedMs": 22
-    },
-    {
-      "endpoint": "https://archival-rpc.testnet.near.org",
-      "method": "EXPERIMENTAL_tx_status",
-      "ok": false,
-      "elapsedMs": 21
-    },
-    {
-      "endpoint": "https://test.rpc.fastnear.com",
-      "method": "EXPERIMENTAL_tx_status",
-      "ok": false,
-      "elapsedMs": 10408
-    },
-    {
-      "endpoint": "https://test.rpc.fastnear.com",
-      "method": "EXPERIMENTAL_tx_status",
-      "ok": false,
-      "elapsedMs": 10361
-    },
-    {
-      "endpoint": "https://rpc.testnet.near.org",
-      "method": "EXPERIMENTAL_tx_status",
-      "ok": false,
-      "elapsedMs": 12006
-    },
-    {
-      "endpoint": "https://rpc.testnet.near.org",
-      "method": "EXPERIMENTAL_tx_status",
-      "ok": false,
-      "elapsedMs": 12013
+      "elapsedMs": 3343
     }
   ]
 }
