@@ -1,0 +1,156 @@
+{
+  "final_execution_status": "FINAL",
+  "receipts": [
+    {
+      "predecessor_id": "borrower.commonkit-mw7dph80.testnet",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "FunctionCall": {
+                "args": "eyJhc3NldF9pZCI6ImNhbXB1cy1jYW1lcmEiLCJzdGFydCI6MTc5NDQ5NTYwMCwiZW5kIjoxNzk0NDk5MjAwfQ==",
+                "deposit": "111000000000000000000000",
+                "gas": 100000000000000,
+                "method_name": "reserve"
+              }
+            }
+          ],
+          "gas_price": "1000000000",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "borrower.commonkit-mw7dph80.testnet"
+        }
+      },
+      "receipt_id": "B3hE5Tjfh9EqtCY7rt5cpkUBMKwYz7osPS4ftSjwivck",
+      "receiver_id": "library.ckdao-mw7e25at.testnet"
+    },
+    {
+      "predecessor_id": "system",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "Transfer": {
+                "deposit": "100695063990688600000000"
+              }
+            }
+          ],
+          "gas_price": "0",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "borrower.commonkit-mw7dph80.testnet"
+        }
+      },
+      "receipt_id": "7aaY5b4VSWJv6YRivAMTQ9gek5bf2K1Vodiwskm7P5GV",
+      "receiver_id": "borrower.commonkit-mw7dph80.testnet"
+    }
+  ],
+  "receipts_outcome": [
+    {
+      "block_hash": "94NfYoaatqvdjzGGgWQuT3W1odc6YBypKk6foYWQSqvW",
+      "id": "B3hE5Tjfh9EqtCY7rt5cpkUBMKwYz7osPS4ftSjwivck",
+      "outcome": {
+        "executor_id": "library.ckdao-mw7e25at.testnet",
+        "gas_burnt": 1931542606254,
+        "logs": [
+          "COMMONKIT reservation 13; network receipt required; storage charge 100000 microNEAR"
+        ],
+        "receipt_ids": [
+          "7aaY5b4VSWJv6YRivAMTQ9gek5bf2K1Vodiwskm7P5GV"
+        ],
+        "status": {
+          "SuccessValue": "MTM="
+        },
+        "tokens_burnt": "193154260625400000000"
+      },
+      "proof": [
+        {
+          "direction": "Left",
+          "hash": "9LDnyvT9LJgTsBpy2AhgBy8EztRGPVbdzP3B6rLvrjbN"
+        },
+        {
+          "direction": "Left",
+          "hash": "F8fYqBS48XuFNBB8Xty2Ju83fFF7EjGBxHcrvKSiNmAr"
+        },
+        {
+          "direction": "Left",
+          "hash": "FxBR1Vch6sGqUiASHL8AWTZQBz2YAqoy3waebutS28mF"
+        },
+        {
+          "direction": "Right",
+          "hash": "8ry9i8LJND9ju3hCRh4p3ZDuvb8mg4NobZgto2E26N5p"
+        }
+      ]
+    },
+    {
+      "block_hash": "8EzKb3HXRNTbE8rGS9UCXyvFEKzhTQTmnczyJKPQtgW",
+      "id": "7aaY5b4VSWJv6YRivAMTQ9gek5bf2K1Vodiwskm7P5GV",
+      "outcome": {
+        "executor_id": "borrower.commonkit-mw7dph80.testnet",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "receipt_ids": [],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "0"
+      },
+      "proof": [
+        {
+          "direction": "Right",
+          "hash": "J73NVxkCS7gqHPr9yvakGtWJxmj3ngjXYdULmEaW3U2f"
+        }
+      ]
+    }
+  ],
+  "status": {
+    "SuccessValue": "MTM="
+  },
+  "transaction": {
+    "actions": [
+      {
+        "FunctionCall": {
+          "args": "eyJhc3NldF9pZCI6ImNhbXB1cy1jYW1lcmEiLCJzdGFydCI6MTc5NDQ5NTYwMCwiZW5kIjoxNzk0NDk5MjAwfQ==",
+          "deposit": "111000000000000000000000",
+          "gas": 100000000000000,
+          "method_name": "reserve"
+        }
+      }
+    ],
+    "hash": "3auV5rdBF2ykhfLpBcbsXz877Xhnnz15AFEVR6GRAuy5",
+    "nonce": 276732020000046,
+    "priority_fee": 0,
+    "receiver_id": "library.ckdao-mw7e25at.testnet",
+    "signer_id": "borrower.commonkit-mw7dph80.testnet"
+  },
+  "transaction_outcome": {
+    "block_hash": "4Ztf7cvEpUZGzEM3zEu3WeFarpBczzYwoAMtmwmmkQth",
+    "id": "3auV5rdBF2ykhfLpBcbsXz877Xhnnz15AFEVR6GRAuy5",
+    "outcome": {
+      "executor_id": "borrower.commonkit-mw7dph80.testnet",
+      "gas_burnt": 311445043765,
+      "logs": [],
+      "receipt_ids": [
+        "B3hE5Tjfh9EqtCY7rt5cpkUBMKwYz7osPS4ftSjwivck"
+      ],
+      "status": {
+        "SuccessReceiptId": "B3hE5Tjfh9EqtCY7rt5cpkUBMKwYz7osPS4ftSjwivck"
+      },
+      "tokens_burnt": "31144504376500000000"
+    },
+    "proof": [
+      {
+        "direction": "Left",
+        "hash": "2Nj1yHLSL5kmRsvnvQrVJLKufAjETYkd2akYdHYkfw2P"
+      },
+      {
+        "direction": "Right",
+        "hash": "8fuXNbz6rjiTiwhLWWNjQxJXZNY9wN1wpourAXiaauvH"
+      }
+    ]
+  }
+}

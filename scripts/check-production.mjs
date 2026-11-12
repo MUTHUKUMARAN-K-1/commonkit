@@ -9,6 +9,10 @@ const required = ['index.html', 'judge.html', 'judge/story.js', 'judge/story.css
 for (const name of required) await fs.access(path.join(root, name));
 for (const name of ['case-model.js', 'case-file.js', 'case-file.css']) await fs.access(path.join(root, 'verification', name));
 await fs.access(path.join(root, 'verification/cases.js'));
+for (const name of ['mobile-engine.js', 'mobile-page.js', 'mobile.css', 'mobile/manifest.json', 'mobile/reserve.json', 'mobile/review.json', 'mobile/confirmation-ui.json', 'mobile/mobile-review.jpg', 'mobile/README.md']) await fs.access(path.join(root, 'verification', name));
+const mobileManifest = JSON.parse(await fs.readFile(path.join(root, 'verification/mobile/manifest.json'), 'utf8'));
+assert.equal(mobileManifest.flow, 'mobile');
+assert.equal(mobileManifest.booking.id, 13);
 await fs.access(path.join(root, 'verification/vercel/deployment.json'));
 for (const [flow, proof] of Object.entries(PROOF_CASES)) {
   const manifest = JSON.parse(await fs.readFile(path.join(root, proof.manifest), 'utf8'));

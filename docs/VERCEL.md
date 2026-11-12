@@ -47,3 +47,16 @@ Open http://127.0.0.1:4318, `/judge.html`, `/verify.html`, `/demo-guide.html`, `
 - Never deploy a development signer or enable `VITE_DEV_WALLET` on a hosted service.
 
 References: [Vercel configuration](https://vercel.com/docs/project-configuration/vercel-json), [upload exclusions](https://vercel.com/docs/deployments/vercel-ignore), [Node.js versions](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions).
+
+## 12 November: public mobile reservation evidence
+
+The public verifier now includes booking #13's 390 × 844 review screenshot,
+public capture metadata and a six-check live reservation verifier. The tour's
+reservation chapter links to it; the completed normal/dispute cases remain #10/#11.
+Deep link: https://commonkit-testnet.vercel.app/verify.html#mobile-proof.
+
+Deployment: `dpl_2iNGeugCBczysRsUU8bo8VHKH2mt`,
+https://commonkit-testnet-js5j9esmk-muthukumaran-k-1s-projects.vercel.app,
+aliased to https://commonkit-testnet.vercel.app.
+The static build passed its 74-file production check. No wallet signer or keys
+were added. See [public-page checks](testnet/mobile-booking-2026-11-12/public-pages/README.md).

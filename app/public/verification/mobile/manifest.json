@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "network": "testnet",
+  "flow": "mobile",
+  "contractId": "library.ckdao-mw7e25at.testnet",
+  "booking": {
+    "id": 13,
+    "asset_id": "campus-camera",
+    "borrower": "borrower.commonkit-mw7dph80.testnet",
+    "start": 1794495600,
+    "end": 1794499200,
+    "fee": 1000,
+    "bond": 10000
+  },
+  "transaction": {
+    "hash": "3auV5rdBF2ykhfLpBcbsXz877Xhnnz15AFEVR6GRAuy5",
+    "signerId": "borrower.commonkit-mw7dph80.testnet",
+    "receiverId": "library.ckdao-mw7e25at.testnet",
+    "method": "reserve",
+    "deposit": "111000000000000000000000",
+    "args": {
+      "asset_id": "campus-camera",
+      "start": 1794495600,
+      "end": 1794499200
+    },
+    "returnValue": "MTM="
+  }
+}

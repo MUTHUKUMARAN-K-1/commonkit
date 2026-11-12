@@ -1,0 +1,36 @@
+{
+  "origin": "https://commonkit-testnet.vercel.app",
+  "capturedAt": "2026-11-12T14:11:50.407Z",
+  "screens": [
+    {
+      "page": "verify",
+      "width": 1440,
+      "height": 1000,
+      "noHorizontalOverflow": true
+    },
+    {
+      "page": "verify",
+      "width": 390,
+      "height": 844,
+      "noHorizontalOverflow": true
+    },
+    {
+      "page": "judge",
+      "width": 1440,
+      "height": 1000,
+      "noHorizontalOverflow": true
+    },
+    {
+      "page": "judge",
+      "width": 390,
+      "height": 844,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "walletUsed": false,
+  "mobileStatus": "Reservation verified. 6/6 passed · 0 mismatched · 0 unverified. Checked 11/12/2026, 7:41:56 PM.",
+  "normalStatus": "Verified 21/21 · 07:42 PM",
+  "reducedMotion": true,
+  "rpcOutage": "Incomplete; no cached live pass",
+  "pageErrors": []
+}

@@ -7,7 +7,7 @@ export const CHECK_IDS = ['manifest', 'network', 'block', 'code', 'keys', 'autho
 export const NORMAL_CHECK_IDS = ['manifest', 'network', 'block', 'code', 'keys', 'authority', 'policy', 'booking', 'treasury', 'ledger',
   'reserve', 'pickup', 'return', 'accept-return', 'borrower-withdraw', 'treasury-proposal', 'treasury-vote-1', 'treasury-vote-2', 'treasury-boundary', 'dao-paid', 'borrower-paid'];
 export const getCheckIds = manifest => manifest.flow === 'normal' ? NORMAL_CHECK_IDS : CHECK_IDS;
-class Mismatch extends Error {}
+export class Mismatch extends Error {}
 const requireThat = (ok, message) => { if (!ok) throw new Mismatch(message); };
 const available = (ok, message) => { if (!ok) throw new Unavailable(message); };
 export const decode = value => new TextDecoder('utf-8', {fatal: true}).decode(Uint8Array.from(atob(value), c => c.charCodeAt(0)));
@@ -86,7 +86,7 @@ function checkProposal(proposal, expected, manifest) {
   equal(proposal.vote_counts?.council, [2, 0, 0], 'Proposal vote tally mismatch');
 }
 
-function checkLedger(state, ledger) {
+export function checkLedger(state, ledger) {
   available(state.bookings && state.credits && state.pending, 'State accounting records unavailable');
   const bookings = Object.values(state.bookings);
   const active = new Set(['Reserved', 'CheckedOut', 'ReturnPending', 'Disputed']);

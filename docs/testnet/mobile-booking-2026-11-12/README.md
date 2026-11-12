@@ -43,3 +43,19 @@ phone was used. Browser control was stopped before a final mobile screenshot.
 This is a reservation proof, not a completed return or dispute settlement.
 The completed public proof cases remain bookings 10 and 11. No mainnet funds,
 private keys or seed phrases are included.
+
+## Public judge proof
+
+Booking #13 now has a [wallet-free verification section](https://commonkit-testnet.vercel.app/verify.html#mobile-proof)
+and appears in the reservation and verification chapters of the
+[60-second tour](https://commonkit-testnet.vercel.app/judge.html).
+
+The shared browser/CLI verifier runs six fresh checks. The eight checks in the
+original capture report additionally used before/after snapshots from the live
+rehearsal; they are not the live public verifier's check count. Browser viewport
+records remain explicitly off-chain evidence. The public receipt copy omits
+signature and public-key fields while retaining the complete execution graph.
+
+Use `npm run verify:testnet -- --flow mobile` for this proof alone. The default
+command also checks both completed flows: 54 checks in total. Publication
+validation and screenshots are in [public-pages](public-pages/README.md).

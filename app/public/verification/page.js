@@ -47,7 +47,7 @@ function setFlowContent(flow) {
   $('check-count').textContent = `${config.count} READ-ONLY CHECKS`;
   $('boundary-note').textContent = config.boundary;
   $('story').replaceChildren(...config.stories.map(([title, description], i) => { const article = node('article'); article.append(node('span', `0${i + 1}`), node('h3', title), node('p', description)); return article; }));
-  $('command-text').textContent = `# Both recorded flows\nnpm run verify:testnet\n\n# Selected flow\nnpm run verify:testnet -- --flow ${flow}\n\n# Machine-readable report for both flows\nnpm run --silent verify:testnet -- --json`;
+  $('command-text').textContent = `# Both completed flows + mobile reservation\nnpm run verify:testnet\n\n# Selected flow\nnpm run verify:testnet -- --flow ${flow}\n\n# Machine-readable report for all three proofs\nnpm run --silent verify:testnet -- --json`;
   $('copy-status').textContent = '';
   const links = [
     [config.manifest, 'Expected claims & transaction hashes', 'Published inputs to the verifier'],

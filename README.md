@@ -107,7 +107,8 @@ The library holds booking principal. Sputnik authorizes disputed allocation; it 
 | --- | --- | --- |
 | The complete borrowing lifecycle | [Normal return](docs/testnet/METEOR-NORMAL-RETURN-REHEARSAL.md) and [DAO dispute](docs/testnet/METEOR-POLISHED-REHEARSAL.md) | 8 and 11 finalized testnet transactions; synthetic equipment evidence |
 | Real collective authorization | [One-vote checkpoint](app/public/verification/vercel/dispute/single-vote.json), [settlement checkpoint](app/public/verification/vercel/dispute/settled.json) and [frontend governance actions](app/app.js) | Two distinct council accounts, both controlled by the demo operator |
-| Receipt and accounting correctness | [Browser verifier](https://commonkit-testnet.vercel.app/verify.html), `npm run verify:testnet`, [verification engine](app/public/verification/engine.js) | 48 checks across the two Vercel flows; read-only, not a new signing rehearsal |
+| Mobile-width reservation | [Booking #13 public proof](https://commonkit-testnet.vercel.app/verify.html#mobile-proof), [capture record](docs/testnet/mobile-booking-2026-11-12/README.md) | 390 × 844 review and signature initiation, real Meteor approval; later desktop confirmation. Reservation only, not a physical-phone test |
+| Receipt and accounting correctness | [Browser verifier](https://commonkit-testnet.vercel.app/verify.html), `npm run verify:testnet`, [verification engine](app/public/verification/engine.js) | 48 checks across the two completed Vercel flows plus 6 for mobile reservation #13; read-only, not a new signing rehearsal |
 | Failure behavior | [Compiled-contract sandbox suite](docs/CONTRACT-FAILURE-TESTS.md) | 19 targeted cases: authorization, rollback, failed transfers/retry, callback replay and DAO execution failure |
 | Browser integration | [Four cobalt UI rehearsals](docs/testnet/cobalt/README.md) | 38 transactions and 96 checks across desktop/responsive normal + dispute cycles; not physical-phone validation |
 | Current public deployment | [Vercel Meteor rehearsals](docs/testnet/vercel/README.md) | Booking #10 normal return and #11 dispute; 19 finalized transactions and 48 checks, including both withdrawals. Operator-assisted Meteor approvals |
@@ -130,9 +131,10 @@ npm run dev
 Open **http://127.0.0.1:4318**. No environment variables or private keys are needed to read the deployed testnet app. Signing uses a browser wallet with the appropriate on-chain role.
 
 ```sh
-# Public proof: no wallet and no dependency installation needed
+# Both completed flows + mobile reservation: no wallet or dependency installation needed
 npm run verify:testnet
 npm run --silent verify:testnet -- --json
+npm run verify:testnet -- --flow mobile
 
 # Frontend tests and deployable static artifact
 npm test
