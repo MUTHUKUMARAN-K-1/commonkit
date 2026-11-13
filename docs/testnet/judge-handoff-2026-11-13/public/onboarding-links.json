@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-13T08:51:24.722Z",
+  "note": "No wallet connection; external RPC blocked",
+  "checks": [
+    {
+      "width": 1440,
+      "flow": "normal",
+      "passed": true,
+      "destination": "https://commonkit-testnet.vercel.app/recorded.html#normal"
+    },
+    {
+      "width": 1440,
+      "flow": "dispute",
+      "passed": true,
+      "destination": "https://commonkit-testnet.vercel.app/recorded.html#dispute"
+    },
+    {
+      "width": 390,
+      "flow": "normal",
+      "passed": true,
+      "destination": "https://commonkit-testnet.vercel.app/recorded.html#normal"
+    },
+    {
+      "width": 390,
+      "flow": "dispute",
+      "passed": true,
+      "destination": "https://commonkit-testnet.vercel.app/recorded.html#dispute"
+    }
+  ]
+}

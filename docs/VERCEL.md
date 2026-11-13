@@ -83,3 +83,17 @@ provider quota. Current deployment: `dpl_Bch9VUbK8kDdJSKFzLmCr5zFu1BZ`,
 https://commonkit-testnet-5d758plf4-muthukumaran-k-1s-projects.vercel.app.
 The public alias remains https://commonkit-testnet.vercel.app. Provider outages
 can still produce UNVERIFIED; the verifier never substitutes cached successes.
+
+## 13 November: resilient judge reading path and media
+
+Production `dpl_iXeHZRWFCQubLiniwsuQUFodupiS`, immutable URL
+https://commonkit-testnet-cdry8kg53-muthukumaran-k-1s-projects.vercel.app,
+aliased to https://commonkit-testnet.vercel.app.
+
+Adds `/recorded.html` (dated outcomes without JavaScript/RPC), `/film.html`
+(captioned 75-second existing product film), updated onboarding/tour links and
+a recorded-evidence route from the live verifier. Both local and Vercel builds
+pass the 81-file artifact check. Production browser checks cover 1440/390 widths,
+blocked external network, explicit UNVERIFIED chain checks and media playback.
+[Validation evidence](testnet/judge-handoff-2026-11-13/README.md).
+No new wallet signatures were performed. GitHub remains private.

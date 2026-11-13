@@ -1,0 +1,53 @@
+{
+  "target": "http://127.0.0.1:4321",
+  "at": "2026-11-13T08:47:43.186Z",
+  "checks": [
+    {
+      "name": "recorded proof at 1440px without JS/external network",
+      "pass": true,
+      "detail": "Amounts, disclosures, expandable 8/11 receipt lists, no overflow"
+    },
+    {
+      "name": "recorded proof at 390px without JS/external network",
+      "pass": true,
+      "detail": "Amounts, disclosures, expandable 8/11 receipt lists, no overflow"
+    },
+    {
+      "name": "no external resource requests",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "all 9 saved-evidence links resolve",
+      "pass": true
+    },
+    {
+      "name": "normal outage: only local manifest passes; chain UNVERIFIED; recorded route works",
+      "pass": true
+    },
+    {
+      "name": "dispute outage: only local manifest passes; chain UNVERIFIED; recorded route works",
+      "pass": true
+    },
+    {
+      "name": "six tour chapters and film playback at 1440px",
+      "pass": true,
+      "detail": {
+        "duration": 75,
+        "width": 1920,
+        "height": 1080,
+        "tracks": 1
+      }
+    },
+    {
+      "name": "six tour chapters and film playback at 390px",
+      "pass": true,
+      "detail": {
+        "duration": 75,
+        "width": 1920,
+        "height": 1080,
+        "tracks": 1
+      }
+    }
+  ]
+}

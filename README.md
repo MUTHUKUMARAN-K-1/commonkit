@@ -31,7 +31,7 @@ CommonKit makes that process inspectable. A borrower locks a refundable bond. A 
 
 ## Try it in one minute
 
-**No wallet is needed for this judge path.** The illustrated tour explains recorded examples; the verifier performs fresh RPC reads.
+**No wallet is needed for this judge path.** Start with [both recorded outcomes](https://commonkit-testnet.vercel.app/recorded.html): dated evidence and payout links, readable without JavaScript or RPC. The [75-second product film](https://commonkit-testnet.vercel.app/film.html) shows the camera story using recorded product captures. The illustrated tour explains the examples; the separate verifier performs fresh RPC reads.
 
 New here? Open the library's **Start here** guide to learn the three roles and compare both outcomes. Browse equipment and inspect its quote before connecting Meteor. [Visitor and borrowing paths](docs/ONBOARDING.md).
 
@@ -44,7 +44,7 @@ New here? Open the library's **Start here** guide to learn the three roles and c
 | 40–50s | Select **Settlement** | Second approval authorizes 0.003 damage; credits and actual withdrawals remain distinct |
 | 50–60s | Select **Verify it**, then open a proof | 21 normal-return, 27 dispute or 6 mobile-reservation checks, receipts and a downloadable report |
 
-RPC completion time is additional to the tour. A mismatch or unavailable receipt is reported; saved snapshots never substitute for a live pass. [Verification scope](docs/VERIFICATION.md) · [Narration and evidence map](docs/JUDGE-WALKTHROUGH.md).
+When RPC is unavailable, the [recorded-proof page](https://commonkit-testnet.vercel.app/recorded.html) stays readable. It is generated from the published manifests and snapshots, never used as a current PASS. RPC completion time is additional to the tour. A mismatch or unavailable receipt is reported; saved snapshots never substitute for a live pass. [Verification scope](docs/VERIFICATION.md) · [Narration and evidence map](docs/JUDGE-WALKTHROUGH.md).
 
 To run a **new signed cycle**, use [the Meteor wallet guide](https://commonkit-testnet.vercel.app/demo-guide.html). Only DAO-admitted members can borrow; only authorized council accounts can vote. Public visitors can inspect both flows without our wallet accounts.
 

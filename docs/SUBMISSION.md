@@ -8,7 +8,7 @@ This is a preparation checklist, not an application submission. Rules rechecked 
 - Selected track: **Social Money** (`social`), confirmed by the owner.
 - Repository: https://github.com/MUTHUKUMARAN-K-1/commonkit — **private at the owner's request**.
 - Live product: https://commonkit-testnet.vercel.app.
-- Demo: [60-second illustrated judge tour](https://commonkit-testnet.vercel.app/judge.html), [tour script and evidence map](JUDGE-WALKTHROUGH.md), and [three-minute recording script](DEMO-SCRIPT.md). A published demo video/social post remains to be made.
+- Demo: [60-second illustrated judge tour](https://commonkit-testnet.vercel.app/judge.html), [tour script and evidence map](JUDGE-WALKTHROUGH.md), and [three-minute recording script](DEMO-SCRIPT.md). The [75-second film and captioned player](https://commonkit-testnet.vercel.app/film.html) are packaged; the human-published X demo post remains pending.
 - License: [MIT](../LICENSE), chosen by the owner.
 - Baseline: imported `baseline-v0.1` snapshot; current development changes identified by the README baseline-to-main compare link. `submission-ready` is an older intermediate tag, not the final submission. Commits are dated when created, not backdated.
 - Public verification: [54 checks across both completed flows and the mobile reservation, without a wallet](https://commonkit-testnet.vercel.app/verify.html), also `npm run verify:testnet`; [scope and limitations](VERIFICATION.md).
@@ -33,7 +33,7 @@ CommonKit is a community equipment library on NEAR testnet. Members reserve shar
 - [ ] Obtain the human's explicit contact-notice consent and approval of the complete, final application payload. Only then submit once. No placeholder application JSON is prepared here.
 - [ ] Keep the hosted demo available through 18 November, ideally 25 November.
 
-The current official rules permit testnet-only projects and require baseline/reuse disclosure and a license. The private preparation repository is not yet eligible for submission as-is. See [official HACKATHON.md](https://nearhackathon.com/HACKATHON.md), rechecked 12 November. No additional integration or mainnet deployment is required for this Social Money implementation; the payout account must be mainnet. Recheck the live rules immediately before submitting. The final reports passed 54 checks across three runs; public archive throttling can still make a future read UNVERIFIED.
+The current official rules permit testnet-only projects and require baseline/reuse disclosure and a license. The private preparation repository is not yet eligible for submission as-is. See [official HACKATHON.md](https://nearhackathon.com/HACKATHON.md), rechecked 13 November. No additional integration or mainnet deployment is required for this Social Money implementation; the payout account must be mainnet. Recheck the live rules immediately before submitting. The final reports passed 54 checks across three runs; public archive throttling can still make a future read UNVERIFIED.
 
 ## Final application handling
 
@@ -49,3 +49,9 @@ Save the organizer's confirmation; a mistaken saved submission uses the
 [request-changes page](https://nearhackathon.com/request-changes), not another
 application. The owner must verify repository access while signed out after
 publication. The animated tour is not a published X post or attached video.
+
+## 13 November judge handoff
+
+[Recorded outcomes](https://commonkit-testnet.vercel.app/recorded.html) stay readable without RPC or JavaScript. [Submission media](submission-media/README.md) is ready for owner review and attachment. An independent tester is being arranged; use the [five-minute test sheet](INDEPENDENT-TEST.md) and record actual findings before claiming user validation.
+
+Latest handoff audit: [13 November](SUBMISSION-CHECK-2026-11-13.md). The new source candidate will be tagged `submission-candidate-2026-11-13` after its CI passes; previous candidate tags remain unchanged.

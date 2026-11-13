@@ -114,7 +114,7 @@ async function run() {
     $(`status-${flow}`).dataset.state = state;
     $(`status-${flow}`).textContent = `${report.passed ? `Verified ${report.summary.pass}/${ids.length}` : state === 'fail' ? 'Mismatch found' : 'Incomplete'} · ${checkedAt}`;
     $('result-title').textContent = report.passed ? `${config.title} checks out.` : report.summary.fail ? 'A mismatch needs attention.' : 'Verification is incomplete.';
-    $('progress').textContent = `${report.summary.pass} passed · ${report.summary.fail} mismatched · ${report.summary.unverified} unverified. Checked ${new Date(report.finishedAt).toLocaleString()}. ${report.passed ? 'Expand any result to inspect its evidence.' : 'Results below explain what could not be verified. You can retry.'}`;
+    $('progress').textContent = `${report.summary.pass} passed · ${report.summary.fail} mismatched · ${report.summary.unverified} unverified. Checked ${new Date(report.finishedAt).toLocaleString()}. ${report.passed ? 'Expand any result to inspect its evidence.' : 'Results below explain what could not be verified. Read recorded proof while providers are unavailable, or retry later.'}`;
     if (report.block) $('anchor').textContent = `Final block ${report.block.height} · ${report.block.time} · ${report.block.hash}`;
     if (report.ledger) {
       $('ledger-status').textContent = 'Recomputed and matched at the finalized block above.';
@@ -125,7 +125,7 @@ async function run() {
     if (!current()) return;
     caseFile.fail(error.message);
     $('result-title').textContent = 'Verification is incomplete.';
-    $('progress').textContent = `UNVERIFIED: ${error.message}. No successful result is inferred. Retry when the connection is available.`;
+    $('progress').textContent = `UNVERIFIED: ${error.message}. No successful result is inferred. Use the recorded-proof link above to read dated evidence, or retry when the connection is available.`;
     $('unverified').textContent = String(Math.max(1, Number($('unverified').textContent)));
     $(`status-${flow}`).textContent = 'Incomplete · retry available'; $(`status-${flow}`).dataset.state = 'unverified';
   } finally {

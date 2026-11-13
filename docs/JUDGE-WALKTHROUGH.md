@@ -1,5 +1,7 @@
 # CommonKit: 60-second judge walkthrough
 
+For a zero-RPC reading path, open [the two recorded outcomes](https://commonkit-testnet.vercel.app/recorded.html). The [75-second product film](https://commonkit-testnet.vercel.app/film.html) is a separate, downloadable attachment with dated product captures.
+
 Open [the animated tour](https://commonkit-testnet.vercel.app/judge.html). It is an interactive illustrated web page, not a rendered video. Six chapters run for ten seconds each. Pause, seek or choose a chapter; reduced-motion preferences suppress transitions. The page pauses when hidden.
 
 | Time | Show | Narration |
@@ -9,7 +11,7 @@ Open [the animated tour](https://commonkit-testnet.vercel.app/judge.html). It is
 | 20–30s | Normal-return allocation | A clean return gives the borrower their full bond. The DAO receives the usage fee through a separately approved withdrawal. |
 | 30–40s | Saved one-vote checkpoint | When damage is disputed, one council approval cannot release escrow. The policy requires both accounts. |
 | 40–50s | Second vote and allocation | The second approval executes the damage decision. Settlement creates credits; separate transactions withdraw them. |
-| 50–60s | Public verifier links | Judges can inspect both completed flows and the mobile reservation without our accounts. Open a proof to run fresh checks. |
+| 50–60s | Public verifier links | Read both dated outcomes without a wallet or RPC. Then run fresh public checks; an unavailable provider stays UNVERIFIED. |
 
 The tour's timing is explanatory, not the speed of blockchain execution. Fresh RPC checks take additional time. No live pass count is claimed by the illustration.
 

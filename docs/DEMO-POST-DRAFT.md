@@ -18,7 +18,13 @@ The two URLs use X's link-length allowance; check the final composer before
 publishing. The wording identifies the problem, NEAR's role and where to try the
 product. Do not claim audited security or independent council operators.
 
-## Attach a complete action-to-result sequence
+## Ready-to-attach film
+
+Attach [commonkit-75s.mp4](../app/public/media/commonkit-75s.mp4) (75 seconds, 1080p, approximately 15.2 MB). [Preview with captions](https://commonkit-testnet.vercel.app/film.html) and [media handoff](submission-media/README.md). This existing master uses the #10/#11 rehearsals and a dated 10 November proof capture; it is not a fresh result and does not include #13. The interactive web tour remains 60 seconds.
+
+The owner should watch the complete film before posting. A link to the player alone does not satisfy the attached-media instruction.
+
+## Still-image alternative: action-to-result sequence
 
 Use these captured images, or record the [three-minute wallet script](DEMO-SCRIPT.md)
 and trim idle waiting. Keep the original receipts linked so the cut is not

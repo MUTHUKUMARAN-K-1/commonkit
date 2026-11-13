@@ -7,5 +7,6 @@
 !/scripts
 /scripts/*
 !/scripts/check-production.mjs
+!/scripts/build-recorded-proof.mjs
 /app/**/.env*
 /app/**/*.key
