@@ -1,7 +1,7 @@
 # Human-reviewed demo post
 
 No post has been published. The owner confirmed this on 12 November 2026.
-Publish after the repository is public and both links open while signed out.
+The repository is now public and anonymous access was verified on 14 November. Publish after reviewing the final video and post.
 The human reviews the wording, chooses attachments and posts from their own X
 account. This draft and the judge tour are not substitutes for a demo-post URL.
 

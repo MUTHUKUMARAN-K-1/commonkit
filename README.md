@@ -12,7 +12,7 @@
 </p>
 <p align="center"><a href="#why-commonkit">Why CommonKit</a> · <a href="#in-action">In action</a> · <a href="#follow-the-money">The money</a> · <a href="#for-judges">For judges</a> · <a href="#run-locally">Run locally</a> · <a href="#scope-and-trust">Scope & trust</a></p>
 
-> **Release status:** working testnet prototype, publicly hosted on Vercel. Both fresh Meteor flows passed on the public origin on 9 November: **19 finalized transactions, 48 receipt checks, both payouts complete**. The owner handled wallet approvals while the app and public verifier checked execution. Booking #13 adds a real Meteor reservation initiated from a 390 × 844 review, with six additional public checks (54 total). It is not a completed return or physical-phone test. The repository stays private during preparation; final submission requires public source. [Latest receipts](docs/testnet/vercel/README.md) · [Deployment record](docs/VERCEL.md).
+> **Release status:** working testnet prototype, publicly hosted on Vercel. Both fresh Meteor flows passed on the public origin on 9 November: **19 finalized transactions, 48 receipt checks, both payouts complete**. The owner handled wallet approvals while the app and public verifier checked execution. Booking #13 adds a real Meteor reservation initiated from a 390 × 844 review, with six additional public checks (54 total). It is not a completed return or physical-phone test. The repository was made public for judging on 14 November 2026. [Latest receipts](docs/testnet/vercel/README.md) · [Deployment record](docs/VERCEL.md).
 
 ## Why CommonKit
 

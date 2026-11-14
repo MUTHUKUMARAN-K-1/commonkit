@@ -1,12 +1,12 @@
 # Hackathon submission preparation
 
-This is a preparation checklist, not an application submission. Rules rechecked on **14 November 2026**. The owner's latest project-status confirmation is that CommonKit is their only entry and no X post/application has been published. Contact consent was given on 14 November; lead name, contact email and solo-team size were supplied privately; a mainnet payout account still needs to be created. Keep the repository private until separately authorized. [Latest check and evidence](SUBMISSION-CHECK-2026-11-14.md).
+This is a preparation checklist, not an application submission. Rules rechecked on **14 November 2026**. The owner's latest project-status confirmation is that CommonKit is their only entry and no X post/application has been published. Contact consent was given on 14 November; lead name, contact email and solo-team size were supplied privately; the owner-created mainnet payout account has been verified. The owner authorized publication, and the repository is now public. [Latest check and evidence](SUBMISSION-CHECK-2026-11-14.md).
 
 ## Prepared project facts
 
 - Project: **CommonKit**.
 - Selected track: **Social Money** (`social`), confirmed by the owner.
-- Repository: https://github.com/MUTHUKUMARAN-K-1/commonkit — **private at the owner's request**.
+- Repository: https://github.com/MUTHUKUMARAN-K-1/commonkit — **public, verified without authentication on 14 November**.
 - Live product: https://commonkit-testnet.vercel.app.
 - Demo: [60-second illustrated judge tour](https://commonkit-testnet.vercel.app/judge.html), [tour script and evidence map](JUDGE-WALKTHROUGH.md), and [three-minute recording script](DEMO-SCRIPT.md). The [final 1:55 pitch, real-app walkthrough and captioned player](https://commonkit-testnet.vercel.app/film.html) are packaged; the human-published X demo post remains pending.
 - License: [MIT](../LICENSE), chosen by the owner.
@@ -26,14 +26,14 @@ CommonKit is a community equipment library on NEAR testnet. Members reserve shar
 
 - [ ] Review the immutable source candidate and any subsequent changes before publication. The older `submission-ready` tag is not the current candidate.
 
-- [ ] Owner authorizes changing the repository from private to public. Do not change visibility automatically. The rules require public access by **14 November 2026, 23:59 UTC / 15 November, 05:29 IST**, and through judging.
-- [ ] Lead name, email and team size (`1`) received privately on 14 November. Create and confirm the team's **mainnet** payout account. Do not substitute any testnet demo account.
+- [x] Owner authorized publication; repository visibility changed to public and anonymous access returned HTTP 200. The rules require public access by **14 November 2026, 23:59 UTC / 15 November, 05:29 IST**, and through judging.
+- [x] Lead name, email and team size (`1`) received privately; the owner-created mainnet payout account was verified by a finalized mainnet RPC read. Details remain outside Git.
 - [ ] Human reviews the [post draft and attachment plan](DEMO-POST-DRAFT.md), then publishes a public X post mentioning NEAR HACKATHON, `@NEARProtocol` and `#NEARHackathon`, with the video or screenshots attached. Save that public post URL; the API's `demoUrl` means the social post, not the hosted app.
 - [ ] Recheck the live rules and verify this repository has not already been submitted.
 - [ ] Obtain the human's explicit contact-notice consent and approval of the complete, final application payload. Only then submit once. No placeholder application JSON is prepared here.
 - [ ] Keep the hosted demo available through 18 November, ideally 25 November.
 
-The current official rules permit testnet-only projects and require baseline/reuse disclosure and a license. The private preparation repository is not yet eligible for submission as-is. See [official HACKATHON.md](https://nearhackathon.com/HACKATHON.md), rechecked 14 November. No additional integration or mainnet deployment is required for this Social Money implementation; the payout account must be mainnet. Recheck the live rules immediately before submitting. The final reports passed 54 checks across three runs; public archive throttling can still make a future read UNVERIFIED.
+The current official rules permit testnet-only projects and require baseline/reuse disclosure and a license. Public source is ready; the human X demo post and final application approval remain pending. See [official HACKATHON.md](https://nearhackathon.com/HACKATHON.md), rechecked 14 November. No additional integration or mainnet deployment is required for this Social Money implementation; the payout account must be mainnet. Recheck the live rules immediately before submitting. The final reports passed 54 checks across three runs; public archive throttling can still make a future read UNVERIFIED.
 
 ## Final application handling
 
@@ -54,4 +54,8 @@ publication. The animated tour is not a published X post or attached video.
 
 [Recorded outcomes](https://commonkit-testnet.vercel.app/recorded.html) stay readable without RPC or JavaScript. [Submission media](submission-media/README.md) is ready for owner review and attachment. An independent tester is being arranged; use the [five-minute test sheet](INDEPENDENT-TEST.md) and record actual findings before claiming user validation.
 
-Latest handoff audit: [14 November](SUBMISSION-CHECK-2026-11-14.md). The source candidate is tagged `submission-candidate-2026-11-13` and its CI passed; previous tags remain unchanged. Today's fresh RPC recheck passed 54/54 checks. Publication, the human X post and the final application remain pending.
+Latest handoff audit: [14 November](SUBMISSION-CHECK-2026-11-14.md). The source candidate is tagged `submission-candidate-2026-11-13` and its CI passed; previous tags remain unchanged. Today's fresh RPC recheck passed 54/54 checks. Publication is complete. The human X post and final application remain pending.
+
+## Publication completed
+
+The owner authorized making the repository public after creating the payout wallet. Public access was verified on 14 November. CI on code/media commit `ec644bd` passed: https://github.com/MUTHUKUMARAN-K-1/commonkit/actions/runs/43626040024. The later publication commit updates documentation only. The immutable `hackathon-submission-2026-11-14` tag identifies the published handoff; no earlier tag is moved. Final application still awaits the X post URL and exact-payload approval.
