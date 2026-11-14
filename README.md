@@ -50,6 +50,8 @@ To run a **new signed cycle**, use [the Meteor wallet guide](https://commonkit-t
 
 ## Watch the final demo
 
+[Published hackathon demo on X](https://x.com/Muthu__kumaran_/status/2121671752900374570) · built at NEAR HACKATHON.
+
 <a href="https://commonkit-testnet.vercel.app/film.html"><img src="app/public/media/commonkit-final-poster.jpg" alt="Watch CommonKit: pitch and real app walkthrough" width="360"></a>
 
 **1:55 · English voiceover and captions.** [Watch the film](https://commonkit-testnet.vercel.app/film.html) · [Download the MP4](https://commonkit-testnet.vercel.app/media/commonkit-final-2026-11-14.mp4). The real app walkthrough starts at 0:50. The 54-check count is a dated 14 November result, including the separate mobile reservation. [Media credits](app/public/media/CREDITS.md).
