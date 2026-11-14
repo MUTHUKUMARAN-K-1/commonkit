@@ -8,19 +8,27 @@ account. This draft and the judge tour are not substitutes for a demo-post URL.
 ## Suggested text
 
 ```text
-Shared gear, checkable deposits. I built CommonKit at NEAR HACKATHON: equipment borrowing and two-vote Sputnik DAO disputes on NEAR testnet.
+Who pays when shared gear comes back damaged?
+I built CommonKit at NEAR HACKATHON: bonds & DAO disputes on NEAR testnet. Try both flows—what’s unclear?
 @NEARProtocol #NEARHackathon
-Try it: https://commonkit-testnet.vercel.app
-Code: https://github.com/MUTHUKUMARAN-K-1/commonkit
+https://commonkit-testnet.vercel.app
+https://github.com/MUTHUKUMARAN-K-1/commonkit
 ```
 
 The two URLs use X's link-length allowance; check the final composer before
 publishing. The wording identifies the problem, NEAR's role and where to try the
 product. Do not claim audited security or independent council operators.
 
+Deadline-day identity check: another builder has separately submitted a project
+named CommonKit. Keep our exact GitHub and Vercel links in the post; the X account
+`@usecommonkit` links to that other project. Suggested application descriptor:
+**CommonKit — Equipment Borrowing & DAO Disputes** (owner to confirm).
+
 ## Ready-to-attach film
 
-Attach [commonkit-75s.mp4](../app/public/media/commonkit-75s.mp4) (75 seconds, 1080p, approximately 15.2 MB). [Preview with captions](https://commonkit-testnet.vercel.app/film.html) and [media handoff](submission-media/README.md). This existing master uses the #10/#11 rehearsals and a dated 10 November proof capture; it is not a fresh result and does not include #13. The interactive web tour remains 60 seconds.
+Attach [the final CommonKit MP4](../app/public/media/commonkit-final-2026-11-14.mp4) (1:55, 720 × 1280, 8.7 MB). [Public captioned player](https://commonkit-testnet.vercel.app/film.html) · [direct MP4](https://commonkit-testnet.vercel.app/media/commonkit-final-2026-11-14.mp4) · [media handoff](submission-media/README.md).
+
+This 14 November edit combines an illustrated introduction with the real app walkthrough starting at 0:50, completed #10/#11 receipts and the dated 54-check result including the separate #13 mobile reservation. It uses ElevenLabs narration. Attach the MP4 file itself, not just its URL. The interactive tour remains 60 seconds.
 
 The owner should watch the complete film before posting. A link to the player alone does not satisfy the attached-media instruction.
 

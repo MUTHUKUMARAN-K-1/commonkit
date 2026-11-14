@@ -1,35 +1,15 @@
-# CommonKit product film
+# CommonKit final pitch and walkthrough
 
-75 seconds, 1920 × 1080, 30 fps, H.264/AAC. Produced 10 November 2026;
-packaged for submission on 13 November. The existing master is reused unchanged.
+Produced 14 November 2026. 114.73 seconds, 720 × 1280 portrait, 30 fps, H.264/AAC, 8,657,373 bytes.
 
-Real CommonKit product captures and recorded NEAR testnet evidence, including
-bookings #10/#11 and settlement #16. The displayed 27/27 result is a dated
-10 November capture, not a fresh verification claim. A single operator controls
-both demo council accounts. Physical-condition evidence is synthetic.
+The opening illustrations are from the owner-supplied Gemini Notebook video, reframed and retimed with CommonKit branding. The original source is preserved. The real public-app capture begins at 0:50 and was recorded on 14 November at commonkit-testnet.vercel.app. It is a read-only walkthrough, not new wallet signing.
 
-Editable source is retained in the owner's workspace at
-`PREV CHAT/VID/commonkit-promo`. Rendering: Remotion 4.0.484. The film uses
-CommonKit's cobalt/apricot identity, DM Sans and Instrument Serif (SIL OFL).
-The camera cutout is AI-generated from the project's illustrative camera image;
-it is not evidence of custody. Code and product media contain AI assistance.
+Narration: ElevenLabs George — Warm, Captivating Storyteller, eleven_v4. Generic synthetic voice, no voice cloning. Narration was rewritten to distinguish checks from transactions, credits from withdrawals, and file hashes from proof of physical condition. Captions use the authored text with phrase timings informed by local transcription; not guaranteed word-level alignment. No music was added. Assembly: FFmpeg and Pillow; CommonKit cobalt/apricot branding, Segoe UI and Georgia in the rendered editorial graphics.
 
-Narration: Microsoft Edge Emma Multilingual Neural; generic synthetic narration,
-no voice cloning. English captions follow the authored narration and source
-timings; they do not claim word-level alignment.
+The film shows completed Meteor rehearsals #10/#11 from 9 November. The dated 54/54 result comes from [the published report](verification-2026-11-14.json), read on 14 November: 21 normal + 27 dispute + 6 mobile reservation checks. This is not a current verification result. Booking #13 is a reservation initiated at mobile width, not a physical-phone or completed-return test. One operator controls both demo council accounts; physical-condition evidence is synthetic. Testnet only, not audited.
 
-Music: **House Vibez — Lily J**, Mixkit Stock Music Free License.
-Source: https://assets.mixkit.co/music/745/745.mp3
+Final SHA-256: 366E6B0E669326C1B23DDA073BE6A6A653BB8469B0C8586289CD101D217EC6B6
 
-SFX: Mixkit Sound Effects Free License:
-- Fast small sweep transition: https://assets.mixkit.co/active_storage/sfx/166/166-preview.mp3
-- Air zoom vacuum: https://assets.mixkit.co/active_storage/sfx/2608/2608-preview.mp3
-- Short bass hit: https://assets.mixkit.co/active_storage/sfx/2299/2299-preview.mp3
-- Quick switch click: https://assets.mixkit.co/active_storage/sfx/2582/2582-preview.mp3
-- Sweeping sparkle presentation intro: https://assets.mixkit.co/active_storage/sfx/2633/2633-preview.mp3
+Original SHA-256: 959A491128C50D3AF71A06095777C18745870D96A919A2D6B8CDDA3EDACA333E
 
-Production references informed framing and timing only. No third-party product
-screens, branding or reference-film footage are included. Original production
-notes credit Video Shotcraft, Bang Motion and the NullMotion study companion.
-
-Publishing this hosted film does not create an X demo post or submit an application.
+The [earlier 75-second film credits](CREDITS-75s.md) remain available for the archived version. Publishing this player does not create an X post or submit an application.

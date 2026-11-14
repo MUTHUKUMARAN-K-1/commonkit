@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-14T17:47:14.460Z",
+  "target": "https://commonkit-testnet.vercel.app",
+  "checks": [
+    {
+      "width": 1440,
+      "flow": "normal",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "flow": "dispute",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "flow": "normal",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "flow": "dispute",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "testedAt": "2026-11-14T18:19:30.531Z",
+  "target": "https://commonkit-testnet.vercel.app",
+  "passed": true,
+  "results": [
+    {
+      "width": 1440,
+      "metadata": {
+        "duration": 114.733333,
+        "width": 720,
+        "height": 1280,
+        "autoplay": false,
+        "controls": true,
+        "currentSrc": "https://commonkit-testnet.vercel.app/media/commonkit-final-2026-11-14.mp4"
+      },
+      "captions": {
+        "count": 31,
+        "mode": "showing"
+      },
+      "rangeStatus": 206,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "metadata": {
+        "duration": 114.733333,
+        "width": 720,
+        "height": 1280,
+        "autoplay": false,
+        "controls": true,
+        "currentSrc": "https://commonkit-testnet.vercel.app/media/commonkit-final-2026-11-14.mp4"
+      },
+      "captions": {
+        "count": 31,
+        "mode": "showing"
+      },
+      "rangeStatus": 206,
+      "errors": []
+    }
+  ],
+  "videoSha256": "366e6b0e669326c1b23dda073be6a6a653bb8469b0c8586289cd101d217ec6b6",
+  "datedProof": {
+    "pass": 54,
+    "fail": 0,
+    "unverified": 0
+  },
+  "scope": "Playback, captions, chapter seeking, responsive layout, downloads, byte integrity and entry link. No fresh wallet signing or RPC proof rerun."
+}

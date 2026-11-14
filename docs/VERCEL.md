@@ -97,3 +97,26 @@ pass the 81-file artifact check. Production browser checks cover 1440/390 widths
 blocked external network, explicit UNVERIFIED chain checks and media playback.
 [Validation evidence](testnet/judge-handoff-2026-11-13/README.md).
 No new wallet signatures were performed. GitHub remains private.
+
+## 14 November: final pitch and real-app walkthrough
+
+Production deployment `dpl_GaTMntwKKZ8uiT28QFrFD1gDLKTi`:
+https://commonkit-testnet-cuu2urrp6-muthukumaran-k-1s-projects.vercel.app,
+aliased to https://commonkit-testnet.vercel.app.
+
+`/film.html` now serves the final 114.73-second portrait film with English
+captions, chapter seeking, narration text and download. The library and judge
+tour link to it. The dated 54-check report is published beside the media.
+The 60-second interactive tour and wallet/contract behavior are unchanged.
+The first upload failed with an API connection reset; the retry succeeded.
+Both local and Vercel builds completed; local production check passed 87 files,
+and all 94 JavaScript tests passed. Browser evidence is retained in
+[testnet/final-film-2026-11-14](testnet/final-film-2026-11-14/README.md).
+GitHub remains private; no X post or application was sent.
+
+The final mobile-link follow-up is `dpl_4GsVXkmmaeMdWtxkUmnegrg3EU6M`,
+https://commonkit-testnet-ohlcwhsqk-muthukumaran-k-1s-projects.vercel.app,
+confirmed Ready and aliased to the public origin. The hero-side film link was
+hidden by the existing mobile layout; the onboarding guide now exposes the film
+at both widths. A CLI status connection reset did not interrupt this deployment;
+`vercel inspect` confirmed completion.

@@ -1,0 +1,34 @@
+{
+  "target": "https://commonkit-testnet.vercel.app",
+  "at": "2026-11-14T17:40:41.863Z",
+  "checks": [
+    {
+      "name": "recorded proof at 1440px without JS/external network",
+      "pass": true,
+      "detail": "Amounts, disclosures, expandable 8/11 receipt lists, no overflow"
+    },
+    {
+      "name": "recorded proof at 390px without JS/external network",
+      "pass": true,
+      "detail": "Amounts, disclosures, expandable 8/11 receipt lists, no overflow"
+    },
+    {
+      "name": "no external resource requests",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "all 9 saved-evidence links resolve",
+      "pass": true
+    },
+    {
+      "name": "normal outage: only local manifest passes; chain UNVERIFIED; recorded route works",
+      "pass": true
+    },
+    {
+      "name": "dispute outage: only local manifest passes; chain UNVERIFIED; recorded route works",
+      "pass": true
+    }
+  ],
+  "error": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded."
+}

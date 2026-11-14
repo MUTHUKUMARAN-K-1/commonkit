@@ -1,22 +1,14 @@
 # Submission media handoff
 
-Prepared 13 November 2026. Nothing has been posted to X or submitted.
+Updated 14 November 2026. Nothing has been posted to X or submitted.
 
 ## Preferred attachment
 
-[Download the 75-second MP4](../../app/public/media/commonkit-75s.mp4) and attach
-the file to the human-authored X demo post. [Hosted player](https://commonkit-testnet.vercel.app/film.html)
-includes English captions and a text explanation. This is the existing 10 November
-master, reused unchanged; it shows the completed #10/#11 rehearsals and a dated
-27/27 verifier capture. It does not claim a fresh result or show mobile booking #13.
+[Download the final MP4](../../app/public/media/commonkit-final-2026-11-14.mp4) and attach the file to the human-authored X post. [Public captioned player](https://commonkit-testnet.vercel.app/film.html) includes chapter navigation and the narration in text.
 
-1920 × 1080, 30 fps, H.264/AAC, 75 seconds, approximately 15.2 MB. The separate
-[interactive judge tour](https://commonkit-testnet.vercel.app/judge.html) is 60 seconds.
+114.73 seconds (1:55), 720 × 1280 portrait, 30 fps, H.264/AAC, 8.7 MB. Created 14 November with an illustrated introduction and real public-app walkthrough from 0:50. It covers #10 normal return and #11 dispute payouts; the dated 54-check result also includes the separate #13 mobile reservation. No new wallet signing is claimed. One operator controls the council accounts; physical evidence is synthetic. [Credits](../../app/public/media/CREDITS.md).
 
-The film was checked against the current manifests, inspected through encoded
-representative frames and narration/transcript records, probed and decoded without
-errors. No new human listening review or fresh chain rerun is claimed by those checks.
-[Credits and provenance](../../app/public/media/CREDITS.md).
+The original video remains unchanged in the owner's workspace. Final export decoded without errors. English captions are aligned at phrase level; the owner should watch the complete film before posting. The separate interactive judge tour remains 60 seconds. Official rules checked 14 November specify no minimum or maximum film duration.
 
 ## Still-image alternative
 

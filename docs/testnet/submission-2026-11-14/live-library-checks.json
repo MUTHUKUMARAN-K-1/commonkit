@@ -1,0 +1,6 @@
+{
+  "at": "2026-11-14T17:48:42.552Z",
+  "target": "https://commonkit-testnet.vercel.app",
+  "checks": [],
+  "error": "TimeoutError: page.waitForFunction: Timeout 60000ms exceeded."
+}

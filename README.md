@@ -31,7 +31,7 @@ CommonKit makes that process inspectable. A borrower locks a refundable bond. A 
 
 ## Try it in one minute
 
-**No wallet is needed for this judge path.** Start with [both recorded outcomes](https://commonkit-testnet.vercel.app/recorded.html): dated evidence and payout links, readable without JavaScript or RPC. The [75-second product film](https://commonkit-testnet.vercel.app/film.html) shows the camera story using recorded product captures. The illustrated tour explains the examples; the separate verifier performs fresh RPC reads.
+**No wallet is needed for this judge path.** Start with [both recorded outcomes](https://commonkit-testnet.vercel.app/recorded.html): dated evidence and payout links, readable without JavaScript or RPC. The [1:55 pitch and real app walkthrough](https://commonkit-testnet.vercel.app/film.html) shows the camera story using recorded product captures. The illustrated tour explains the examples; the separate verifier performs fresh RPC reads.
 
 New here? Open the library's **Start here** guide to learn the three roles and compare both outcomes. Browse equipment and inspect its quote before connecting Meteor. [Visitor and borrowing paths](docs/ONBOARDING.md).
 
@@ -47,6 +47,12 @@ New here? Open the library's **Start here** guide to learn the three roles and c
 When RPC is unavailable, the [recorded-proof page](https://commonkit-testnet.vercel.app/recorded.html) stays readable. It is generated from the published manifests and snapshots, never used as a current PASS. RPC completion time is additional to the tour. A mismatch or unavailable receipt is reported; saved snapshots never substitute for a live pass. [Verification scope](docs/VERIFICATION.md) · [Narration and evidence map](docs/JUDGE-WALKTHROUGH.md).
 
 To run a **new signed cycle**, use [the Meteor wallet guide](https://commonkit-testnet.vercel.app/demo-guide.html). Only DAO-admitted members can borrow; only authorized council accounts can vote. Public visitors can inspect both flows without our wallet accounts.
+
+## Watch the final demo
+
+<a href="https://commonkit-testnet.vercel.app/film.html"><img src="app/public/media/commonkit-final-poster.jpg" alt="Watch CommonKit: pitch and real app walkthrough" width="360"></a>
+
+**1:55 · English voiceover and captions.** [Watch the film](https://commonkit-testnet.vercel.app/film.html) · [Download the MP4](https://commonkit-testnet.vercel.app/media/commonkit-final-2026-11-14.mp4). The real app walkthrough starts at 0:50. The 54-check count is a dated 14 November result, including the separate mobile reservation. [Media credits](app/public/media/CREDITS.md).
 
 ## In action
 
