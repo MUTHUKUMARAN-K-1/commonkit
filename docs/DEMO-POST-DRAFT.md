@@ -1,6 +1,6 @@
 # Published demo post and preparation record
 
-Published by the owner on 14 November 2026: https://x.com/Muthu__kumaran_/status/2121671752900374570. Public author and post text verified; the data provider did not return attachment details. The owner must confirm the final MP4 is attached before submission.
+Published by the owner on 14 November 2026: https://x.com/Muthu__kumaran_/status/2121671752900374570. Public author and post text verified; the data provider did not return attachment details. The owner subsequently confirmed that the final MP4 is attached. The application has been accepted; see [submission record](SUBMISSION.md).
 The repository is now public and anonymous access was verified on 14 November. Publish after reviewing the final video and post.
 The human reviews the wording, chooses attachments and posts from their own X
 account. This draft and the judge tour are not substitutes for a demo-post URL.
