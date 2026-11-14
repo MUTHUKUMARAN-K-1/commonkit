@@ -1,5 +1,7 @@
 # CommonKit: three-minute demo script
 
+For judging the submitted build, use the [60-second dispute-first walkthrough](JUDGE-WALKTHROUGH.md) and [judge Q&A](JUDGE-QA.md). They inspect existing completed evidence without new wallet prompts. The script below is an optional fresh-recording procedure, not a requirement to change the stable demo or reproduce a new cycle before presenting.
+
 Record one fresh cycle through the public demo in Chrome and Meteor Web. Allow 10–15 minutes to capture wallet prompts and confirmations, then trim idle waiting into this three-minute cut. Keep the first-vote escrow state and second-vote result visible. Do not present edited timing as instant execution.
 
 ## Before recording

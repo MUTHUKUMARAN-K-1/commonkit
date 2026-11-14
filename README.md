@@ -37,14 +37,16 @@ New here? Open the library's **Start here** guide to learn the three roles and c
 
 | Time | Do this | See this |
 | --- | --- | --- |
-| 0–10s | Open the [judge tour](https://commonkit-testnet.vercel.app/judge.html) | The camera, the three roles and the borrowing journey |
-| 10–20s | Select **Reserve** | Mobile-width reservation #13; 0.111 testnet NEAR attached: 0.011 principal plus 0.100 retained storage |
-| 20–30s | Select **Normal return** | Booking #10: the borrower receives the full 0.010 bond; the DAO receives the 0.001 fee |
-| 30–40s | Select **First vote** | The saved booking #11 checkpoint: one approval, 0.011 still escrowed, zero credits |
-| 40–50s | Select **Settlement** | Second approval authorizes 0.003 damage; credits and actual withdrawals remain distinct |
-| 50–60s | Select **Verify it**, then open a proof | 21 normal-return, 27 dispute or 6 mobile-reservation checks, receipts and a downloadable report |
+| 0–10s | Open the [recorded damage dispute](https://commonkit-testnet.vercel.app/recorded.html#dispute) | Booking #11: the camera is returned with a simulated damage claim. Who gets the bond? |
+| 10–20s | Read [what one vote changed](https://commonkit-testnet.vercel.app/recorded.html#first-vote) | One approval leaves 0.011 NEAR escrowed and zero credits in the saved checkpoint |
+| 20–30s | Compare the second-vote settlement in that section | 0.003 damage approved; 0.007 borrower credit and 0.004 DAO credit, including the usage fee |
+| 30–40s | Follow the [dispute payment receipts](https://commonkit-testnet.vercel.app/verify.html?flow=dispute#case-file) | Separate withdrawals completed the 0.007 and 0.004 transfers; credits alone are not payments |
+| 40–50s | Compare the [clean return](https://commonkit-testnet.vercel.app/recorded.html#normal) | Separate booking #10 paid the full 0.010 bond back and the 0.001 fee to the DAO |
+| 50–60s | Read the evidence limits; choose fresh verification afterward | Testnet, synthetic condition evidence, one operator controlling both council accounts; no wallet needed to inspect |
 
 When RPC is unavailable, the [recorded-proof page](https://commonkit-testnet.vercel.app/recorded.html) stays readable. It is generated from the published manifests and snapshots, never used as a current PASS. RPC completion time is additional to the tour. A mismatch or unavailable receipt is reported; saved snapshots never substitute for a live pass. [Verification scope](docs/VERIFICATION.md) · [Narration and evidence map](docs/JUDGE-WALKTHROUGH.md).
+
+This is a presenter-led route through existing pages; the animated tour retains its six-chapter order. [Judge Q&A](docs/JUDGE-QA.md) · [Five-minute first-visit test — results pending](docs/INDEPENDENT-TEST.md). The separate [mobile reservation #13](https://commonkit-testnet.vercel.app/verify.html#mobile-proof) remains supporting evidence, not a third completed return.
 
 To run a **new signed cycle**, use [the Meteor wallet guide](https://commonkit-testnet.vercel.app/demo-guide.html). Only DAO-admitted members can borrow; only authorized council accounts can vote. Public visitors can inspect both flows without our wallet accounts.
 
